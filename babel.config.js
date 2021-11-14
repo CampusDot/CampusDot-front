@@ -15,6 +15,8 @@ module.exports = {
           '@providers': './src/providers',
           '@screens': './src/screens',
           '@lib': './src/lib',
+          '@constants': './src/constants',
+          '@templates': './src/templates',
         },
       },
     ],
