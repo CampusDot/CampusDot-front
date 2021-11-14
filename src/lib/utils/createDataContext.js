@@ -1,4 +1,4 @@
-import React, { useReducer, useMemo } from 'react';
+import React, { useReducer } from 'react';
 
 export default (reducer, actions, defaultValue) => {
   const Context = React.createContext();
@@ -11,8 +11,8 @@ export default (reducer, actions, defaultValue) => {
       boundActions[item] = actions[item](dispatch);
     });
 
-    const value = useMemo(() => boundActions, [state]);
-    return <Context.Provider value={value}>{children}</Context.Provider>;
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
+    return <Context.Provider value={{ state, ...boundActions }}>{children}</Context.Provider>;
   };
   return { Context, Provider };
 };
