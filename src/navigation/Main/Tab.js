@@ -5,7 +5,11 @@ import Main from 'screens/Main/Main';
 const Tab = createBottomTabNavigator();
 
 const TabScreen = () => (
-  <Tab.Navigator>
+  <Tab.Navigator
+    screenOptions={{
+      headerShown: false,
+    }}
+  >
     <Tab.Screen name="Main" component={Main} />
   </Tab.Navigator>
 );

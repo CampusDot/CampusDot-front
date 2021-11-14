@@ -5,7 +5,11 @@ import TabScreen from './Tab';
 const MainStack = createNativeStackNavigator();
 
 const MainStackScreen = () => (
-  <MainStack.Navigator>
+  <MainStack.Navigator
+    screenOptions={{
+      headerShown: false,
+    }}
+  >
     <MainStack.Screen name="Tab" component={TabScreen} />
   </MainStack.Navigator>
 );
