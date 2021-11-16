@@ -1,8 +1,6 @@
 import React from 'react';
 import Home from 'templates/Main/Home';
 
-const Main = () => {
+export default function () {
   return <Home />;
-};
-
-export default Main;
+}

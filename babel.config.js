@@ -16,6 +16,7 @@ module.exports = {
           '@lib': './src/lib',
           '@constants': './src/constants',
           '@templates': './src/templates',
+          '@widgets': './src/widgets',
         },
       },
     ],
