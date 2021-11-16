@@ -1,8 +1,8 @@
 import React from 'react';
-import { Text } from 'react-native';
+import Home from 'templates/Main/Home';
 
 const Main = () => {
-  return <Text>Main</Text>;
+  return <Home />;
 };
 
 export default Main;
