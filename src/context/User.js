@@ -63,7 +63,7 @@ const getStoreLists = (dispatch) => async () => {
     const response = await server.get('/user/store');
     dispatch({ type: 'getStoreLists', payload: response.data });
   } catch (err) {
-    dispatch({ type: 'error', payload: 'Something went wrong with getChallengeLists' });
+    dispatch({ type: 'error', payload: 'Something went wrong with getStoreLists' });
   }
 };
 
@@ -72,7 +72,7 @@ const getReviews = (dispatch) => async () => {
     const response = await server.get('/user/review');
     dispatch({ type: 'getReviews', payload: response.data });
   } catch (err) {
-    dispatch({ type: 'error', payload: 'Something went wrong with getChallengeLists' });
+    dispatch({ type: 'error', payload: 'Something went wrong with getReviews' });
   }
 };
 
