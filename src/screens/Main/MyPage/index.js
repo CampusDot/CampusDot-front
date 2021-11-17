@@ -1,6 +1,11 @@
 import React from 'react';
-import { Text } from 'react-native';
+import MyPage from 'templates/Main/MyPage';
+import { Provider } from 'context/College';
 
 export default function () {
-  return <Text>My page</Text>;
+  return (
+    <Provider>
+      <MyPage />
+    </Provider>
+  );
 }
