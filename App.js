@@ -5,6 +5,7 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 import { Provider as AuthProvider } from 'context/Auth';
 import MainNavigator from './src/navigation';
+import { Provider as UserProvider } from './src/context/User';
 
 export default () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -14,8 +15,10 @@ export default () => {
   };
 
   return (
-    <AuthProvider>
-      <MainNavigator />
-    </AuthProvider>
+    <UserProvider>
+      <AuthProvider>
+        <MainNavigator />
+      </AuthProvider>
+    </UserProvider>
   );
 };
