@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text } from 'react-native';
+import MyPage from 'templates/Main/MyPage';
 
 export default function () {
-  return <Text>My page</Text>;
+  return <MyPage />;
 }
