@@ -1,6 +1,11 @@
 import React from 'react';
 import MyPage from 'templates/Main/MyPage';
+import { Provider } from 'context/College';
 
 export default function () {
-  return <MyPage />;
+  return (
+    <Provider>
+      <MyPage />
+    </Provider>
+  );
 }
