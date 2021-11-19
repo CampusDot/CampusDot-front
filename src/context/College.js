@@ -3,6 +3,8 @@ import createDataContext from 'lib/utils/createDataContext';
 
 const collegeReducer = (state, action) => {
   switch (action.type) {
+    case 'initStore':
+      return { ...state, store: [], storePage: 0, notNextStore: false };
     case 'getStore':
       return {
         ...state,
@@ -24,11 +26,19 @@ const collegeReducer = (state, action) => {
   }
 };
 
+const initStore = (dispatch) => () => {
+  try {
+    dispatch({ type: 'initStore' });
+  } catch (err) {
+    dispatch({ type: 'error', payload: 'Something went wrong with initStore' });
+  }
+};
+
 const getStore =
   (dispatch) =>
-  async ({ page }) => {
+  async ({ category, page }) => {
     try {
-      const response = await server.get(`/college/store/${page}`);
+      const response = await server.get(`/college/store/${category}/${page}`);
       if (response.data.length !== 0) {
         dispatch({ type: 'getStore', payload: response.data });
       } else {
@@ -57,6 +67,7 @@ const getStoreLists =
 export const { Provider, Context } = createDataContext(
   collegeReducer,
   {
+    initStore,
     getStore,
     getStoreLists,
   },
