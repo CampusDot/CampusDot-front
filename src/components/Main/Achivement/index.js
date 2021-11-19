@@ -6,7 +6,7 @@ import Level from './Level';
 import ProgressBar from './ProgressBar';
 
 const Achivement = () => {
-  const stamp = 13;
+  const stamp = 5;
   return (
     <View style={{ marginTop: 50 }}>
       <View style={[style.space_between, style.flexRow]}>
