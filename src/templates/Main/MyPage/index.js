@@ -4,7 +4,8 @@ import { Context as CollegeContext } from 'context/College';
 
 const MyPage = () => {
   const [category, setCategory] = useState('All');
-  const { getStore, state, getStoreLists, initStore } = useContext(CollegeContext);
+  const { getStore, state, getStoreLists, initStore, getOtherCollegeRanking, getMyCollegeRanking } =
+    useContext(CollegeContext);
 
   const onClickCategory = (option) => {
     initStore();
@@ -31,6 +32,8 @@ const MyPage = () => {
         title="get CollegeStoreLists"
         onPress={() => getStoreLists({ page: state.storeListsPage })}
       />
+      <Button title="우리학교 랭킹" onPress={getMyCollegeRanking} />
+      <Button title="다른학교 랭킹" onPress={getOtherCollegeRanking} />
     </View>
   );
 };

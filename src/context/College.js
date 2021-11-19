@@ -21,6 +21,10 @@ const collegeReducer = (state, action) => {
       };
     case 'notNextStoreLists':
       return { ...state, notNextStoreLists: true };
+    case 'getCollege':
+      return { ...state, collegeLists: action.payload };
+    case 'getCollegeRanking':
+      return { ...state, ranking: action.payload };
     default:
       return state;
   }
@@ -60,9 +64,36 @@ const getStoreLists =
         dispatch({ type: 'notNextStoreLists' });
       }
     } catch (err) {
-      dispatch({ type: 'error', payload: 'Something went wrong with getStore' });
+      dispatch({ type: 'error', payload: 'Something went wrong with getStoreLists' });
     }
   };
+
+const getCollege = (dispatch) => async () => {
+  try {
+    const response = await server.get('/college');
+    dispatch({ type: 'getCollege', payload: response.data });
+  } catch (err) {
+    dispatch({ type: 'error', payload: 'Something went wrong with getCollege' });
+  }
+};
+
+const getMyCollegeRanking = (dispatch) => async () => {
+  try {
+    const response = await server.get('/college/myRanking');
+    dispatch({ type: 'getCollegeRanking', payload: response.data });
+  } catch (err) {
+    dispatch({ type: 'error', payload: 'Something went wrong with getMyCollegeRanking' });
+  }
+};
+
+const getOtherCollegeRanking = (dispatch) => async () => {
+  try {
+    const response = await server.get('/college/otherRanking');
+    dispatch({ type: 'getCollegeRanking', payload: response.data });
+  } catch (err) {
+    dispatch({ type: 'error', payload: 'Something went wrong with getOtherCollegeRanking' });
+  }
+};
 
 export const { Provider, Context } = createDataContext(
   collegeReducer,
@@ -70,6 +101,9 @@ export const { Provider, Context } = createDataContext(
     initStore,
     getStore,
     getStoreLists,
+    getCollege,
+    getMyCollegeRanking,
+    getOtherCollegeRanking,
   },
   {
     store: [],
@@ -78,5 +112,7 @@ export const { Provider, Context } = createDataContext(
     storeLists: [],
     storeListsPage: 0,
     notNextStoreLists: false,
+    collegeLists: null,
+    ranking: null,
   },
 );
