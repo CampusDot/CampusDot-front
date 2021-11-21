@@ -1,7 +1,6 @@
 import React from 'react';
 import CreateModal from 'components/Main/CreateModal';
 
-const Home = () => {
+export default function () {
   return <CreateModal />;
-};
-export default Home;
+}
