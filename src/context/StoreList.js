@@ -14,14 +14,14 @@ const postStoreList =
   (dispatch) =>
   async ({ Stores, Title, Comment }) => {
     try {
-      const response = await server.post(`/storelist/storelist/`, {
+      const response = await server.post(`/storelist`, {
         Stores,
         Title,
         Comment,
       });
       dispatch({ type: 'postStoreList', payload: response.data });
     } catch (err) {
-      dispatch({ type: 'error', payload: 'Something went wrong with getStore' });
+      dispatch({ type: 'error', payload: 'Something went wrong with postStoreList' });
     }
   };
 
