@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text } from 'react-native';
+import Create from 'templates/Main/Create';
 
 export default function () {
-  return <Text>Create</Text>;
+  return <Create />;
 }
