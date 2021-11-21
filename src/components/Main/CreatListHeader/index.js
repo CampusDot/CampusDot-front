@@ -9,25 +9,20 @@ const Header = () => {
   // const { Name } = PostUser;
   const { postStoreList } = useContext(Context);
   const { stores, informationRef } = useListCreate();
+  const onClickPostStoreList = () => {
+    postStoreList({
+      Stores: stores,
+      Title: informationRef.title,
+      Comment: informationRef.content,
+    });
+  };
 
   return (
     <View style={[styles.container, style.flexRow]}>
-      <TouchableOpacity
-        onPress={() => {
-          goBack();
-        }}
-      >
+      <TouchableOpacity onPress={goBack}>
         <Text>뒤로가기</Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => {
-          postStoreList({
-            Stores: stores,
-            Title: informationRef.title,
-            Comment: informationRef.content,
-          });
-        }}
-      >
+      <TouchableOpacity onPress={onClickPostStoreList}>
         <Text>업로드하기</Text>
       </TouchableOpacity>
     </View>

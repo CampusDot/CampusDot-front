@@ -30,7 +30,7 @@ const Restaurants = [
 
 const CreateListSearchResult = () => {
   const { setCommenting, setCurrentStore } = useListCreate();
-  const onClick = ({ object }) => {
+  const onClickAdd = ({ object }) => {
     setCurrentStore(object);
     setCommenting(true);
   };
@@ -50,11 +50,7 @@ const CreateListSearchResult = () => {
                 <Text>{item.vicinity}</Text>
               </View>
               <View>
-                <TouchableOpacity
-                  onPress={() => {
-                    onClick({ object: item });
-                  }}
-                >
+                <TouchableOpacity onPress={() => onClickAdd({ object: item })}>
                   <Text>추가하기</Text>
                 </TouchableOpacity>
               </View>

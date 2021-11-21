@@ -4,13 +4,12 @@ import style from 'constants/styles';
 
 const CreateListSearchHeader = ({ setIsSearch }) => {
   const [text, setText] = useState();
+  const onClickBack = () => {
+    setIsSearch(false);
+  };
   return (
     <View style={[styles.container, style.flexRow]}>
-      <TouchableOpacity
-        onPress={() => {
-          setIsSearch(false);
-        }}
-      >
+      <TouchableOpacity onPress={onClickBack}>
         <Text>뒤로가기</Text>
       </TouchableOpacity>
       <TextInput
