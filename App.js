@@ -8,12 +8,6 @@ import MainNavigator from './src/navigation';
 import { Provider as UserProvider } from './src/context/User';
 
 export default () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   return (
     <UserProvider>
       <AuthProvider>
