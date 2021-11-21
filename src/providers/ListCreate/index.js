@@ -7,8 +7,8 @@ const ListCreateProvider = ({ children }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [commenting, setCommenting] = useState(false);
-  const [currentStore, setCurrentStore] = useState();
-  const [currentComment, setCurrentComment] = useState();
+  const [currentStore, setCurrentStore] = useState(null);
+  const [currentComment, setCurrentComment] = useState(null);
   const [stores, setStores] = useState([]);
   const [edit, setEdit] = useState(false);
 
@@ -24,7 +24,7 @@ const ListCreateProvider = ({ children }) => {
     setEdit(false);
   };
 
-  const onClickDeleteSong = (object) => {
+  const onClickDeleteStore = (object) => {
     setStores(stores.filter((item) => item.store._id !== object.store._id));
   };
 
@@ -54,7 +54,7 @@ const ListCreateProvider = ({ children }) => {
     setStores,
     onAddStore,
     onEditStore,
-    onClickDeleteSong,
+    onClickDeleteStore,
     onClickEdit,
   };
 
