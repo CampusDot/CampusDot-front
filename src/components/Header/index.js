@@ -19,7 +19,7 @@ const Header = ({ title, titleStyle, back, landings, actions }) => {
           ))}
       </View>
       {title && <Text style={[styles.title, titleStyle]}>{title}</Text>}
-      <View style={styles.landings}>{actions}</View>
+      <View style={styles.actions}>{actions}</View>
     </View>
   );
 };
@@ -36,10 +36,12 @@ const styles = StyleSheet.create({
   landings: {
     position: 'absolute',
     left: 15,
+    zIndex: 99,
   },
   actions: {
     position: 'absolute',
     right: 15,
+    zIndex: 99,
   },
 });
 
