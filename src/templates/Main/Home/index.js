@@ -4,11 +4,13 @@ import Challenge from 'components/Main/Challenge';
 import RestaurantLists from 'components/Main/RestaurantLists';
 import Achivement from 'components/Main/Achivement';
 import Header from 'components/Header';
+import Friend from 'components/Header/Home/Friend';
+import Search from 'components/Header/Home/Search';
 
 const Home = () => {
   return (
-    <ScrollView>
-      <Header title="연세대학교" back />
+    <ScrollView showsVerticalScrollIndicator={false} stickyHeaderIndices={[0]}>
+      <Header title="연세대학교" landings={<Search />} actions={<Friend />} />
       <Achivement />
       <Challenge />
       <RestaurantLists />
