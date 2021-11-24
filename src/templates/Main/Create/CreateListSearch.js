@@ -1,8 +1,8 @@
 import React from 'react';
 import { View } from 'react-native';
-import CreateListSearchHeader from 'components/Main/CreateListSearchHeader';
-import CreateListSearchResult from '../../../components/Main/CreateListSearchResult';
-import ListComment from '../../../components/Main/ListComment';
+import CreateListSearchHeader from 'components/Create//CreateListSearchHeader';
+import CreateListSearchResult from '../../../components/Create/CreateListSearchResult';
+import ListComment from '../../../components/Create/ListComment';
 
 const CreateListSearch = ({ setIsSearch }) => {
   return (

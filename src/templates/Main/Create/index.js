@@ -1,5 +1,5 @@
 import React from 'react';
-import CreateModal from 'components/Main/CreateModal';
+import CreateModal from 'components/Create/CreateModal';
 
 export default function () {
   return <CreateModal />;

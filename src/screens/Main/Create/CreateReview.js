@@ -1,11 +1,14 @@
 import React from 'react';
-import CreateReview from 'templates/Main/Create/CreateReview';
-import { Provider } from 'context/StoreList';
+import { Provider as SearchProvider } from 'context/Search';
+import StoreSearch from 'templates/Main/Search/StoreSearch';
+import StoreSearchProvider from 'providers/StoreSearch';
 
 export default function () {
   return (
-    <Provider>
-      <CreateReview />
-    </Provider>
+    <SearchProvider>
+      <StoreSearchProvider>
+        <StoreSearch />
+      </StoreSearchProvider>
+    </SearchProvider>
   );
 }

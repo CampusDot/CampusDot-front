@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import Header from 'components/Header';
 import SelectedStoreInfo from 'components/Main/SelectedStoreInfo';
 import SelectedStoreReview from 'components/Main/SelectedStoreReview';
-import ReviewButton from 'components/Main/ReviewButton';
+import ReviewButton from 'components/Create/ReviewButton';
 
 const Store = {
   _id: "dddaa",

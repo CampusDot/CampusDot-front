@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import Header from 'components/Header';
 import ReviewWriteBack from 'components/Header/Create/ReviewWriteBack';
 import ReviewWriteButton from 'components/Header/Create/ReviewWriteButton';
-import ReviewInput from 'components/Main/ReviewInput';
+import ReviewInput from 'components/Create/ReviewInput';
 
 const CreateReview = ({ setIsWrite }) => {
   return (
