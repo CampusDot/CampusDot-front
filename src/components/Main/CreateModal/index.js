@@ -3,13 +3,21 @@ import { View, Pressable, StyleSheet, Text, TouchableOpacity } from 'react-nativ
 import { goBack, navigate } from 'lib/utils/navigation';
 
 const CreateModal = () => {
+  const onClickStoreList = () => {
+    goBack();
+    navigate('CreateList');
+  };
+
+  const onClickReview = () => {
+    goBack();
+    navigate('ChallengeStore');
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <Pressable
         style={[StyleSheet.absoluteFill, { backgroundColor: 'rgba(0, 0, 0, 0.3)' }]}
-        onPress={() => {
-          goBack();
-        }}
+        onPress={goBack}
       />
       <View
         style={{
@@ -20,18 +28,10 @@ const CreateModal = () => {
           backgroundColor: 'blue',
         }}
       >
-        <TouchableOpacity
-          onPress={() => {
-            navigate('CreateList');
-          }}
-        >
+        <TouchableOpacity onPress={onClickStoreList}>
           <Text>리스트 만들기</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            //navigate('CreateReview');
-          }}
-        >
+        <TouchableOpacity onPress={onClickReview}>
           <Text>리뷰 작성하기</Text>
         </TouchableOpacity>
       </View>
