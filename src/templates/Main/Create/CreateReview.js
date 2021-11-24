@@ -1,19 +1,18 @@
 import React from 'react';
 import { View } from 'react-native';
 import Header from 'components/Header';
-import ReviewWriteBack from 'components/Header/Create/ReviewWriteBack';
 import ReviewWriteButton from 'components/Header/Create/ReviewWriteButton';
 import ReviewInput from 'components/Main/ReviewInput';
+import ReviewCreateProvider from 'providers/ReviewCreate';
 
-const CreateReview = ({ setIsWrite }) => {
+const CreateReview = () => {
   return (
-    <View style={{ flex: 1 }}>
-      <Header
-        landings={<ReviewWriteBack setIsWrite={setIsWrite} />}
-        actions={<ReviewWriteButton setIsWrite={setIsWrite} />}
-      />
-      <ReviewInput />
-    </View>
+    <ReviewCreateProvider>
+      <View style={{ flex: 1 }}>
+        <Header back actions={<ReviewWriteButton />} />
+        <ReviewInput />
+      </View>
+    </ReviewCreateProvider>
   );
 };
 

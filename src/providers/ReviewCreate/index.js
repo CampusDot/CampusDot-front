@@ -10,7 +10,6 @@ const ReviewCreateProvider = ({ children }) => {
   const [store, setStore] = useState(null);
   const [edit, setEdit] = useState(false);
 
-  // eslint-disable-next-line react/jsx-no-constructed-context-values
   const value = {
     review,
     rating,
