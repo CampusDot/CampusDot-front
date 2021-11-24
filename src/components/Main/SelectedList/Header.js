@@ -3,10 +3,10 @@ import { Text, View, StyleSheet } from 'react-native';
 import style from 'constants/styles';
 import { MAIN_COLOR } from 'constants/colors';
 
-const Header = ({ Title, address }) => {
+const Header = ({ name, address }) => {
   return (
     <View style={[styles.container, style.flexRow]}>
-      <Text>{Title}</Text>
+      <Text>{name}</Text>
       <Text>{address}</Text>
     </View>
   );

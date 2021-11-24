@@ -1,37 +1,37 @@
-import React from 'react';
-import { ScrollView } from 'react-native';
+import React, { useEffect, useContext } from 'react';
+import { ScrollView, View, Text } from 'react-native';
 import Header from 'components/Main/RestaurantLists/Header';
 import Information from 'components/Main/SelectedList/Information';
 import RestaurantCardView from 'components/Main/SelectedList/RestaurantCardView';
+import { Context as StoreListContext } from 'context/StoreList';
+import LoadingIndicator from 'components/LoadingIndicator';
+import timeConverter from 'lib/utils/time';
+import style from 'constants/styles';
 
-const Lists = [
-  {
-    Title: '황소곱창',
-    Content: 'zzz',
-    address: '신촌',
-    _id: 1,
-  },
-  {
-    Title: '공복',
-    Content: 'zzz',
-    address: '연희동',
-    _id: 2,
-  },
-  {
-    Title: '대포찜닭',
-    Content: 'zzz',
-    address: '서대문구',
-    _id: 3,
-  },
-];
-const SelectedList = () => {
+const SelectedList = ({ id }) => {
+  const { state, getSelectedStoreList } = useContext(StoreListContext);
+
+  useEffect(() => {
+    getSelectedStoreList({ id });
+  }, []);
+
   return (
     <ScrollView style={{ marginTop: 100 }}>
-      <Header />
-      <Information />
-      {Lists.map((item) => {
-        return <RestaurantCardView information={item} key={item._id} />;
-      })}
+      {state.selectedStoreList ? (
+        <>
+          <View style={[style.flexRow, style.space_between]}>
+            <Header PostUser={state.selectedStoreList.PostUser[0]} />
+            <Text>{timeConverter(state.selectedStoreList.Time)}</Text>
+          </View>
+          <Information />
+          {state.selectedStoreList.StoreList.map((item) => {
+            const { Information: info } = item;
+            return <RestaurantCardView information={info} key={info.name} />;
+          })}
+        </>
+      ) : (
+        <LoadingIndicator />
+      )}
     </ScrollView>
   );
 };

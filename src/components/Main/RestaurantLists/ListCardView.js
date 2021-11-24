@@ -4,12 +4,16 @@ import { push } from 'lib/utils/navigation';
 import Header from './Header';
 import Footer from './Footer';
 
-const ListCardView = () => {
+const ListCardView = ({ information }) => {
+  const { PostUser, Title, Comment, _id } = information;
+  const onClickListCard = () => {
+    push('SelectedList', { id: _id });
+  };
   return (
-    <TouchableOpacity style={styles.container} onPress={() => push('SelectedList')}>
-      <Header />
+    <TouchableOpacity style={styles.container} onPress={onClickListCard}>
+      <Header PostUser={PostUser} />
       <View style={styles.storeImg} />
-      <Footer />
+      <Footer title={Title} comment={Comment} />
     </TouchableOpacity>
   );
 };

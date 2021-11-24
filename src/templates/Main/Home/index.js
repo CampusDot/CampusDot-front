@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { ScrollView } from 'react-native';
 import Challenge from 'components/Main/Challenge';
 import RestaurantLists from 'components/Main/RestaurantLists';
@@ -6,8 +6,15 @@ import Achivement from 'components/Main/Achivement';
 import Header from 'components/Header';
 import Friend from 'components/Header/Home/Friend';
 import Search from 'components/Header/Home/Search';
+import { Context as CollegeContext } from 'context/College';
 
 const Home = () => {
+  const { getStoreLists } = useContext(CollegeContext);
+
+  useEffect(() => {
+    getStoreLists({ page: 0 });
+  }, []);
+
   return (
     <ScrollView showsVerticalScrollIndicator={false} stickyHeaderIndices={[0]}>
       <Header title="연세대학교" landings={<Search />} actions={<Friend />} />

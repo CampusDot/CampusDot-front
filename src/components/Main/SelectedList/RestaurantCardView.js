@@ -1,15 +1,16 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity, Image } from 'react-native';
+import storeImage from 'lib/utils/storeImage';
 import Header from './Header';
 import Footer from './Footer';
 
 const RestaurantCardView = ({ information }) => {
-  const { Title, Content, address } = information;
+  const { name, photos, vicinity } = information;
   return (
     <TouchableOpacity style={styles.container}>
-      <Header Title={Title} address={address} />
-      <View style={styles.storeImg} />
-      <Footer Content={Content} />
+      <Header name={name} address={vicinity} />
+      <Image style={styles.storeImg} source={{ uri: storeImage(photos[0].photo_reference) }} />
+      <Footer />
     </TouchableOpacity>
   );
 };

@@ -2,13 +2,15 @@ import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import ProfileImage from 'widgets/ProfileImage';
 import style from 'constants/styles';
+import getAchivement from 'lib/utils/achivements';
 
 const Header = ({ PostUser }) => {
-  // const { Name } = PostUser;
+  const { Name, ProfileImage: profileImg, AllStamp } = PostUser;
   return (
     <View style={[styles.container, style.flexRow]}>
-      <ProfileImage imageStyle={styles.profileImg} />
-      <Text>zz</Text>
+      <ProfileImage imageStyle={styles.profileImg} image={profileImg} />
+      <Text>{Name}</Text>
+      <Text>{getAchivement(AllStamp)}</Text>
     </View>
   );
 };
