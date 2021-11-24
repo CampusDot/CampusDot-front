@@ -16,6 +16,7 @@ module.exports = {
     'no-unsafe-optional-chaining': 0,
     'func-names': 0,
     'react/function-component-definition': 0,
+    'react/jsx-no-useless-fragment': 0,
   },
   settings: {
     'import/extensions': ['.js', '.jsx'],
