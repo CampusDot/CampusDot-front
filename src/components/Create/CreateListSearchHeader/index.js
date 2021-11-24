@@ -1,25 +1,53 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import style from 'constants/styles';
+import { useStoreSearch } from 'providers/StoreSearch';
+import { Context as SearchContext } from 'context/Search';
 
-const CreateListSearchHeader = ({ setIsSearch }) => {
-  const [text, setText] = useState();
+const CreateListSearchHeader = ({ setIsSearch, setSearching }) => {
+  const { searchtext, setSearchText } = useStoreSearch();
+  const { getStoreHint, getStores } = useContext(SearchContext);
   const onClickBack = () => {
     setIsSearch(false);
+    setSearchText('');
   };
+  const onChangeText = (txt) => {
+    setSearching(true);
+    setSearchText(txt);
+    if (txt) {
+      getStoreHint({ term: txt });
+    } else {
+      setSearching(false);
+    }
+  };
+  const onFocusInput = () => {
+    setSearching(true);
+  };
+  const onPressSearch = () => {
+    setSearchText(searchtext);
+    getStores({ term: searchtext });
+    setSearching(false);
+  };
+
   return (
     <View style={[styles.container, style.flexRow]}>
       <TouchableOpacity onPress={onClickBack}>
         <Text>뒤로가기</Text>
       </TouchableOpacity>
       <TextInput
-        value={text}
-        onChangeText={(txt) => setText(txt)}
+        value={searchtext}
+        onChangeText={(txt) => onChangeText(txt)}
         placeholder="가게를 검색해주세요."
-        multiline
+        onFocus={onFocusInput}
+        onSubmit={onPressSearch}
+        multiline={false}
         autoCapitalize="none"
         autoCorrect={false}
+        style={{ width: 300 }}
       />
+      <TouchableOpacity onPress={onPressSearch}>
+        <Text>검색</Text>
+      </TouchableOpacity>
     </View>
   );
 };
