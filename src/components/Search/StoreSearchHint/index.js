@@ -1,10 +1,14 @@
 import React, { useContext } from 'react';
 import { Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 import { Context as SearchContext } from 'context/Search';
+import { useStoreSearch } from 'providers/StoreSearch';
 
 const StoreSearchHint = ({ setSearching }) => {
   const { state, getStores } = useContext(SearchContext);
+  const { setSearchText } = useStoreSearch();
+
   const onPressHint = (text) => {
+    setSearchText(text);
     getStores({ term: text });
     setSearching(false);
   };
