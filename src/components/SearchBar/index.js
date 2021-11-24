@@ -2,8 +2,11 @@ import React from 'react';
 import { View, StyleSheet, TextInput, Text, TouchableOpacity } from 'react-native';
 import style from 'constants/styles';
 import { goBack } from 'lib/utils/navigation';
+import { useSearch } from 'providers/Search';
 
 const SearchBar = ({ placeholder }) => {
+  const { text, setText } = useSearch();
+
   return (
     <View style={[style.flexRow]}>
       <TouchableOpacity onPress={goBack}>
@@ -15,6 +18,8 @@ const SearchBar = ({ placeholder }) => {
           placeholderTextColor="#999999"
           autoCorrect={false}
           autoCapitalize="none"
+          value={text}
+          onChangeText={(input) => setText(input)}
           style={styles.textInput}
         />
       </View>
