@@ -26,7 +26,7 @@ const TextsInput = () => {
       <TextInput
         value={title}
         onChangeText={(text) => onChangeTitle(text)}
-        placeholder="데일리를 기록해 주세요."
+        placeholder="제목을 적어주세요."
         multiline
         autoCapitalize="none"
         autoCorrect={false}
@@ -35,7 +35,7 @@ const TextsInput = () => {
       <TextInput
         value={content}
         onChangeText={(text) => onChangeContent(text)}
-        placeholder="데일리를 기록해 주세요."
+        placeholder="설명을 적어주세요."
         multiline
         autoCapitalize="none"
         autoCorrect={false}

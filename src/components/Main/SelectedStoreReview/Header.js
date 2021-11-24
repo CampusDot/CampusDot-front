@@ -1,19 +1,14 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import style from 'constants/styles';
-import { goBack } from 'lib/utils/navigation';
+import { MAIN_COLOR } from 'constants/colors';
+import ProfileImage from 'widgets/ProfileImage';
 
-const Header = () => {
-  // const { Name } = PostUser;
+const Header = ({ Name, Image }) => {
   return (
     <View style={[styles.container, style.flexRow]}>
-      <TouchableOpacity
-        onPress={() => {
-          goBack();
-        }}
-      >
-        <Text>뒤로가기</Text>
-      </TouchableOpacity>
+      <ProfileImage image={Image} imageStyle={styles.profileImg} />
+      <Text>{Name}</Text>
     </View>
   );
 };
@@ -22,6 +17,7 @@ const styles = StyleSheet.create({
   container: {
     height: 40,
     borderWidth: 1,
+    backgroundColor: MAIN_COLOR,
   },
   profileImg: {
     width: 24,

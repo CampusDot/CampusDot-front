@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { goBack } from 'lib/utils/navigation';
 import style from 'constants/styles';
 
@@ -42,6 +42,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 15,
     zIndex: 99,
+  },
+  profileImg: {
+    width: 24,
+    height: 24,
+    borderRadius: 24,
+    borderWidth: 1,
   },
 });
 

@@ -1,14 +1,16 @@
 import React from 'react';
 import { View } from 'react-native';
-import CreatListHeader from 'components/Main/CreatListHeader';
+import Header from 'components/Header';
+
 import ListInput from 'components/Main/ListInput';
 import ListAddButton from 'components/Main/ListAddButton';
 import ListAdded from 'components/Main/ListAdded';
+import CreateListButton from 'components/Header/Create/CreateListButton';
 
 const CreateList = ({ setIsSearch }) => {
   return (
-    <View style={{ flex: 1, marginTop: 40 }}>
-      <CreatListHeader />
+    <View style={{ flex: 1 }}>
+      <Header back actions={<CreateListButton />} />
       <ListInput />
       <ListAddButton setIsSearch={setIsSearch} />
       <ListAdded setIsSearch={setIsSearch} />
