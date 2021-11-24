@@ -1,21 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, TextInput, Text } from 'react-native';
 import { useReviewCreate } from 'providers/ReviewCreate';
 
-const ReviewInput = () => {
-  const { review, setReview, rating, setRating } = useReviewCreate();
+const ReviewInput = ({ id }) => {
+  const { onChangeValue, information } = useReviewCreate();
+
   const onChangeRating = (text) => {
-    setRating(text);
+    onChangeValue('rating', Number(text));
   };
 
   const onChangeReview = (text) => {
-    setReview(text);
+    onChangeValue('review', text);
   };
+
+  useEffect(() => {
+    onChangeValue('store', id);
+  }, [id]);
+
   return (
     <View style={{ flex: 1 }}>
       <Text>별점</Text>
       <TextInput
-        value={rating}
+        value={information.rating}
         onChangeText={(text) => onChangeRating(text)}
         placeholder="평점을 매겨 주세요."
         multiline={false}
@@ -24,7 +30,7 @@ const ReviewInput = () => {
       />
       <Text>리뷰</Text>
       <TextInput
-        value={review}
+        value={information.review}
         onChangeText={(text) => onChangeReview(text)}
         placeholder="리뷰를 작성해주세요."
         multiline
