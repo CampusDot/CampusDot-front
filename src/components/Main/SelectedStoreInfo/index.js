@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View } from 'react-native';
 import style from 'constants/styles';
 
 const SelectedStoreInfo = ({ Name, Address, Rating }) => {
@@ -15,18 +15,5 @@ const SelectedStoreInfo = ({ Name, Address, Rating }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    height: 40,
-    borderWidth: 1,
-  },
-  profileImg: {
-    width: 24,
-    height: 24,
-    borderRadius: 24,
-    borderWidth: 1,
-  },
-});
 
 export default SelectedStoreInfo;
