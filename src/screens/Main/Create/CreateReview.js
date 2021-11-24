@@ -1,11 +1,11 @@
 import React from 'react';
 import CreateReview from 'templates/Main/Create/CreateReview';
-import { Provider } from 'context/StoreList';
+import { Provider as ReviewProvider } from 'context/Review';
 
 export default function () {
   return (
-    <Provider>
+    <ReviewProvider>
       <CreateReview />
-    </Provider>
+    </ReviewProvider>
   );
 }
