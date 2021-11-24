@@ -1,8 +1,16 @@
 import React from 'react';
-import { Image } from 'react-native';
+import { Image, View } from 'react-native';
 
 const ProfileImage = ({ image, imageStyle }) => {
-  return <Image style={imageStyle} source={{ uri: image }} />;
+  return (
+    <>
+      {image !== '' ? (
+        <Image style={imageStyle} source={{ uri: image }} />
+      ) : (
+        <View style={imageStyle} />
+      )}
+    </>
+  );
 };
 
 export default ProfileImage;
