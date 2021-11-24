@@ -6,6 +6,7 @@ const userReducer = (state, action) => {
     case 'getInformation':
       return {
         ...state,
+        id: action.payload.Id,
         name: action.payload.Name,
         profileImage: action.payload.ProfileImage,
         college: action.payload.College,
@@ -86,6 +87,7 @@ export const { Provider, Context } = createDataContext(
     getReviews,
   },
   {
+    id: null,
     name: null,
     profileImage: null,
     college: null,
