@@ -29,7 +29,7 @@ const CreateModal = () => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            //navigate('CreateReview');
+            navigate('CreateReview');
           }}
         >
           <Text>리뷰 작성하기</Text>
