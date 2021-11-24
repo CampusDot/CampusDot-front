@@ -18,14 +18,14 @@ const ReviewButton = ({ Store, setIsWrite }) => {
 
 const styles = StyleSheet.create({
   button: {
-    alignItems:'center',
-    justifyContent:'center',
+    alignItems: 'center',
+    justifyContent: 'center',
     width: 100,
     height: 100,
     borderRadius: 100,
     backgroundColor: MAIN_COLOR,
-    position :'absolute',
-    top : 650,
+    position: 'absolute',
+    top: 650,
     left: 270,
   },
 });

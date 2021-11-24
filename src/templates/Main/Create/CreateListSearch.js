@@ -1,12 +1,12 @@
 import React from 'react';
 import { View } from 'react-native';
-import CreateListSearchHeader from '../../../components/Main/CreateListSearchHeader';
+import { CreateListSearchHeader } from 'components/Header';
 import CreateListSearchResult from '../../../components/Main/CreateListSearchResult';
 import ListComment from '../../../components/Main/ListComment';
 
 const CreateListSearch = ({ setIsSearch }) => {
   return (
-    <View style={{ flex: 1, marginTop: 40 }}>
+    <View style={{ flex: 1 }}>
       <CreateListSearchHeader setIsSearch={setIsSearch} />
       <CreateListSearchResult />
       <ListComment setIsSearch={setIsSearch} />

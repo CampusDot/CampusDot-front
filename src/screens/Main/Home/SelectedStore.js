@@ -9,14 +9,13 @@ export default function () {
 
   return (
     <ReviewProvider>
-      <ReviewCreateProvider> 
+      <ReviewCreateProvider>
         {isWrite ? (
           <CreateReview setIsWrite={setIsWrite} />
-          ) : (
-          <SelectedStore  setIsWrite={setIsWrite} />
-        )} 
+        ) : (
+          <SelectedStore setIsWrite={setIsWrite} />
+        )}
       </ReviewCreateProvider>
     </ReviewProvider>
   );
 }
-

@@ -2,10 +2,10 @@ import React, { useContext, useState } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { goBack } from 'lib/utils/navigation';
 import style from 'constants/styles';
-import { Context as StoreListContext} from 'context/StoreList';
+import { Context as StoreListContext } from 'context/StoreList';
 import { Context as ReviewContext } from 'context/Review';
 import { useListCreate } from 'providers/ListCreate';
-import {useReviewCreate} from 'providers/ReviewCreate';
+import { useReviewCreate } from 'providers/ReviewCreate';
 
 const Header = ({ title, titleStyle, back, landings, actions }) => {
   const onClickBack = () => {
@@ -28,30 +28,6 @@ const Header = ({ title, titleStyle, back, landings, actions }) => {
   );
 };
 
-export const  CreatListHeader = () => {
-  const { postStoreList } = useContext(StoreListContext);
-  const { stores, informationRef } = useListCreate();
-  const onClickPostStoreList = () => {
-    postStoreList({
-      Stores: stores,
-      Title: informationRef.title,
-      Comment: informationRef.content,
-    });
-  };
-
-  return (
-    <View style={[styles.CLHcontainer, style.flexRow]}>
-      <TouchableOpacity onPress={goBack}>
-        <Text>뒤로가기</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={onClickPostStoreList}>
-        <Text>업로드하기</Text>
-      </TouchableOpacity>
-    </View>
-  );
-};
-
-
 export const CreateListSearchHeader = ({ setIsSearch }) => {
   const [text, setText] = useState();
   const onClickBack = () => {
@@ -66,7 +42,7 @@ export const CreateListSearchHeader = ({ setIsSearch }) => {
         value={text}
         onChangeText={(txt) => setText(txt)}
         placeholder="가게를 검색해주세요."
-        multiline = {false}
+        multiline={false}
         autoCapitalize="none"
         autoCorrect={false}
       />
@@ -74,34 +50,20 @@ export const CreateListSearchHeader = ({ setIsSearch }) => {
   );
 };
 
-export const SelctedStoreHeader = () => {
-  const onClickBack = () => {
-    goBack();
-  };
-  return (
-    <View style={[styles.CLSHcontainer, style.flexRow]}>
-      <TouchableOpacity onPress={onClickBack}>
-        <Text>뒤로가기</Text>
-      </TouchableOpacity>
-      <Text>리뷰</Text>
-    </View>
-  );
-};
-
 export const ReviewWriteHeader = ({ setIsWrite }) => {
-  const { setStore, store, setReview, review, setRating, rating} = useReviewCreate();
+  const { setStore, store, setReview, review, setRating, rating } = useReviewCreate();
   const { postReview } = useContext(ReviewContext);
 
   const onClickBack = () => {
-    goBack();
+    setIsWrite(false);
   };
 
-  const onClickComplete = async() => {
+  const onClickComplete = async () => {
     await postReview({
       Content: review,
       Rating: rating,
-      Store: store
-    })
+      Store: store,
+    });
     setStore(null);
     setReview('');
     setRating('0');
@@ -120,7 +82,6 @@ export const ReviewWriteHeader = ({ setIsWrite }) => {
     </View>
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {

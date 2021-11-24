@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { SelctedStoreHeader } from 'components/Header';
+import Header from 'components/Header';
 import SelectedStoreInfo from 'components/Main/SelectedStoreInfo';
 import SelectedStoreReview from 'components/Main/SelectedStoreReview';
 import ReviewButton from 'components/Main/ReviewButton';
@@ -41,7 +41,7 @@ const Store = {
 const SelectedStore = ({ setIsWrite }) => {
   return (
     <View style={{ flex: 1 }}>
-      <SelctedStoreHeader />
+      <Header back title="리뷰" />
       <SelectedStoreInfo
         Name={Store.Information.name}
         Address={Store.Information.vicinity}
