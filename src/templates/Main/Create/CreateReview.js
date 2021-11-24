@@ -1,14 +1,19 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { View } from 'react-native';
+import Header from 'components/Header';
+import ReviewWriteBack from 'components/Header/Create/ReviewWriteBack';
+import ReviewWriteButton from 'components/Header/Create/ReviewWriteButton';
 import ReviewInput from 'components/Main/ReviewInput';
-import Header from 'components/Main/ReviewInput/Header';
 
-const CreateReview = () => {
+const CreateReview = ({ setIsWrite }) => {
   return (
-    <ScrollView style={{ marginTop: 40 }}>
-      <Header />
+    <View style={{ flex: 1 }}>
+      <Header
+        landings={<ReviewWriteBack setIsWrite={setIsWrite} />}
+        actions={<ReviewWriteButton setIsWrite={setIsWrite} />}
+      />
       <ReviewInput />
-    </ScrollView>
+    </View>
   );
 };
 

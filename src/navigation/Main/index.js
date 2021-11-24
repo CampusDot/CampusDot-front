@@ -1,6 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SelectedList from 'screens/Main/Home/SelectedList';
+import SelectedStore from 'screens/Main/Home/SelectedStore';
 import CreateList from 'screens/Main/Create/CreateList';
 import CreateReview from 'screens/Main/Create/CreateReview';
 import FriendCollege from 'screens/Main/Home/FriendCollege';
@@ -17,6 +18,7 @@ const MainStackScreen = () => (
   >
     <MainStack.Screen name="Tab" component={TabScreen} />
     <MainStack.Screen name="SelectedList" component={SelectedList} />
+    <MainStack.Screen name="SelectedStore" component={SelectedStore} />
     <MainStack.Screen name="CreateList" component={CreateList} />
     <MainStack.Screen name="CreateReview" component={CreateReview} />
     <MainStack.Screen name="FriendCollege" component={FriendCollege} />

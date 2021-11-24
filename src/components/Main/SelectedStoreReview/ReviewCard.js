@@ -1,16 +1,15 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import { push } from 'lib/utils/navigation';
 import Header from './Header';
 import Footer from './Footer';
 
-const RestaurantCardView = ({ information }) => {
-  const { Title, Content, address } = information;
+const ReviewCard = ({ information }) => {
+  const { PostUser, Content, Rating } = information;
   return (
-    <TouchableOpacity style={styles.container} onPress={() => push('SelectedStore')}>
-      <Header Title={Title} address={address} />
+    <TouchableOpacity style={styles.container}>
+      <Header name={PostUser.Name} img={PostUser.ProfileImage} />
       <View style={styles.storeImg} />
-      <Footer Content={Content} />
+      <Footer Content={Content} Rating={Rating} />
     </TouchableOpacity>
   );
 };
@@ -29,4 +28,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RestaurantCardView;
+export default ReviewCard;

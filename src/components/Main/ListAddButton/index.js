@@ -6,7 +6,7 @@ const ListAddButton = ({ setIsSearch }) => {
     setIsSearch(true);
   };
   return (
-    <TouchableOpacity onPress={() => onPressAdd} style={styles.button}>
+    <TouchableOpacity onPress={() => onPressAdd()} style={styles.button}>
       <Text>식당 추가하기</Text>
     </TouchableOpacity>
   );
