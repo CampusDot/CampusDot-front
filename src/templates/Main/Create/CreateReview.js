@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { ReviewWriteHeader } from 'components/Header';
+import ReviewWriteHeader from 'components/Main/ReviewWriteHeader';
 import ReviewInput from 'components/Main/ReviewInput';
 
 const CreateReview = ({ setIsWrite }) => {

@@ -5,7 +5,7 @@ import Header from 'components/Header';
 import ListInput from 'components/Main/ListInput';
 import ListAddButton from 'components/Main/ListAddButton';
 import ListAdded from 'components/Main/ListAdded';
-import CreateListButton from 'components/Header/Home/CreateListButton';
+import CreateListButton from 'components/Header/Create/CreateListButton';
 
 const CreateList = ({ setIsSearch }) => {
   return (

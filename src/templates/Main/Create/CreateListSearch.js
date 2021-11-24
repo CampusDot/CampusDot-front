@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { CreateListSearchHeader } from 'components/Header';
+import CreateListSearchHeader from 'components/Main/CreateListSearchHeader';
 import CreateListSearchResult from '../../../components/Main/CreateListSearchResult';
 import ListComment from '../../../components/Main/ListComment';
 
