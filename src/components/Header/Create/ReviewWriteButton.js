@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import { Context as ReviewContext } from 'context/Review';
 import { useReviewCreate } from 'providers/ReviewCreate';
 
-const ReviewWriteButton = ({ setIsWrite }) => {
+const ReviewWriteButton = () => {
   const { setStore, store, setReview, review, setRating, rating } = useReviewCreate();
   const { postReview } = useContext(ReviewContext);
   const onClickComplete = async () => {
@@ -15,7 +15,6 @@ const ReviewWriteButton = ({ setIsWrite }) => {
     setStore(null);
     setReview('');
     setRating('0');
-    setIsWrite(false);
   };
   return (
     <TouchableOpacity onPress={onClickComplete} style={{ width: 40, height: 40, borderWidth: 1 }} />
