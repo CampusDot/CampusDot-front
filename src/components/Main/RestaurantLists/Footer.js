@@ -2,13 +2,12 @@ import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import style from 'constants/styles';
 
-const Footer = () => {
-  // const { Name } = PostUser;
+const Footer = ({ title, comment }) => {
   return (
     <View style={[styles.container, style.flexRow, style.space_between]}>
       <View>
-        <Text>제목</Text>
-        <Text>설명</Text>
+        <Text>{title}</Text>
+        <Text>{comment}</Text>
       </View>
       <TouchableOpacity style={styles.icon} />
     </View>

@@ -5,6 +5,8 @@ const createReducer = (state, action) => {
   switch (action.type) {
     case 'postStoreList':
       return { ...state };
+    case 'getSelectedStoreList':
+      return { ...state, selectedStoreList: action.payload };
     default:
       return state;
   }
@@ -25,12 +27,35 @@ const postStoreList =
     }
   };
 
+const getSelectedStoreList =
+  (dispatch) =>
+  async ({ id }) => {
+    try {
+      const response = await server.get(`/storelist/${id}`);
+      dispatch({ type: 'getSelectedStoreList', payload: response.data });
+    } catch (err) {
+      dispatch({ type: 'error', payload: 'Something went wrong with getSelectedStoreList' });
+    }
+  };
+
+const challengeStoreList =
+  (dispatch) =>
+  async ({ id }) => {
+    try {
+      await server.post('/storelist/challenge', { id });
+    } catch (err) {
+      dispatch({ type: 'error', payload: 'Something went wrong with challengeStoreList' });
+    }
+  };
+
 export const { Provider, Context } = createDataContext(
   createReducer,
   {
     postStoreList,
+    getSelectedStoreList,
+    challengeStoreList,
   },
   {
-    storelist: [],
+    selectedStoreList: null,
   },
 );

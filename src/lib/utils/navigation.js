@@ -7,24 +7,32 @@ import {
 const navigationRef = createNavigationContainerRef();
 
 export const navigate = (name, params) => {
-  navigationRef.current.dispatch(
-    CommonActions.navigate({
-      name,
-      params,
-    }),
-  );
+  if (navigationRef.current) {
+    navigationRef.current.dispatch(
+      CommonActions.navigate({
+        name,
+        params,
+      }),
+    );
+  }
 };
 
 export const push = (name, params) => {
-  navigationRef.current.dispatch(StackActions.push(name, params));
+  if (navigationRef.current) {
+    navigationRef.current.dispatch(StackActions.push(name, params));
+  }
 };
 
 export const goBack = () => {
-  navigationRef.current.dispatch(CommonActions.goBack());
+  if (navigationRef.current) {
+    navigationRef.current.dispatch(CommonActions.goBack());
+  }
 };
 
 export const addListener = (type, callback) => {
-  navigationRef.current.addListener(type, callback());
+  if (navigationRef.current) {
+    navigationRef.current.addListener(type, callback());
+  }
 };
 
 export default navigationRef;
