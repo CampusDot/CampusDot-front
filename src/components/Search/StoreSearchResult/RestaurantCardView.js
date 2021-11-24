@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Image } from 'react-native';
-import storeImage from 'lib/utils/storeImage';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import StoreImage from 'widgets/StoreImage';
 import Header from './Header';
 import Footer from './Footer';
@@ -10,10 +9,7 @@ const RestaurantCardView = ({ information }) => {
   return (
     <TouchableOpacity style={styles.container}>
       <Header name={name} address={vicinity} />
-      <StoreImage
-        image={storeImage(photos && photos[0].photo_reference)}
-        imageStyle={styles.storeImg}
-      />
+      <StoreImage image={photos && photos[0].photo_reference} imageStyle={styles.storeImg} />
       <Footer />
     </TouchableOpacity>
   );
