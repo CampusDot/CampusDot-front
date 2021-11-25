@@ -13,7 +13,7 @@ const Challenge = () => {
         <FlatList
           horizontal
           data={state.challengeStoreList}
-          keyExtractor={(store) => store._id}
+          keyExtractor={(store) => store.storeInfo._id}
           showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => {
             return <Restaurant information={item} />;
