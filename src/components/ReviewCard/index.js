@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet, FlatList, Image } from 'react-native';
 import Header from 'components/PostUserHeader';
 import Footer from './Footer';
 
@@ -14,8 +14,12 @@ const ReviewCard = ({ information }) => {
           keyExtractor={(item) => item}
           horizontal
           showsHorizontalScrollIndicator={false}
-          renderItem={() => {
-            return <Text>zz</Text>;
+          bounces={false}
+          snapToInterval={347}
+          decelerationRate={0}
+          scrollEventThrottle={16}
+          renderItem={({ item }) => {
+            return <Image source={{ uri: item }} style={styles.reviewImage} />;
           }}
         />
       )}
@@ -28,6 +32,10 @@ const styles = StyleSheet.create({
   container: {
     width: 347,
     borderWidth: 1,
+  },
+  reviewImage: {
+    width: 347,
+    height: 163,
   },
 });
 export default ReviewCard;

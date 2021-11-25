@@ -1,21 +1,28 @@
-import React from 'react';
-import { View, TextInput, Text } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, TextInput, Text, TouchableOpacity } from 'react-native';
 import { useReviewCreate } from 'providers/ReviewCreate';
+import { onClickMultiple } from 'lib/utils/ImageEditor';
 
-const ReviewInput = () => {
-  const { review, setReview, rating, setRating } = useReviewCreate();
+const ReviewInput = ({ id }) => {
+  const { onChangeValue, information, setImages } = useReviewCreate();
+
   const onChangeRating = (text) => {
-    setRating(text);
+    onChangeValue('rating', text);
   };
 
   const onChangeReview = (text) => {
-    setReview(text);
+    onChangeValue('review', text);
   };
+
+  useEffect(() => {
+    onChangeValue('store', id);
+  }, [id]);
+
   return (
     <View style={{ flex: 1 }}>
       <Text>별점</Text>
       <TextInput
-        value={rating}
+        value={information.rating}
         onChangeText={(text) => onChangeRating(text)}
         placeholder="평점을 매겨 주세요."
         multiline={false}
@@ -24,13 +31,19 @@ const ReviewInput = () => {
       />
       <Text>리뷰</Text>
       <TextInput
-        value={review}
+        value={information.review}
         onChangeText={(text) => onChangeReview(text)}
         placeholder="리뷰를 작성해주세요."
         multiline
         autoCapitalize="none"
         autoCorrect={false}
       />
+      <TouchableOpacity
+        style={{ width: 40, height: 40, borderWidth: 1 }}
+        onPress={() => onClickMultiple(setImages)}
+      >
+        <Text>사진</Text>
+      </TouchableOpacity>
     </View>
   );
 };

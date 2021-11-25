@@ -9,6 +9,8 @@ import SelectedSection from 'screens/Main/MyPage/SelectedSection';
 import CreateModal from 'components/Create/CreateModal';
 import ChallengeStore from 'screens/Main/Create/ChallengeStore';
 import SelectedStore from 'screens/Main/Home/SelectedStore';
+import Coupon from 'screens/Main/Stamp/Coupon';
+import Ranking from 'screens/Main/Stamp/Ranking';
 import TabScreen from './Tab';
 
 const MainStack = createNativeStackNavigator();
@@ -28,6 +30,8 @@ const MainStackScreen = () => (
     <MainStack.Screen name="SelectedSection" component={SelectedSection} />
     <MainStack.Screen name="ChallengeStore" component={ChallengeStore} />
     <MainStack.Screen name="SelectedStore" component={SelectedStore} />
+    <MainStack.Screen name="Coupon" component={Coupon} />
+    <MainStack.Screen name="Ranking" component={Ranking} />
     <MainStack.Screen
       name="CreatePosts"
       component={CreateModal}

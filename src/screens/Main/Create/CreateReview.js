@@ -1,14 +1,12 @@
 import React from 'react';
-import { Provider as SearchingProvider } from 'context/Search';
-import StoreSearch from 'templates/Main/Search/StoreSearch';
-import SearchProvider from 'providers/Search';
+import CreateReview from 'templates/Main/Create/Review/CreateReview';
+import { Provider as ReviewProvider } from 'context/Review';
 
-export default function () {
+export default function ({ route }) {
+  const { id } = route.params;
   return (
-    <SearchingProvider>
-      <SearchProvider>
-        <StoreSearch />
-      </SearchProvider>
-    </SearchingProvider>
+    <ReviewProvider>
+      <CreateReview id={id} />
+    </ReviewProvider>
   );
 }

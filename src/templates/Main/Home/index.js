@@ -7,12 +7,15 @@ import Header from 'components/Header';
 import Friend from 'components/Header/Home/Friend';
 import Search from 'components/Header/Home/Search';
 import { Context as CollegeContext } from 'context/College';
+import { Context as StoreListContext } from 'context/StoreList';
 
 const Home = () => {
   const { getStoreLists } = useContext(CollegeContext);
+  const { getChallengeLists } = useContext(StoreListContext);
 
   useEffect(() => {
     getStoreLists({ page: 0 });
+    getChallengeLists();
   }, []);
 
   return (

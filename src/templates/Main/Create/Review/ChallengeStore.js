@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { ScrollView } from 'react-native';
-import { Context as RevievwContext } from 'context/Review';
+import { Context as ReviewContext } from 'context/Review';
 import LoadingIndicator from 'components/LoadingIndicator';
 import RestaurantCardView from 'components/RestaurantCardView';
 import SearchBar from 'components/SearchBar';
@@ -8,7 +8,7 @@ import { useSearch } from 'providers/Search';
 
 const ChallengeStore = () => {
   const [storeLists, setStoreLists] = useState(null);
-  const { getReviewStore, state } = useContext(RevievwContext);
+  const { getReviewStore, state } = useContext(ReviewContext);
   const { text } = useSearch();
 
   useEffect(() => {
