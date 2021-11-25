@@ -3,7 +3,7 @@ import { View, Text, Animated, TouchableWithoutFeedback, StyleSheet } from 'reac
 import { push } from 'lib/utils/navigation';
 import { MAIN_COLOR } from 'constants/colors';
 
-const SelectedListButton = ({ data }) => {
+const FloatingButton = ({ data }) => {
   const animation = useRef(new Animated.Value(0)).current;
   const [isopen, setIsopen] = useState(false);
 
@@ -62,7 +62,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
-    zIndex: 3,
   },
 });
-export default SelectedListButton;
+export default FloatingButton;
