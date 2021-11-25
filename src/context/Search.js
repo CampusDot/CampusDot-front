@@ -5,13 +5,8 @@ const searchReducer = (state, action) => {
   switch (action.type) {
     case 'getHint':
       return { ...state, hint: action.payload };
-<<<<<<< HEAD
-    case 'getStores':
-      return { ...state, stores: action.payload };
-=======
     case 'getStoreResult':
       return { ...state, result: action.payload };
->>>>>>> 7da6c8e1607f85ac1cec0eaacdd55f120fb6aaa1
     default:
       return state;
   }
