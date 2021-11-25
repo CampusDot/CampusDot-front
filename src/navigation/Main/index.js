@@ -6,7 +6,7 @@ import CreateReview from 'screens/Main/Create/CreateReview';
 import FriendCollege from 'screens/Main/Home/FriendCollege';
 import SearchStoreLists from 'screens/Main/Home/SearchStoreLists';
 import SelectedSection from 'screens/Main/MyPage/SelectedSection';
-import CreateModal from 'components/Main/CreateModal';
+import CreateModal from 'components/Create/CreateModal';
 import ChallengeStore from 'screens/Main/Create/ChallengeStore';
 import SelectedStore from 'screens/Main/Home/SelectedStore';
 import Coupon from 'screens/Main/Stamp/Coupon';

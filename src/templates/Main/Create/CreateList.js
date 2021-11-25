@@ -2,9 +2,9 @@ import React from 'react';
 import { View } from 'react-native';
 import Header from 'components/Header';
 
-import ListInput from 'components/Main/ListInput';
-import ListAddButton from 'components/Main/ListAddButton';
-import ListAdded from 'components/Main/ListAdded';
+import ListInput from 'components/Create/ListInput';
+import ListAddButton from 'components/Create//ListAddButton';
+import ListAdded from 'components/Create//ListAdded';
 import CreateListButton from 'components/Header/Create/CreateListButton';
 
 const CreateList = ({ setIsSearch }) => {

@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { useListCreate } from 'providers/ListCreate';
 import style from 'constants/styles';
+import StoreImage from 'widgets/StoreImage';
 
 const ListAdded = ({ setIsSearch }) => {
   const { stores, onClickDeleteStore, onClickEdit } = useListCreate();
@@ -19,12 +20,13 @@ const ListAdded = ({ setIsSearch }) => {
         contentContainerStyle={styles.padding}
         renderItem={({ item }) => {
           const { store, comment } = item;
+          const { name, vicinity, photos } = store.Information;
           return (
             <View style={style.flexRow}>
-              <View style={styles.image} />
+              <StoreImage image={photos && photos[0].photo_reference} imageStyle={styles.image} />
               <View>
-                <Text>{store.Information.name}</Text>
-                <Text>{store.vicinity}</Text>
+                <Text>{name}</Text>
+                <Text>{vicinity}</Text>
                 <Text>{comment}</Text>
               </View>
               <View>
@@ -53,6 +55,10 @@ const styles = StyleSheet.create({
     height: 24,
     borderRadius: 24,
     borderWidth: 1,
+  },
+  image: {
+    width: 40,
+    height: 40,
   },
 });
 
