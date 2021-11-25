@@ -114,7 +114,6 @@
 				103208FCD72B0A8F60C62122 /* Pods-CampusDot-CampusDotTests.debug.xcconfig */,
 				08CEDEF66D1F3DA4E5CDBF38 /* Pods-CampusDot-CampusDotTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

@@ -1,11 +1,12 @@
 import React from 'react';
-import CreateReview from 'templates/Main/Create/CreateReview';
+import CreateReview from 'templates/Main/Create/Review/CreateReview';
 import { Provider as ReviewProvider } from 'context/Review';
 
-export default function () {
+export default function ({ route }) {
+  const { id } = route.params;
   return (
     <ReviewProvider>
-      <CreateReview />
+      <CreateReview id={id} />
     </ReviewProvider>
   );
 }

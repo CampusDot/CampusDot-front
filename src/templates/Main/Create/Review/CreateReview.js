@@ -1,17 +1,14 @@
 import React from 'react';
-import { View } from 'react-native';
 import Header from 'components/Header';
 import ReviewWriteButton from 'components/Header/Create/ReviewWriteButton';
-import ReviewInput from 'components/Main/ReviewInput';
+import ReviewInput from 'components/Create/ReviewInput';
 import ReviewCreateProvider from 'providers/ReviewCreate';
 
-const CreateReview = () => {
+const CreateReview = ({ id }) => {
   return (
     <ReviewCreateProvider>
-      <View style={{ flex: 1 }}>
-        <Header back actions={<ReviewWriteButton />} />
-        <ReviewInput />
-      </View>
+      <Header title="리뷰 작성" back actions={<ReviewWriteButton />} />
+      <ReviewInput id={id} />
     </ReviewCreateProvider>
   );
 };
