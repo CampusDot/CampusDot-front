@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { ScrollView, View, Text } from 'react-native';
 import Header from 'components/PostUserHeader';
-import Information from 'components/Main/SelectedList/Information';
+import Information from 'components/Home/SelectedList/Information';
 import RestaurantCardView from 'components//RestaurantCardView';
 import { Context as StoreListContext } from 'context/StoreList';
 import LoadingIndicator from 'components/LoadingIndicator';

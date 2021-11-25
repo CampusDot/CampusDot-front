@@ -3,7 +3,7 @@ import { ScrollView, TouchableOpacity, StyleSheet, Text } from 'react-native';
 import { Context as ReviewContext } from 'context/Review';
 import ReviewCard from 'components/ReviewCard';
 import LoadingIndicator from 'components/LoadingIndicator';
-import SelectedStoreInfo from 'components/Main/SelectedStoreInfo';
+import SelectedStoreInfo from 'components/Home/SelectedStoreInfo';
 import { push } from 'lib/utils/navigation';
 
 const SelectedStoreReview = ({ id }) => {
