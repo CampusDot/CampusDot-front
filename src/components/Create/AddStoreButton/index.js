@@ -1,12 +1,14 @@
 import React from 'react';
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { push } from 'lib/utils/navigation';
 
-const ListAddButton = ({ setIsSearch }) => {
+const ListAddButton = () => {
   const onPressAdd = () => {
-    setIsSearch(true);
+    push('SearchStore');
   };
+
   return (
-    <TouchableOpacity onPress={() => onPressAdd()} style={styles.button}>
+    <TouchableOpacity onPress={onPressAdd} style={styles.button}>
       <Text>식당 추가하기</Text>
     </TouchableOpacity>
   );

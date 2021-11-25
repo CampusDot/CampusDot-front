@@ -10,8 +10,9 @@ const StoreSearchHint = ({ setSearching }) => {
   const onPressHint = (text) => {
     setText(text);
     getStoreResult({ term: text });
-    setSearching(false);
+    setSearching(true);
   };
+
   return (
     <FlatList
       data={state.hint}

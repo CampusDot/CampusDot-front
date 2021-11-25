@@ -4,9 +4,8 @@ import style from 'constants/styles';
 import { goBack } from 'lib/utils/navigation';
 import { useSearch } from 'providers/Search';
 
-const SearchBar = ({ placeholder }) => {
+const SearchBar = ({ placeholder, onSubmit }) => {
   const { text, setText } = useSearch();
-
   return (
     <View style={[style.flexRow]}>
       <TouchableOpacity onPress={goBack}>
@@ -21,6 +20,7 @@ const SearchBar = ({ placeholder }) => {
           value={text}
           onChangeText={(input) => setText(input)}
           style={styles.textInput}
+          onSubmitEditing={onSubmit}
         />
       </View>
     </View>

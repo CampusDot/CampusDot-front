@@ -3,12 +3,22 @@ import createDataContext from 'lib/utils/createDataContext';
 
 const searchReducer = (state, action) => {
   switch (action.type) {
+    case 'initHint':
+      return { ...state, hint: null };
     case 'getHint':
       return { ...state, hint: action.payload };
     case 'getStoreResult':
       return { ...state, result: action.payload };
     default:
       return state;
+  }
+};
+
+const initHint = (dispatch) => async () => {
+  try {
+    dispatch({ type: 'initHint' });
+  } catch (err) {
+    dispatch({ type: 'error', payload: 'Something went wrong with initHint' });
   }
 };
 
@@ -48,6 +58,7 @@ const getStoreResult =
 export const { Provider, Context } = createDataContext(
   searchReducer,
   {
+    initHint,
     getCollegeHint,
     getStoreHint,
     getStoreResult,

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import { ScrollView } from 'react-native';
-import Challenge from 'components/Main/Challenge';
-import RestaurantLists from 'components/Main/RestaurantLists';
-import Achivement from 'components/Main/Achivement';
+import Challenge from 'components/Home/Challenge';
+import RestaurantLists from 'components/Home/RestaurantLists';
+import Achivement from 'components/Home/Achivement';
 import Header from 'components/Header';
 import Friend from 'components/Header/Home/Friend';
 import Search from 'components/Header/Home/Search';

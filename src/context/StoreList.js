@@ -16,12 +16,13 @@ const createReducer = (state, action) => {
 
 const postStoreList =
   (dispatch) =>
-  async ({ Stores, Title, Comment }) => {
+  async ({ Stores, Title, Comment, StoreComment }) => {
     try {
       const response = await server.post(`/storelist`, {
         Stores,
         Title,
         Comment,
+        StoreComment,
       });
       dispatch({ type: 'postStoreList', payload: response.data });
     } catch (err) {

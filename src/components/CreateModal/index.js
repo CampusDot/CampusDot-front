@@ -5,7 +5,7 @@ import { goBack, navigate } from 'lib/utils/navigation';
 const CreateModal = () => {
   const onClickStoreList = () => {
     goBack();
-    navigate('CreateList');
+    navigate('CreateStoreList', { store: null });
   };
 
   const onClickReview = () => {
