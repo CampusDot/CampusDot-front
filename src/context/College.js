@@ -23,8 +23,10 @@ const collegeReducer = (state, action) => {
       return { ...state, notNextStoreLists: true };
     case 'getCollege':
       return { ...state, collegeLists: action.payload };
-    case 'getCollegeRanking':
-      return { ...state, ranking: action.payload };
+    case 'getMyCollegeRanking':
+      return { ...state, myRanking: action.payload };
+    case 'getOtherCollegeRanking':
+      return { ...state, otherRanking: action.payload };
     default:
       return state;
   }
@@ -80,7 +82,7 @@ const getCollege = (dispatch) => async () => {
 const getMyCollegeRanking = (dispatch) => async () => {
   try {
     const response = await server.get('/college/myRanking');
-    dispatch({ type: 'getCollegeRanking', payload: response.data });
+    dispatch({ type: 'getMyCollegeRanking', payload: response.data });
   } catch (err) {
     dispatch({ type: 'error', payload: 'Something went wrong with getMyCollegeRanking' });
   }
@@ -89,7 +91,7 @@ const getMyCollegeRanking = (dispatch) => async () => {
 const getOtherCollegeRanking = (dispatch) => async () => {
   try {
     const response = await server.get('/college/otherRanking');
-    dispatch({ type: 'getCollegeRanking', payload: response.data });
+    dispatch({ type: 'getOtherCollegeRanking', payload: response.data });
   } catch (err) {
     dispatch({ type: 'error', payload: 'Something went wrong with getOtherCollegeRanking' });
   }
@@ -113,6 +115,7 @@ export const { Provider, Context } = createDataContext(
     storeListsPage: 0,
     notNextStoreLists: false,
     collegeLists: null,
-    ranking: null,
+    myRanking: null,
+    otherRanking: null,
   },
 );
