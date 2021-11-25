@@ -3,8 +3,6 @@ import createDataContext from 'lib/utils/createDataContext';
 
 const reviewReducer = (state, action) => {
   switch (action.type) {
-    case 'postReview':
-      return { ...state };
     case 'getReviewStore':
       return { ...state, storeLists: action.payload };
     case 'getSelectedReview':
@@ -16,14 +14,19 @@ const reviewReducer = (state, action) => {
 
 const postReview =
   (dispatch) =>
-  async ({ Content, Rating, Store }) => {
+  async ({ Content, Rating, Store, fd }) => {
     try {
       const response = await server.post(`/review`, {
         Content,
         Rating,
         Store,
       });
-      dispatch({ type: 'postReviewt', payload: response.data });
+      if (fd._parts.length > 0) {
+        fd.append('reviewId', response.data);
+        await server.post('/review/imgUpload', fd, {
+          header: { 'content-type': 'multipart/form-data' },
+        });
+      }
     } catch (err) {
       dispatch({ type: 'error', payload: 'Something went wrong with postReview' });
     }

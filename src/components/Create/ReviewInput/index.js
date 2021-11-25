@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
-import { View, TextInput, Text } from 'react-native';
+import { View, TextInput, Text, TouchableOpacity } from 'react-native';
 import { useReviewCreate } from 'providers/ReviewCreate';
+import { onClickMultiple } from 'lib/utils/ImageEditor';
 
 const ReviewInput = ({ id }) => {
-  const { onChangeValue, information } = useReviewCreate();
+  const { onChangeValue, information, setImages } = useReviewCreate();
 
   const onChangeRating = (text) => {
-    onChangeValue('rating', Number(text));
+    onChangeValue('rating', text);
   };
 
   const onChangeReview = (text) => {
@@ -37,6 +38,12 @@ const ReviewInput = ({ id }) => {
         autoCapitalize="none"
         autoCorrect={false}
       />
+      <TouchableOpacity
+        style={{ width: 40, height: 40, borderWidth: 1 }}
+        onPress={() => onClickMultiple(setImages)}
+      >
+        <Text>사진</Text>
+      </TouchableOpacity>
     </View>
   );
 };
