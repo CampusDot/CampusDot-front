@@ -1,19 +1,19 @@
 import React, { useContext } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import style from 'constants/styles';
-import { useStoreSearch } from 'providers/StoreSearch';
+import { useSearch } from 'providers/Search';
 import { Context as SearchContext } from 'context/Search';
 
 const CreateListSearchHeader = ({ setIsSearch, setSearching }) => {
-  const { searchtext, setSearchText } = useStoreSearch();
-  const { getStoreHint, getStores } = useContext(SearchContext);
+  const { text, setText } = useSearch();
+  const { getStoreHint, getStoreResult } = useContext(SearchContext);
   const onClickBack = () => {
     setIsSearch(false);
-    setSearchText('');
+    setText('');
   };
   const onChangeText = (txt) => {
     setSearching(true);
-    setSearchText(txt);
+    setText(txt);
     if (txt) {
       getStoreHint({ term: txt });
     } else {
@@ -24,8 +24,8 @@ const CreateListSearchHeader = ({ setIsSearch, setSearching }) => {
     setSearching(true);
   };
   const onPressSearch = () => {
-    setSearchText(searchtext);
-    getStores({ term: searchtext });
+    setText(text);
+    getStoreResult({ term: text });
     setSearching(false);
   };
 
@@ -35,7 +35,7 @@ const CreateListSearchHeader = ({ setIsSearch, setSearching }) => {
         <Text>뒤로가기</Text>
       </TouchableOpacity>
       <TextInput
-        value={searchtext}
+        value={text}
         onChangeText={(txt) => onChangeText(txt)}
         placeholder="가게를 검색해주세요."
         onFocus={onFocusInput}

@@ -15,12 +15,12 @@ const CreateListSearchResult = () => {
   return (
     <View style={{ flex: 1 }}>
       <FlatList
-        data={state.stores}
+        data={state.result}
         keyExtractor={(_) => _._id}
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.padding}
         renderItem={({ item }) => {
-          const { name, photos, vicinity, _id } = item;
+          const { name, photos, vicinity, _id } = item.Information;
           return (
             <View>
               <View style={style.flexRow}>

@@ -7,7 +7,7 @@ const StoreSearchResult = () => {
   const { state } = useContext(SearchContext);
   return (
     <FlatList
-      data={state.stores}
+      data={state.result}
       keyExtractor={(el) => el._id}
       renderItem={({ item }) => {
         return <RestaurantCardView information={item} />;

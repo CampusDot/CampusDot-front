@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import style from 'constants/styles';
-import { useStoreSearch } from 'providers/StoreSearch';
+import { useSearch } from 'providers/Search';
 import { goBack } from 'lib/utils/navigation';
 import { Context as SearchContext } from 'context/Search';
 
 const StoreSearchHeader = ({ setSearching }) => {
-  const { searchtext, setSearchText } = useStoreSearch();
-  const { getStoreHint, getStores } = useContext(SearchContext);
+  const { searchtext, setSearchText } = useSearch();
+  const { getStoreHint, getStoreResult } = useContext(SearchContext);
   const onClickBack = () => {
     goBack();
     setSearchText('');
@@ -25,7 +25,7 @@ const StoreSearchHeader = ({ setSearching }) => {
     setSearching(true);
   };
   const onPressSearch = () => {
-    getStores({ term: searchtext });
+    getStoreResult({ term: searchtext });
     setSearching(false);
   };
 

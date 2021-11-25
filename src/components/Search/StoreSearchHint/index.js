@@ -1,15 +1,15 @@
 import React, { useContext } from 'react';
 import { Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 import { Context as SearchContext } from 'context/Search';
-import { useStoreSearch } from 'providers/StoreSearch';
+import { useSearch } from 'providers/Search';
 
 const StoreSearchHint = ({ setSearching }) => {
-  const { state, getStores } = useContext(SearchContext);
-  const { setSearchText } = useStoreSearch();
+  const { state, getStoreResult } = useContext(SearchContext);
+  const { setText } = useSearch();
 
   const onPressHint = (text) => {
-    setSearchText(text);
-    getStores({ term: text });
+    setText(text);
+    getStoreResult({ term: text });
     setSearching(false);
   };
   return (
@@ -17,9 +17,10 @@ const StoreSearchHint = ({ setSearching }) => {
       data={state.hint}
       keyExtractor={(el) => el._id}
       renderItem={({ item }) => {
+        const { Name } = item;
         return (
-          <TouchableOpacity onPress={() => onPressHint(item.Name)} style={styles.container}>
-            <Text>{item.Name}</Text>
+          <TouchableOpacity onPress={() => onPressHint(Name)} style={styles.container}>
+            <Text>{Name}</Text>
           </TouchableOpacity>
         );
       }}

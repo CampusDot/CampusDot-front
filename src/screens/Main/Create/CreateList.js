@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import CreateList from 'templates/Main/Create/CreateList';
 import CreateListSearch from 'templates/Main/Create/CreateListSearch';
 import { Provider as StoreListProvider } from 'context/StoreList';
-import { Provider as SearchProvider } from 'context/Search';
+import { Provider as SearchingProvider } from 'context/Search';
 import ListCreateProvider from 'providers/ListCreate';
-import StoreSearchProvider from 'providers/StoreSearch';
+import SearchProvider from 'providers/Search';
 
 export default function () {
   const [isSearch, setIsSearch] = useState(false);
 
   return (
     <StoreListProvider>
-      <SearchProvider>
-        <StoreSearchProvider>
+      <SearchingProvider>
+        <SearchProvider>
           <ListCreateProvider>
             {isSearch ? (
               <CreateListSearch setIsSearch={setIsSearch} />
@@ -20,8 +20,8 @@ export default function () {
               <CreateList setIsSearch={setIsSearch} />
             )}
           </ListCreateProvider>
-        </StoreSearchProvider>
-      </SearchProvider>
+        </SearchProvider>
+      </SearchingProvider>
     </StoreListProvider>
   );
 }

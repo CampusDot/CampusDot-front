@@ -20,15 +20,13 @@ const ListAdded = ({ setIsSearch }) => {
         contentContainerStyle={styles.padding}
         renderItem={({ item }) => {
           const { store, comment } = item;
+          const { name, vicinity, photos } = store.Information;
           return (
             <View style={style.flexRow}>
-              <StoreImage
-                image={store.photos && store.photos[0].photo_reference}
-                imageStyle={styles.image}
-              />
+              <StoreImage image={photos && photos[0].photo_reference} imageStyle={styles.image} />
               <View>
-                <Text>{store.name}</Text>
-                <Text>{store.vicinity}</Text>
+                <Text>{name}</Text>
+                <Text>{vicinity}</Text>
                 <Text>{comment}</Text>
               </View>
               <View>
