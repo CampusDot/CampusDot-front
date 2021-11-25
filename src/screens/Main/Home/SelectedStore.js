@@ -1,21 +1,14 @@
-import React, {useState} from 'react';
-import SelectedStore from 'templates/Main/Home/SelectedStore';
-import ReviewCreateProvider from 'providers/ReviewCreate';
-import CreateReview from 'templates/Main/Create/CreateReview';
+import React from 'react';
+import SelectedStoreReview from 'templates/Main/Create/Review/SelectedStoreReview';
 import { Provider as ReviewProvider } from 'context/Review';
+import Header from 'components/Header';
 
-export default function () {
-  const [isWrite, setIsWrite] = useState(false);
-
+export default function ({ route }) {
+  const { id } = route.params;
   return (
     <ReviewProvider>
-      <ReviewCreateProvider>
-        {isWrite ? (
-          <CreateReview setIsWrite={setIsWrite} />
-        ) : (
-          <SelectedStore setIsWrite={setIsWrite} />
-        )}
-      </ReviewCreateProvider>
+      <Header back title="리뷰" />
+      <SelectedStoreReview id={id} />
     </ReviewProvider>
   );
 }

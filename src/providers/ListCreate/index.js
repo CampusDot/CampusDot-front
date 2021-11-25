@@ -35,7 +35,6 @@ const ListCreateProvider = ({ children }) => {
     setEdit(true);
   };
 
-  // eslint-disable-next-line react/jsx-no-constructed-context-values
   const value = {
     informationRef,
     title,

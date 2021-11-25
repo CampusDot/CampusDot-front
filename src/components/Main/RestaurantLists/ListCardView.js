@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { push } from 'lib/utils/navigation';
-import Header from './Header';
+import Header from 'components/PostUserHeader';
 import Footer from './Footer';
 
 const ListCardView = ({ information }) => {

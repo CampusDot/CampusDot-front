@@ -11,7 +11,6 @@ export default (reducer, actions, defaultValue) => {
       boundActions[item] = actions[item](dispatch);
     });
 
-    // eslint-disable-next-line react/jsx-no-constructed-context-values
     return <Context.Provider value={{ state, ...boundActions }}>{children}</Context.Provider>;
   };
   return { Context, Provider };

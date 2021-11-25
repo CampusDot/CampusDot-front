@@ -17,6 +17,7 @@ module.exports = {
     'func-names': 0,
     'react/function-component-definition': 0,
     'react/jsx-no-useless-fragment': 0,
+    'react/jsx-no-constructed-context-values': 0,
   },
   settings: {
     'import/extensions': ['.js', '.jsx'],
