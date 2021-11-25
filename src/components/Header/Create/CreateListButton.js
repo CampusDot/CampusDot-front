@@ -1,17 +1,32 @@
 import React, { useContext } from 'react';
 import { TouchableOpacity } from 'react-native';
-import { useListCreate } from 'providers/ListCreate';
+import { useStoreListCreate } from 'providers/StoreListCreate';
 import { Context as StoreListContext } from 'context/StoreList';
+import { goBack } from 'lib/utils/navigation';
 
 const CreateListButton = () => {
   const { postStoreList } = useContext(StoreListContext);
-  const { stores, informationRef } = useListCreate();
+  const { stores, information } = useStoreListCreate();
+
   const onClickPostStoreList = () => {
-    postStoreList({
-      Stores: stores,
-      Title: informationRef.title,
-      Comment: informationRef.content,
+    const storeLists = [];
+    const commentLists = [];
+    Object.values(stores).forEach((store) => {
+      if (store.comment !== '') {
+        commentLists.push({
+          id: store.info._id,
+          comment: store.comment,
+        });
+      }
+      storeLists.push(store.info._id);
     });
+    postStoreList({
+      Stores: storeLists,
+      Title: information.title,
+      Comment: information.content,
+      StoreComment: commentLists,
+    });
+    goBack();
   };
 
   return (
