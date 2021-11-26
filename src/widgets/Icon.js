@@ -1,19 +1,9 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { Image } from 'react-native';
 
-const Icon = () => {
-  return (
-    <View style={styles.container}>
-      <Image />
-    </View>
-  );
+const Icon = (props) => {
+  return <Image {...props} />;
 };
 
-const styles = StyleSheet.create({
-  container: {
-    width: 40,
-    height: 40,
-    borderWidth: 1,
-  },
-});
 export default Icon;
