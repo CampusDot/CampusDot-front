@@ -17,9 +17,6 @@ const TabScreen = () => (
     screenOptions={{
       headerShown: false,
       tabBarShowLabel: false,
-      tabBarStyle: {
-        position: 'absolute',
-      },
     }}
   >
     <Tab.Screen
