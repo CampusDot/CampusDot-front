@@ -1,6 +1,8 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
+import Icon from 'widgets/Icon';
+import { TouchableOpacity, StyleSheet } from 'react-native';
 import { navigate } from 'lib/utils/navigation';
+import { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/normalize';
 
 const Coupon = () => {
   const onClickButton = () => {
@@ -8,8 +10,16 @@ const Coupon = () => {
   };
 
   return (
-    <TouchableOpacity onPress={onClickButton} style={{ width: 40, height: 40, borderWidth: 1 }} />
+    <TouchableOpacity onPress={onClickButton}>
+      <Icon source={require('public/icons/stamp_coupon.png')} style={styles.icon} />
+    </TouchableOpacity>
   );
 };
 
+const styles = StyleSheet.create({
+  icon: {
+    height: 27 * SCALE_HEIGHT,
+    width: 71 * SCALE_WIDTH,
+  },
+});
 export default Coupon;
