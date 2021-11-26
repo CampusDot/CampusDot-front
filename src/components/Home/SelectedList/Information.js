@@ -6,7 +6,7 @@ import style from 'constants/styles';
 import FS, { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
 import { SUB_COLOR } from 'constants/colors';
 
-const Information = () => {
+const Information = ({ finish }) => {
   const { state: user } = useContext(UserContext);
   const { state: storeList, challengeStoreList } = useContext(StoreListContext);
   const [isChallenge, setIsChallenge] = useState(
@@ -19,18 +19,30 @@ const Information = () => {
     setIsChallenge(!isChallenge);
   };
 
+  const onClickComplete = () => {
+    console.log('도전 완료');
+  };
+
   return (
     <View style={styles.container}>
       <View style={[style.flexRow, style.space_between]}>
         <Text style={styles.title}>{title}</Text>
-        {isChallenge ? (
-          <View style={styles.icon}>
-            <Text style={styles.challenge}>도전중</Text>
-          </View>
-        ) : (
-          <TouchableOpacity style={styles.icon} onPress={onClickChallenge}>
-            <Text style={styles.challenge}>+ 먹어볼래!</Text>
+        {finish ? (
+          <TouchableOpacity style={[styles.icon, styles.complete]} onPress={onClickComplete}>
+            <Text style={styles.text}>도전 완료</Text>
           </TouchableOpacity>
+        ) : (
+          <>
+            {isChallenge ? (
+              <View style={styles.icon}>
+                <Text style={styles.challenge}>도전중</Text>
+              </View>
+            ) : (
+              <TouchableOpacity style={styles.icon} onPress={onClickChallenge}>
+                <Text style={styles.challenge}>+ 먹어볼래!</Text>
+              </TouchableOpacity>
+            )}
+          </>
         )}
       </View>
       {comment && <Text style={styles.comment}>{comment}</Text>}
@@ -63,6 +75,13 @@ const styles = StyleSheet.create({
   comment: {
     marginTop: 22 * SCALE_HEIGHT,
     fontSize: FS(14),
+  },
+  complete: {
+    backgroundColor: SUB_COLOR,
+  },
+  text: {
+    fontSize: FS(14),
+    color: '#ffffff',
   },
 });
 
