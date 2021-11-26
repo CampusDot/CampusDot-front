@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { View, Text, Animated, TouchableWithoutFeedback, StyleSheet } from 'react-native';
 import { push } from 'lib/utils/navigation';
-import { MAIN_COLOR } from 'constants/colors';
+import FS, { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
 
 const FloatingButton = ({ data }) => {
   const animation = useRef(new Animated.Value(0)).current;
@@ -37,16 +37,18 @@ const FloatingButton = ({ data }) => {
         };
         const { Information: info, _id } = item;
         return (
-          <TouchableWithoutFeedback onPress={() => onClickPostReview(_id)}>
+          <TouchableWithoutFeedback onPress={() => onClickPostReview(_id)} key={_id}>
             <Animated.View style={[styles.button, pinStyle]}>
-              <Text>{info.name}</Text>
+              <Text style={styles.store}>{info.name}</Text>
             </Animated.View>
           </TouchableWithoutFeedback>
         );
       })}
       <TouchableWithoutFeedback onPress={toggleMenu}>
         <Animated.View style={styles.button}>
-          <Text>리뷰쓰기</Text>
+          <Text style={styles.store}>리뷰쓰고</Text>
+          <Text style={styles.clear}>식당 Clear</Text>
+          <Text style={styles.store}>하기</Text>
         </Animated.View>
       </TouchableWithoutFeedback>
     </View>
@@ -55,13 +57,24 @@ const FloatingButton = ({ data }) => {
 
 const styles = StyleSheet.create({
   button: {
-    width: 90,
-    height: 90,
-    borderRadius: 90,
-    backgroundColor: MAIN_COLOR,
+    width: 86 * SCALE_WIDTH,
+    height: 86 * SCALE_WIDTH,
+    borderRadius: 86 * SCALE_WIDTH,
+    backgroundColor: 'rgba(123,181,127,0.89)',
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
+  },
+  store: {
+    fontSize: FS(12),
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+  clear: {
+    fontSize: FS(14),
+    color: '#fff',
+    marginVertical: 4 * SCALE_HEIGHT,
+    fontWeight: 'bold',
   },
 });
 export default FloatingButton;
