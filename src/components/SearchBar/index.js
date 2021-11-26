@@ -3,13 +3,14 @@ import { View, StyleSheet, TextInput, Text, TouchableOpacity } from 'react-nativ
 import style from 'constants/styles';
 import { goBack } from 'lib/utils/navigation';
 import { useSearch } from 'providers/Search';
+import Icon from 'widgets/Icon';
 
 const SearchBar = ({ placeholder, onSubmit }) => {
   const { text, setText } = useSearch();
   return (
     <View style={[style.flexRow]}>
       <TouchableOpacity onPress={goBack}>
-        <Text>Back</Text>
+        <Icon source={require('public/icons/back.png')} style={styles.backIcon} />
       </TouchableOpacity>
       <View style={styles.container}>
         <TextInput
@@ -37,6 +38,10 @@ const styles = StyleSheet.create({
   },
   textInput: {
     marginLeft: 20,
+  },
+  backIcon: {
+    width: 40,
+    height: 40,
   },
 });
 
