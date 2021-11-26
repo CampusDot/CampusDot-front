@@ -2,10 +2,11 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity, Image } from 'react-native';
 import storeImage from 'lib/utils/storeImage';
 import { push } from 'lib/utils/navigation';
+import { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/normalize';
 import Header from './Header';
 import Footer from './Footer';
 
-const RestaurantCardView = ({ information, id }) => {
+const RestaurantCardView = ({ information, id, rating, review }) => {
   const { name, photos, vicinity } = information;
 
   const onClickCard = () => {
@@ -14,24 +15,32 @@ const RestaurantCardView = ({ information, id }) => {
 
   return (
     <TouchableOpacity style={styles.container} onPress={onClickCard}>
-      <Header name={name} address={vicinity} />
+      <Header rating={rating} review={review} />
       <Image style={styles.storeImg} source={{ uri: storeImage(photos[0].photo_reference) }} />
-      <Footer />
+      <Footer name={name} address={vicinity} />
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    width: 347,
-    height: 262,
-    borderRadius: 10,
-    marginBottom: 14,
+    backgroundColor: 'white',
+    width: 347 * SCALE_WIDTH,
+    height: 262 * SCALE_HEIGHT,
+    borderRadius: 10 * SCALE_HEIGHT,
+    marginBottom: 14 * SCALE_HEIGHT,
+    shadowColor: 'rgb(0, 0, 0)',
+    shadowOffset: {
+      height: 3 * SCALE_HEIGHT,
+      width: 0,
+    },
+    shadowRadius: 6 * SCALE_HEIGHT,
+    shadowOpacity: 0.15,
+    elevation: 2,
   },
   storeImg: {
-    width: 347,
-    height: 163,
-    borderWidth: 1,
+    width: 347 * SCALE_WIDTH,
+    height: 163 * SCALE_HEIGHT,
   },
 });
 

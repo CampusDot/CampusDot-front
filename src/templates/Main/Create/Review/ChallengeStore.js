@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { ScrollView } from 'react-native';
+import { View, ScrollView, StyleSheet } from 'react-native';
 import { Context as ReviewContext } from 'context/Review';
 import LoadingIndicator from 'components/LoadingIndicator';
 import RestaurantCardView from 'components/RestaurantCardView';
 import SearchBar from 'components/SearchBar';
+import style from 'constants/styles';
+import { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/normalize';
 import { useSearch } from 'providers/Search';
 
 const ChallengeStore = () => {
@@ -27,21 +29,35 @@ const ChallengeStore = () => {
       setStoreLists(state.storeLists);
     }
   }, [text]);
-
   return (
-    <>
+    <View style={[style.backwhite]}>
       <SearchBar placeholder="리뷰를 작성할 식당 이름을 검색해주세요" />
       {storeLists ? (
-        <ScrollView showsVerticalScrollIndicator={false}>
-          {storeLists.map(({ Information, _id: id }) => {
-            return <RestaurantCardView information={Information} id={id} key={id} />;
+        <ScrollView style={styles.scrollview} showsVerticalScrollIndicator={false}>
+          {storeLists.map(({ Information, Review, Rating, _id: id }) => {
+            return (
+              <RestaurantCardView
+                information={Information}
+                review={Review}
+                rating={Rating}
+                id={id}
+                key={id}
+              />
+            );
           })}
         </ScrollView>
       ) : (
         <LoadingIndicator />
       )}
-    </>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  scrollview: {
+    paddingHorizontal: 14 * SCALE_WIDTH,
+    paddingTop: 16 * SCALE_HEIGHT,
+  },
+});
 
 export default ChallengeStore;
