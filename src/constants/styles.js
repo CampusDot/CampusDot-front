@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { SCALE_WIDTH } from 'lib/utils/Normalize';
+import FS, { SCALE_WIDTH } from 'lib/utils/Normalize';
 
 const style = StyleSheet.create({
   flexRow: {
@@ -12,6 +12,9 @@ const style = StyleSheet.create({
   icons: {
     width: 40 * SCALE_WIDTH,
     height: 40 * SCALE_WIDTH,
+  },
+  headertitle: {
+    fontSize: FS(20),
   },
 });
 
