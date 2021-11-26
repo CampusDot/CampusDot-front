@@ -1,18 +1,23 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { View, ScrollView, StyleSheet } from 'react-native';
+import { View, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import { Context as ReviewContext } from 'context/Review';
 import LoadingIndicator from 'components/LoadingIndicator';
-import RestaurantCardView from 'components/RestaurantCardView';
 import SearchBar from 'components/SearchBar';
 import style from 'constants/styles';
 import { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/normalize';
 import { useSearch } from 'providers/Search';
+import CardView from 'components/CardView';
+import Header from 'components/CardView/ChallengeStore/Header';
+import Footer from 'components/CardView/ChallengeStore/Footer';
+import { push } from 'lib/utils/navigation';
 
 const ChallengeStore = () => {
   const [storeLists, setStoreLists] = useState(null);
   const { getReviewStore, state } = useContext(ReviewContext);
   const { text } = useSearch();
-
+  const onClickCard = (id) => {
+    push('SelectedStore', { id });
+  };
   useEffect(() => {
     getReviewStore();
   }, []);
@@ -36,13 +41,13 @@ const ChallengeStore = () => {
         <ScrollView style={styles.scrollview} showsVerticalScrollIndicator={false}>
           {storeLists.map(({ Information, Review, Rating, _id: id }) => {
             return (
-              <RestaurantCardView
-                information={Information}
-                review={Review}
-                rating={Rating}
-                id={id}
-                key={id}
-              />
+              <TouchableOpacity id={id} onPress={() => onClickCard(id)}>
+                <CardView
+                  header={<Header rating={Rating} review={Review} />}
+                  footer={<Footer name={Information.name} address={Information.vicinity} />}
+                  photo={Information.photos && Information.photos[0]}
+                />
+              </TouchableOpacity>
             );
           })}
         </ScrollView>

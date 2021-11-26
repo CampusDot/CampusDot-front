@@ -3,6 +3,8 @@ import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 import { Context as UserContext } from 'context/User';
 import { Context as StoreListContext } from 'context/StoreList';
 import style from 'constants/styles';
+import FS, { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
+import { SUB_COLOR } from 'constants/colors';
 
 const Information = () => {
   const { state: user } = useContext(UserContext);
@@ -10,7 +12,7 @@ const Information = () => {
   const [isChallenge, setIsChallenge] = useState(
     storeList.selectedStoreList.SavedUser.includes(user.id),
   );
-  const { Title: title, Content: content, _id: storeListId } = storeList.selectedStoreList;
+  const { Title: title, Comment: comment, _id: storeListId } = storeList.selectedStoreList;
 
   const onClickChallenge = () => {
     challengeStoreList({ id: storeListId });
@@ -18,29 +20,49 @@ const Information = () => {
   };
 
   return (
-    <>
+    <View style={styles.container}>
       <View style={[style.flexRow, style.space_between]}>
-        <Text>{title}</Text>
+        <Text style={styles.title}>{title}</Text>
         {isChallenge ? (
           <View style={styles.icon}>
-            <Text>도전중</Text>
+            <Text style={styles.challenge}>도전중</Text>
           </View>
         ) : (
           <TouchableOpacity style={styles.icon} onPress={onClickChallenge}>
-            <Text>도전하기</Text>
+            <Text style={styles.challenge}>+ 먹어볼래!</Text>
           </TouchableOpacity>
         )}
       </View>
-      <Text>{content}</Text>
-    </>
+      {comment && <Text style={styles.comment}>{comment}</Text>}
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 14 * SCALE_WIDTH,
+    paddingTop: 16 * SCALE_HEIGHT,
+  },
   icon: {
-    width: 76,
-    height: 27,
-    borderWidth: 1,
+    width: 80 * SCALE_WIDTH,
+    height: 30 * SCALE_HEIGHT,
+    borderWidth: 1 * SCALE_HEIGHT,
+    borderColor: SUB_COLOR,
+    borderRadius: 4 * SCALE_HEIGHT,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: FS(18),
+    fontWeight: 'bold',
+  },
+  challenge: {
+    fontSize: FS(14),
+    color: SUB_COLOR,
+  },
+  comment: {
+    marginTop: 22 * SCALE_HEIGHT,
+    fontSize: FS(14),
   },
 });
 

@@ -10,7 +10,7 @@ import getAchivement, { getLevel } from 'lib/utils/achivements';
 const Profile = () => {
   const { state: user } = useContext(UserContext);
   return (
-    <View style={[styles.container, style.flexRow, style.space_between, style.headershadow]}>
+    <View style={[styles.container, style.flexRow, style.space_between]}>
       <View style={style.flexRow}>
         <ProfileImage image={user.profileImage} imageStyle={styles.profileImg} />
         <View style={styles.userName}>
