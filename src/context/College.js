@@ -24,7 +24,7 @@ const collegeReducer = (state, action) => {
     case 'getCollege':
       return { ...state, collegeLists: action.payload };
     case 'getMyCollegeRanking':
-      return { ...state, myRanking: action.payload };
+      return { ...state, myRanking: action.payload[0], myCollege: action.payload[1] };
     case 'getOtherCollegeRanking':
       return { ...state, otherRanking: action.payload };
     default:
@@ -117,5 +117,6 @@ export const { Provider, Context } = createDataContext(
     collegeLists: null,
     myRanking: null,
     otherRanking: null,
+    myCollege: null,
   },
 );

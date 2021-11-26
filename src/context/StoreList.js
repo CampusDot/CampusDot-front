@@ -6,7 +6,7 @@ const createReducer = (state, action) => {
     case 'postStoreList':
       return { ...state };
     case 'getSelectedStoreList':
-      return { ...state, selectedStoreList: action.payload };
+      return { ...state, selectedStoreList: action.payload[0], reviewClearList: action.payload[1] };
     case 'getChallengeLists':
       return { ...state, challengeStoreList: action.payload };
     default:
@@ -71,5 +71,6 @@ export const { Provider, Context } = createDataContext(
   {
     selectedStoreList: null,
     challengeStoreList: null,
+    reviewClearList: null,
   },
 );
