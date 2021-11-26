@@ -1,13 +1,13 @@
 import React from 'react';
-import { View } from 'react-native';
 import FriendCollege from 'templates/Main/Home/FriendCollege';
 import { Provider as CollegeProvider } from 'context/College';
 import Invisible from 'templates/Main/Home/Invisible';
+import SearchProvider from 'providers/Search';
 
 export default function () {
   const stamp = 3;
   return (
-    <View>
+    <SearchProvider>
       {stamp < 3 ? (
         <Invisible stamp={stamp} />
       ) : (
@@ -15,6 +15,6 @@ export default function () {
           <FriendCollege />
         </CollegeProvider>
       )}
-    </View>
+    </SearchProvider>
   );
 }
