@@ -10,13 +10,10 @@ const CreateListButton = () => {
 
   const onClickPostStoreList = () => {
     const storeLists = [];
-    const commentLists = [];
+    const commentLists = {};
     Object.values(stores).forEach((store) => {
       if (store.comment !== '') {
-        commentLists.push({
-          id: store.info._id,
-          comment: store.comment,
-        });
+        commentLists[store.info._id] = store.comment;
       }
       storeLists.push(store.info._id);
     });
