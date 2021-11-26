@@ -27,7 +27,6 @@ const Header = ({ title, titleStyle, back, landings, actions }) => {
 const styles = StyleSheet.create({
   container: {
     height: 48,
-    borderWidth: 1,
   },
   title: {
     textAlign: 'center',
