@@ -1,6 +1,8 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { navigate } from 'lib/utils/navigation';
+import Icon from 'widgets/Icon';
+import style from 'constants/styles';
 
 const Search = () => {
   const onClickButton = () => {
@@ -8,7 +10,9 @@ const Search = () => {
   };
 
   return (
-    <TouchableOpacity onPress={onClickButton} style={{ width: 40, height: 40, borderWidth: 1 }} />
+    <TouchableOpacity onPress={onClickButton}>
+      <Icon source={require('public/icons/header_glass.png')} style={style.icons} />
+    </TouchableOpacity>
   );
 };
 

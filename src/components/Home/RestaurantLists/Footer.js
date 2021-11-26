@@ -1,34 +1,28 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
-import style from 'constants/styles';
+import { Text, View, StyleSheet } from 'react-native';
+import FS, { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
 
 const Footer = ({ title, comment }) => {
   return (
-    <View style={[styles.container, style.flexRow, style.space_between]}>
-      <View>
-        <Text>{title}</Text>
-        <Text>{comment}</Text>
-      </View>
-      <TouchableOpacity style={styles.icon} />
+    <View style={styles.container}>
+      <Text style={styles.title}>{title}</Text>
+      {comment && <Text style={styles.comment}>{comment}</Text>}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    height: 59,
-    borderWidth: 1,
+    paddingHorizontal: 12 * SCALE_WIDTH,
+    paddingVertical: 12 * SCALE_HEIGHT,
   },
-  profileImg: {
-    width: 24,
-    height: 24,
-    borderRadius: 24,
-    borderWidth: 1,
+  title: {
+    fontSize: FS(14),
+    fontWeight: 'bold',
   },
-  icon: {
-    width: 40,
-    height: 40,
-    borderWidth: 1,
+  comment: {
+    fontSize: FS(12),
+    marginTop: 5 * SCALE_HEIGHT,
   },
 });
 

@@ -16,7 +16,7 @@ const CreateStoreList = ({ store }) => {
   }, [store]);
   return (
     <ScrollView stickyHeaderIndices={[0]}>
-      <Header back actions={<CreateListButton />} />
+      <Header back actions={[<CreateListButton />]} />
       <StoreListInput />
       <AddStoreButton />
       <AddedStoreLists />

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import Challenge from 'components/Home/Challenge';
 import RestaurantLists from 'components/Home/RestaurantLists';
 import Achivement from 'components/Home/Achivement';
@@ -8,6 +8,9 @@ import Friend from 'components/Header/Home/Friend';
 import Search from 'components/Header/Home/Search';
 import { Context as CollegeContext } from 'context/College';
 import { Context as StoreListContext } from 'context/StoreList';
+import Divider from 'widgets/Divider';
+import Icon from 'widgets/Icon';
+import FS, { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
 
 const Home = () => {
   const { getStoreLists } = useContext(CollegeContext);
@@ -19,13 +22,36 @@ const Home = () => {
   }, []);
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false} stickyHeaderIndices={[0]}>
-      <Header title="연세대학교" landings={<Search />} actions={<Friend />} />
-      <Achivement />
-      <Challenge />
-      <RestaurantLists />
-    </ScrollView>
+    <View style={styles.container}>
+      <Header
+        title="연세대학교"
+        titleStyle={styles.title}
+        landings={[<Icon source={require('public/icons/logo.png')} style={styles.logo} />]}
+        actions={[<Search />, <Friend />]}
+      />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <Achivement />
+        <Challenge />
+        <Divider />
+        <RestaurantLists />
+      </ScrollView>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#ffffff',
+  },
+  title: {
+    fontSize: FS(20),
+    fontWeight: 'bold',
+  },
+  logo: {
+    width: 35 * SCALE_WIDTH,
+    height: 17 * SCALE_HEIGHT,
+  },
+});
 
 export default Home;

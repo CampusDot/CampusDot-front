@@ -5,7 +5,7 @@ import Invisible from 'templates/Main/Home/Invisible';
 import SearchProvider from 'providers/Search';
 
 export default function () {
-  const stamp = 3;
+  const stamp = 2;
   return (
     <SearchProvider>
       {stamp < 3 ? (

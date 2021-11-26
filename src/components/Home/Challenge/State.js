@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { View, StyleSheet, Animated } from 'react-native';
 import { SUB_COLOR } from 'constants/colors';
+import { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
 
 const EMPTY_COLOR = '#E1E1E1';
 
@@ -55,11 +56,10 @@ const State = ({ children, progress }) => {
 
 const styles = StyleSheet.create({
   circle: {
-    width: 123,
-    height: 123,
-    borderRadius: 123,
-    borderWidth: 8,
-    marginRight: 20,
+    width: 123 * SCALE_WIDTH,
+    height: 123 * SCALE_WIDTH,
+    borderRadius: 123 * SCALE_WIDTH,
+    borderWidth: 6 * SCALE_WIDTH,
   },
   empty: {
     justifyContent: 'center',
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   },
   indicator: {
     position: 'absolute',
-    left: -8,
+    left: -6 * SCALE_WIDTH,
     borderLeftColor: SUB_COLOR,
     borderColor: 'transparent',
     borderTopColor: SUB_COLOR,
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     borderColor: 'transparent',
     borderTopColor: EMPTY_COLOR,
     position: 'absolute',
-    left: -8,
+    left: -6 * SCALE_WIDTH,
   },
 });
 
