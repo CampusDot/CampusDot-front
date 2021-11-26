@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, TextInput, Text, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import style from 'constants/styles';
 import { goBack } from 'lib/utils/navigation';
 import { useSearch } from 'providers/Search';
