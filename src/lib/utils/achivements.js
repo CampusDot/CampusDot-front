@@ -80,4 +80,8 @@ const getAchivement = (stampCount) => {
   return Achivement[getLevel(stampCount)];
 };
 
+export const getNextAchivement = (stampCount) => {
+  return Achivement[getNextLevel(stampCount)];
+};
+
 export default getAchivement;
