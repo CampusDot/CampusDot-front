@@ -85,7 +85,7 @@ const getNotices = (dispatch) => async () => {
     const response = await server.get('/user/notice');
     dispatch({ type: 'getNotices', payload: response.data });
   } catch (err) {
-    dispatch({ type: 'error', payload: 'Something went wrong with getReviews' });
+    dispatch({ type: 'error', payload: 'Something went wrong with getNotices' });
   }
 };
 

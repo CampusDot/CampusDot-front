@@ -6,14 +6,14 @@ import Header from 'components/Header';
 import NoticeList from 'components/Notice/NoticeList';
 
 const Notice = () => {
-  const { state: user, getNotices } = useContext(UserContext);
+  const { getNotices } = useContext(UserContext);
   useEffect(() => {
     getNotices();
   }, []);
   return (
     <View style={[style.backwhite, styles.center]}>
       <Header title="알림" titleStyle={style.headertitle} />
-      <NoticeList data={user.notices} />
+      <NoticeList />
     </View>
   );
 };

@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FlatList, TouchableOpacity, StyleSheet, View, Text } from 'react-native';
 import { push } from 'lib/utils/navigation';
 import timeConverter from 'lib/utils/time';
 import ProfileImage from 'widgets/ProfileImage';
+import { Context as UserContext } from 'context/User';
 import FS, { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/normalize';
 import { MAIN_COLOR } from 'constants/colors';
 import style from 'constants/styles';
 
-const NoticeList = ({ data }) => {
+const NoticeList = () => {
+  const { state: user } = useContext(UserContext);
+  const data = user.notices;
   const onClickSection = (id) => {
     push('SelectedList', { id });
   };
@@ -60,7 +63,7 @@ const styles = StyleSheet.create({
   },
   textname: {
     fontSize: FS(13),
-    fontWeight: '500',
+    fontWeight: 'bold',
   },
   textcontent: {
     fontSize: FS(13),
@@ -68,7 +71,6 @@ const styles = StyleSheet.create({
   },
   texttime: {
     fontSize: FS(12),
-    fontWeight: 'normal',
     color: '#808080',
   },
   toppadding: {
