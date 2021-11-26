@@ -16,6 +16,7 @@ const userReducer = (state, action) => {
         storeLists: action.payload.StoreLists,
         reviewLists: action.payload.Review,
         allStamp: action.payload.AllStamp,
+        notices: action.payload.Notice,
       };
     case 'updateProfile':
       return { ...state, name: action.payload.Name, profileImage: action.payload.ProfileImage };
@@ -25,6 +26,8 @@ const userReducer = (state, action) => {
       return { ...state, storeLists: action.payload };
     case 'getReviews':
       return { ...state, reviewLists: action.payload };
+    case 'getNotices':
+      return { ...state, notices: action.payload };
     default:
       return state;
   }
@@ -77,6 +80,15 @@ const getReviews = (dispatch) => async () => {
   }
 };
 
+const getNotices = (dispatch) => async () => {
+  try {
+    const response = await server.get('/user/notice');
+    dispatch({ type: 'getNotices', payload: response.data });
+  } catch (err) {
+    dispatch({ type: 'error', payload: 'Something went wrong with getReviews' });
+  }
+};
+
 export const { Provider, Context } = createDataContext(
   userReducer,
   {
@@ -85,6 +97,7 @@ export const { Provider, Context } = createDataContext(
     getChallengeLists,
     getStoreLists,
     getReviews,
+    getNotices,
   },
   {
     id: null,
@@ -97,5 +110,6 @@ export const { Provider, Context } = createDataContext(
     challengeLists: null,
     reviewLists: null,
     allStamp: null,
+    notices: null,
   },
 );
