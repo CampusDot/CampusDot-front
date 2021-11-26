@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text } from 'react-native';
+import Notice from 'templates/Main/Notice';
 
 export default function () {
-  return <Text>Notice</Text>;
+  return <Notice />;
 }
