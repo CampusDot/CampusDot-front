@@ -4,9 +4,8 @@ import { Context as UserContext } from 'context/User';
 import ProfileImage from 'widgets/ProfileImage';
 import style from 'constants/styles';
 import { MAIN_COLOR } from 'constants/colors';
-
-import getAchivement, { getLevel } from 'lib/utils/achivements';
 import FS, { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/normalize';
+import getAchivement, { getLevel } from 'lib/utils/achivements';
 
 const Profile = () => {
   const { state: user } = useContext(UserContext);
