@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 import SearchBar from 'components/SearchBar';
 import { Context as CollegeContext } from 'context/College';
+import FS, { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
 
 const FriendCollege = () => {
   const { getCollege, state } = useContext(CollegeContext);
@@ -14,10 +15,11 @@ const FriendCollege = () => {
       <SearchBar placeholder="학교 이름을 검색해주세요" />
       <ScrollView contentContainerStyle={styels.listConatiner}>
         {collegeLists &&
-          collegeLists.map(({ Name, _id }) => {
+          collegeLists.map((item) => {
+            const { Name, _id } = item;
             return (
-              <TouchableOpacity key={_id} style={styels.text}>
-                <Text>{Name}</Text>
+              <TouchableOpacity key={_id} style={styels.college}>
+                <Text style={styels.name}>{Name}</Text>
               </TouchableOpacity>
             );
           })}
@@ -28,11 +30,14 @@ const FriendCollege = () => {
 
 const styels = StyleSheet.create({
   listConatiner: {
-    marginTop: 24,
-    marginLeft: 34,
+    marginTop: 24 * SCALE_HEIGHT,
+    marginLeft: 37 * SCALE_WIDTH,
   },
-  text: {
-    marginBottom: 18,
+  college: {
+    marginBottom: 20 * SCALE_HEIGHT,
+  },
+  name: {
+    fontSize: FS(16),
   },
 });
 
