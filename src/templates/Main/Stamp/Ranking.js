@@ -36,7 +36,7 @@ const Ranking = () => {
       <Header
         title={schoolType[type]}
         back
-        actions={<RankingHedaer type={type} setType={setType} />}
+        actions={[<RankingHedaer type={type} setType={setType} />]}
       />
       {rankingComponent[type]}
     </View>

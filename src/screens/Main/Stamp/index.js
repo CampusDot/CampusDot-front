@@ -12,8 +12,8 @@ export default function () {
     <>
       <Header
         title={`${getLevel(user.allStamp)} ${getAchivement(user.allStamp)}`}
-        landings={<Coupon />}
-        actions={<Ranking />}
+        landings={[<Coupon />]}
+        actions={[<Ranking />]}
       />
       <Stamp />
     </>
