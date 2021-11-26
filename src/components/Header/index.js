@@ -2,6 +2,8 @@ import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { goBack } from 'lib/utils/navigation';
 import style from 'constants/styles';
+import { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
+import Icon from 'widgets/Icon';
 
 const Header = ({ title, titleStyle, back, landings = [], actions = [] }) => {
   const onClickBack = () => {
@@ -10,14 +12,15 @@ const Header = ({ title, titleStyle, back, landings = [], actions = [] }) => {
   return (
     <View style={[styles.container, style.flexRow, style.space_between]}>
       <View style={styles.landings}>
-        {landings.map((landing) => {
-          return <View key={Math.random()}>{landing}</View>;
-        }) ||
-          (back && (
-            <TouchableOpacity onPress={onClickBack}>
-              <Text>back</Text>
-            </TouchableOpacity>
-          ))}
+        {landings.length > 0
+          ? landings.map((landing) => {
+              return <View key={Math.random()}>{landing}</View>;
+            })
+          : back && (
+              <TouchableOpacity onPress={onClickBack} style={styles.back}>
+                <Icon source={require('public/icons/back.png')} style={style.icons} />
+              </TouchableOpacity>
+            )}
       </View>
       {title && <Text style={[styles.title, titleStyle]}>{title}</Text>}
       <View style={styles.actions}>
@@ -32,6 +35,15 @@ const Header = ({ title, titleStyle, back, landings = [], actions = [] }) => {
 const styles = StyleSheet.create({
   container: {
     height: 48,
+    backgroundColor: 'white',
+    shadowColor: 'rgb(0, 0, 0)',
+    shadowOffset: {
+      height: 1 * SCALE_HEIGHT,
+      width: 0,
+    },
+    shadowRadius: 1 * SCALE_HEIGHT,
+    shadowOpacity: 0.1,
+    elevation: 3,
   },
   title: {
     textAlign: 'center',
@@ -39,15 +51,18 @@ const styles = StyleSheet.create({
   },
   landings: {
     position: 'absolute',
-    left: 15,
+    left: 15 * SCALE_WIDTH,
     zIndex: 99,
     flexDirection: 'row',
   },
   actions: {
     position: 'absolute',
-    right: 15,
+    right: 15 * SCALE_WIDTH,
     zIndex: 99,
     flexDirection: 'row',
+  },
+  back: {
+    left: -15 * SCALE_WIDTH,
   },
 });
 
