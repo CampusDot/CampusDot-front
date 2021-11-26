@@ -11,7 +11,7 @@ const Ranking = () => {
 
   return (
     <TouchableOpacity onPress={onClickButton}>
-      <Icon source={require('public/icons/stamp_friend.png')} style={styles.icon} />
+      <Icon source={require('public/icons/ranking.png')} style={styles.icon} />
     </TouchableOpacity>
   );
 };
@@ -19,7 +19,7 @@ const Ranking = () => {
 const styles = StyleSheet.create({
   icon: {
     height: 40 * SCALE_HEIGHT,
-    width: 46 * SCALE_WIDTH,
+    width: 40 * SCALE_WIDTH,
   },
 });
 export default Ranking;
