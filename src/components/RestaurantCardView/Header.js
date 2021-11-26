@@ -1,12 +1,11 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import style from 'constants/styles';
-import { MAIN_COLOR } from 'constants/colors';
 import FS, { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/normalize';
 import Rating from 'components/Rating';
 
 const Header = ({ rating, review }) => {
-  const reviewcount = review.length;
+  // const reviewcount = review.length;
   const temprating = 4;
   const tempreviewcount = 16;
   return (
