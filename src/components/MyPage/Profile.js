@@ -11,7 +11,7 @@ import FS, { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/Normalize';
 const Profile = () => {
   const { state: user } = useContext(UserContext);
   return (
-    <View style={[styles.container, style.flexRow, style.space_between]}>
+    <View style={[styles.container, style.flexRow, style.space_between, style.headershadow]}>
       <View style={style.flexRow}>
         <ProfileImage image={user.profileImage} imageStyle={styles.profileImg} />
         <View style={styles.userName}>
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   },
   textName: {
     fontSize: FS(18),
-    fontWeight: '600',
+    fontWeight: 'bold',
     marginBottom: 9 * SCALE_HEIGHT,
   },
   textLevel: {
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     marginTop: 8 * SCALE_HEIGHT,
     fontSize: FS(14),
     color: '#767676',
-    fontWeight: '600',
+    fontWeight: 'bold',
   },
   stampGap: {
     marginLeft: 20 * SCALE_WIDTH,

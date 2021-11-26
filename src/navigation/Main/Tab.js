@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { SCALE_WIDTH } from 'lib/utils/Normalize';
@@ -23,7 +24,6 @@ const TabScreen = () => (
       name="Home"
       component={Home}
       options={{
-        // eslint-disable-next-line react/no-unstable-nested-components
         tabBarIcon: ({ focused }) =>
           focused ? (
             <Icon source={require('public/icons/tab_home_focused.png')} style={style.icons} />
@@ -36,7 +36,6 @@ const TabScreen = () => (
       name="Stamp"
       component={Stamp}
       options={{
-        // eslint-disable-next-line react/no-unstable-nested-components
         tabBarIcon: ({ focused }) =>
           focused ? (
             <Icon source={require('public/icons/tab_stamp_focused.png')} style={style.icons} />
@@ -49,13 +48,11 @@ const TabScreen = () => (
       name="Create"
       component={MyModalBackgroundScreen}
       options={{
-        // eslint-disable-next-line react/no-unstable-nested-components
         tabBarIcon: () => (
           <View style={styles.floating}>
             <Icon source={require('public/icons/tab_create.png')} style={styles.icon} />
           </View>
         ),
-        // eslint-disable-next-line react/no-unstable-nested-components
       }}
       listeners={({ navigation }) => ({
         tabPress: (e) => {
@@ -68,7 +65,6 @@ const TabScreen = () => (
       name="Notice"
       component={Notice}
       options={{
-        // eslint-disable-next-line react/no-unstable-nested-components
         tabBarIcon: ({ focused }) =>
           focused ? (
             <Icon source={require('public/icons/tab_notice_focused.png')} style={style.icons} />
@@ -81,7 +77,6 @@ const TabScreen = () => (
       name="MyPage"
       component={MyPage}
       options={{
-        // eslint-disable-next-line react/no-unstable-nested-components
         tabBarIcon: ({ focused }) =>
           focused ? (
             <Icon source={require('public/icons/tab_account_focused.png')} style={style.icons} />

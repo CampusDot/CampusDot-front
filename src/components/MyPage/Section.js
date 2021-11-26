@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { push } from 'lib/utils/navigation';
 import FS, { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/Normalize';
 import { MAIN_COLOR } from 'constants/colors';

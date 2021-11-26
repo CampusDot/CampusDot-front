@@ -8,7 +8,7 @@ import ProfileEdit from 'components/MyPage/ProfileEdit';
 
 const MyPage = () => {
   return (
-    <View>
+    <View style={style.backwhite}>
       <Header title="마이페이지" titleStyle={style.headertitle} />
       <Profile />
       <ProfileEdit />
