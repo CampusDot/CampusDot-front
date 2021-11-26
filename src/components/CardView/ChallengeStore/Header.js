@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import style from 'constants/styles';
 import FS, { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/normalize';
-import Rating from 'components/Rating';
+import RatingStar from 'components/RatingStar';
 
 const Header = ({ rating, review }) => {
   // const reviewcount = review.length;
@@ -14,7 +14,7 @@ const Header = ({ rating, review }) => {
       <Text style={[styles.textelement, styles.elementmargin]}>{tempreviewcount}</Text>
       <Text style={[styles.textcategory, styles.categorymargin]}>별점</Text>
       <Text style={[styles.textelement, styles.elementmargin]}>{temprating}</Text>
-      <Rating number={temprating} />
+      <RatingStar number={temprating} size={10} />
     </View>
   );
 };
