@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { useStoreListCreate } from 'providers/StoreListCreate';
-import RestaurantCardView from 'components/Search/StoreSearchResult/RestaurantCardView';
+import CardView from 'components/CardView';
+import Header from 'components/CardView/SelectedList/Header';
 import StoreComment from '../StoreComment';
 
 const AddedStoreLists = () => {
@@ -25,7 +26,10 @@ const AddedStoreLists = () => {
         const { info, comment } = item;
         return (
           <View key={item.info._id}>
-            <RestaurantCardView information={info.Information} />
+            <CardView
+              header={<Header info={info.Information} />}
+              photo={info.Information.photos && info.Information.photos[0]}
+            />
             <Text>{comment}</Text>
             <TouchableOpacity onPress={() => onClickEdit(item)}>
               <Text>수정하기</Text>
