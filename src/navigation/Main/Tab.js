@@ -26,9 +26,9 @@ const TabScreen = () => (
         // eslint-disable-next-line react/no-unstable-nested-components
         tabBarIcon: ({ focused }) =>
           focused ? (
-            <Icon source={require('public/icons/TabHomeFocused.png')} style={style.icons} />
+            <Icon source={require('public/icons/tab_home_focused.png')} style={style.icons} />
           ) : (
-            <Icon source={require('public/icons/TabHome.png')} style={style.icons} />
+            <Icon source={require('public/icons/tab_home.png')} style={style.icons} />
           ),
       }}
     />
@@ -39,9 +39,9 @@ const TabScreen = () => (
         // eslint-disable-next-line react/no-unstable-nested-components
         tabBarIcon: ({ focused }) =>
           focused ? (
-            <Icon source={require('public/icons/TabStampFocused.png')} style={style.icons} />
+            <Icon source={require('public/icons/tab_stamp_focused.png')} style={style.icons} />
           ) : (
-            <Icon source={require('public/icons/TabStamp.png')} style={style.icons} />
+            <Icon source={require('public/icons/tab_stamp.png')} style={style.icons} />
           ),
       }}
     />
@@ -52,7 +52,7 @@ const TabScreen = () => (
         // eslint-disable-next-line react/no-unstable-nested-components
         tabBarIcon: () => (
           <View style={styles.floating}>
-            <Icon source={require('public/icons/TabCreate.png')} style={styles.icon} />
+            <Icon source={require('public/icons/tab_create.png')} style={styles.icon} />
           </View>
         ),
         // eslint-disable-next-line react/no-unstable-nested-components
@@ -71,9 +71,9 @@ const TabScreen = () => (
         // eslint-disable-next-line react/no-unstable-nested-components
         tabBarIcon: ({ focused }) =>
           focused ? (
-            <Icon source={require('public/icons/TabNoticeFocused.png')} style={style.icons} />
+            <Icon source={require('public/icons/tab_notice_focused.png')} style={style.icons} />
           ) : (
-            <Icon source={require('public/icons/TabNotice.png')} style={style.icons} />
+            <Icon source={require('public/icons/tab_notice.png')} style={style.icons} />
           ),
       }}
     />
@@ -84,9 +84,9 @@ const TabScreen = () => (
         // eslint-disable-next-line react/no-unstable-nested-components
         tabBarIcon: ({ focused }) =>
           focused ? (
-            <Icon source={require('public/icons/TabAccountFocused.png')} style={style.icons} />
+            <Icon source={require('public/icons/tab_account_focused.png')} style={style.icons} />
           ) : (
-            <Icon source={require('public/icons/TabAccount.png')} style={style.icons} />
+            <Icon source={require('public/icons/tab_account.png')} style={style.icons} />
           ),
       }}
     />
