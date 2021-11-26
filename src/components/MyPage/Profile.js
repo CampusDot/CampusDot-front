@@ -6,7 +6,7 @@ import style from 'constants/styles';
 import { MAIN_COLOR } from 'constants/colors';
 
 import getAchivement, { getLevel } from 'lib/utils/achivements';
-import FS, { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/Normalize';
+import FS, { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/normalize';
 
 const Profile = () => {
   const { state: user } = useContext(UserContext);

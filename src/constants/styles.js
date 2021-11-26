@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import FS, { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/Normalize';
+import FS, { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/normalize';
 
 const style = StyleSheet.create({
   flexRow: {

@@ -2,7 +2,7 @@
 import React from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { push } from 'lib/utils/navigation';
-import FS, { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/Normalize';
+import FS, { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/normalize';
 import { MAIN_COLOR } from 'constants/colors';
 import style from 'constants/styles';
 import Icon from 'widgets/Icon';

@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { SCALE_WIDTH } from 'lib/utils/Normalize';
+import { SCALE_WIDTH } from 'lib/utils/normalize';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import style from 'constants/styles';
 import Home from 'screens/Main/Home';
