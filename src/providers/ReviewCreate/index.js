@@ -34,7 +34,7 @@ const ReviewCreateProvider = ({ children }) => {
     }
   };
 
-  const onClickPostReview = async () => {
+  const onClickPostReview = async (id) => {
     // eslint-disable-next-line no-undef
     const fd = new FormData();
     if (images.length > 0) {
@@ -50,7 +50,7 @@ const ReviewCreateProvider = ({ children }) => {
     await postReview({
       Content: information.review,
       Rating: Number(information.rating),
-      Store: information.storeId,
+      Store: id,
       fd,
     });
   };
