@@ -26,7 +26,7 @@ const Header = ({ title, titleStyle, back, landings, actions }) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 40,
+    height: 48,
     borderWidth: 1,
   },
   title: {
