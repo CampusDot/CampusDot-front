@@ -47,7 +47,7 @@ const Ranking = ({ number }) => {
           },
         });
         return (
-          <View style={styles.stamp}>
+          <View style={styles.stamp} key={item}>
             <Text>{item}</Text>
           </View>
         );
