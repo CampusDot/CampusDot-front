@@ -25,7 +25,9 @@ const Restaurant = ({ information }) => {
           <View style={styles.img} />
         </View>
       </State>
-      <Text style={styles.text}>{title}</Text>
+      <Text style={styles.text} numberOfLines={1}>
+        {title}
+      </Text>
     </TouchableOpacity>
   );
 };
@@ -47,6 +49,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 10 * SCALE_HEIGHT,
     fontSize: FS(14),
+    width: 123 * SCALE_WIDTH,
   },
 });
 

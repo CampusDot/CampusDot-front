@@ -20,25 +20,28 @@ const SelectedStoreReview = ({ id }) => {
   useEffect(() => {
     getSelectedReview({ id });
   }, []);
+
   return (
     <View style={[style.backwhite]}>
       <TitleHeader back title="리뷰" titleStyle={style.headertitle} />
       {state.reviewLists ? (
         <>
           <ScrollView
-            style={[styles.padding, styles.scrollview]}
+            contentContainerStyle={[styles.padding, styles.scrollview]}
             showsVerticalScrollIndicator={false}
           >
             <SelectedStoreInfo />
             <View style={styles.paddingtop}>
               {state.reviewLists.map((review) => {
-                const { Content, Photo, PostUser } = review;
+                const { Content, Photo, PostUser, _id } = review;
                 return (
-                  <CardView
-                    header={<Header PostUser={PostUser} />}
-                    footer={<Footer comment={Content} />}
-                    photo={Photo && Photo}
-                  />
+                  <View key={_id} style={styles.marginBottom}>
+                    <CardView
+                      header={<Header PostUser={PostUser} />}
+                      footer={<Footer comment={Content} />}
+                      photo={Photo && Photo}
+                    />
+                  </View>
                 );
               })}
             </View>
@@ -80,6 +83,9 @@ const styles = StyleSheet.create({
     fontSize: FS(14),
     fontWeight: 'bold',
     color: 'white',
+  },
+  marginBottom: {
+    marginBottom: 14 * SCALE_HEIGHT,
   },
 });
 
