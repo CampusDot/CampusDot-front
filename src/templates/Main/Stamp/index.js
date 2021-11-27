@@ -19,7 +19,9 @@ const Stamp = () => {
         landings={[<Coupon />]}
         actions={[<Ranking />]}
       />
-      <StampStep number={user.allStamp} />
+      <View style={styles.backblack}>
+        <StampStep number={user.allStamp} />
+      </View>
     </View>
   );
 };
@@ -28,6 +30,10 @@ const styles = StyleSheet.create({
   text: {
     fontSize: FS(20),
     fontWeight: 'bold',
+  },
+  backblack: {
+    flex: 1,
+    backgroundColor: '#292828',
   },
 });
 export default Stamp;

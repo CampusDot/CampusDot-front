@@ -11,6 +11,7 @@ const RatingStar = ({ number, size, color }) => {
       imageSize={size * SCALE_WIDTH}
       type="custom"
       ratingColor={starcolor}
+      readonly
     />
   );
 };

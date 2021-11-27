@@ -25,12 +25,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     shadowColor: 'rgb(0, 0, 0)',
     shadowOffset: {
-      height: -3 * SCALE_HEIGHT,
+      height: 3 * SCALE_HEIGHT,
       width: 0,
     },
     shadowRadius: 6 * SCALE_HEIGHT,
     shadowOpacity: 0.1,
     elevation: 3,
+    marginBottom: 14 * SCALE_HEIGHT,
   },
   storeImg: {
     height: 163 * SCALE_HEIGHT,

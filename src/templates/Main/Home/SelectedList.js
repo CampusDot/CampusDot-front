@@ -19,7 +19,7 @@ const SelectedList = ({ id }) => {
   const { state, getSelectedStoreList } = useContext(StoreListContext);
 
   const onClickCard = (_id) => {
-    push('SelectedStore', { id: _id });
+    push('SelectedStore', { id: _id, storelistid: id });
   };
 
   useEffect(() => {
