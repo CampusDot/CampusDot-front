@@ -32,12 +32,14 @@ const SelectedStoreReview = ({ id }) => {
             <SelectedStoreInfo />
             <View style={styles.paddingtop}>
               {state.reviewLists.map((review) => {
-                const { Content, Photo, PostUser } = review;
+                const { Content, Photo, PostUser, Rating } = review;
+                console.log(review);
                 return (
                   <CardView
-                    header={<Header PostUser={PostUser} />}
+                    header={<Header PostUser={PostUser} number={Rating} />}
                     footer={<Footer comment={Content} />}
                     photo={Photo && Photo}
+                    review
                   />
                 );
               })}

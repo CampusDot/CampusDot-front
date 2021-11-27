@@ -25,12 +25,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   text: {
-    fontSize: FS(16),
+    marginTop: 3 * SCALE_HEIGHT,
+    fontSize: FS(12),
     color: '#ffffff',
   },
   badgeicon: {
     width: 31 * SCALE_WIDTH,
     height: 22 * SCALE_HEIGHT,
+    marginRight: 5 * SCALE_WIDTH,
   },
 });
 export default LevelBadge;

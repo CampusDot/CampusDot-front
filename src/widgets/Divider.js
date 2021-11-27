@@ -9,7 +9,7 @@ const Divider = () => {
 const styles = StyleSheet.create({
   container: {
     height: 9 * SCALE_HEIGHT,
-    backgroundColor: '#f2f2f2',
+    backgroundColor: '#f5f5f5',
   },
 });
 export default Divider;

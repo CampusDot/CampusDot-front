@@ -47,7 +47,7 @@ const NoticeList = () => {
 
 const styles = StyleSheet.create({
   container: {
-    width: 347 * SCALE_WIDTH,
+    width: 335 * SCALE_WIDTH,
     height: 44 * SCALE_HEIGHT,
     marginBottom: 11 * SCALE_HEIGHT,
   },
@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
   textname: {
     fontSize: FS(13),
     fontWeight: 'bold',
+    lineHeight: 18 * SCALE_HEIGHT,
   },
   textcontent: {
     fontSize: FS(13),

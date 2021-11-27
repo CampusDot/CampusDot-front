@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Context as UserContext } from 'context/User';
+import { SCALE_WIDTH } from 'lib/utils/normalize';
 import style from 'constants/styles';
 import Header from 'components/Header';
 import NoticeList from 'components/Notice/NoticeList';

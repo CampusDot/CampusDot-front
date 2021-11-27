@@ -4,12 +4,12 @@ import StoreImage from 'widgets/StoreImage';
 import { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
 import StoreCarousel from 'components/StoreCarousel';
 
-const CardView = ({ header, footer, photo }) => {
+const CardView = ({ header, footer, photo, review }) => {
   return (
     <View style={styles.container}>
       {header}
-      {photo.length > 1 ? (
-        <StoreCarousel photo={photo} />
+      {photo && photo.length > 1 ? (
+        <StoreCarousel photo={photo} review={review} />
       ) : (
         <StoreImage image={photo[0] && photo[0].photo_reference} imageStyle={styles.storeImg} />
       )}

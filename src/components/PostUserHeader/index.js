@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
     width: 24 * SCALE_WIDTH,
     height: 24 * SCALE_WIDTH,
     borderRadius: 24 * SCALE_WIDTH,
-    borderWidth: 1,
     marginLeft: 12 * SCALE_WIDTH,
   },
   name: {

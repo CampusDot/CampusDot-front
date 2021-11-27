@@ -53,12 +53,12 @@ const Ranking = ({ number }) => {
             position: 'absolute',
             top: (50 + index * 40) * SCALE_HEIGHT,
             left: (20 + xgen(index)) * SCALE_WIDTH,
-            height: 75 * SCALE_WIDTH,
-            width: 75 * SCALE_WIDTH,
+            height: 70 * SCALE_WIDTH,
+            width: 70 * SCALE_WIDTH,
           },
         });
         return !stamped ? (
-          <View style={stylesin.stamp}>
+          <View key={item} style={stylesin.stamp}>
             <ImageBackground source={require('public/icons/stamp_circle.png')} style={styles.icon}>
               <Text style={styles.numbers}>{item}</Text>
             </ImageBackground>
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   badge: {
     position: 'absolute',
     right: 20 * SCALE_WIDTH,
-    top: 550 * SCALE_HEIGHT,
+    top: 540 * SCALE_HEIGHT,
   },
   numbers: {
     fontSize: FS(20),

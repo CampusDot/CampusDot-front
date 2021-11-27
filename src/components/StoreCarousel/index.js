@@ -3,7 +3,7 @@ import { FlatList, StyleSheet, View, Text, Image } from 'react-native';
 import StoreImage from 'widgets/StoreImage';
 import FS, { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
 
-const StoreCarousel = ({ photo, type }) => {
+const StoreCarousel = ({ photo, type, review }) => {
   const [idx, setIdx] = useState(1);
 
   const onScroll = (e) => {
@@ -23,7 +23,9 @@ const StoreCarousel = ({ photo, type }) => {
         decelerationRate={0}
         scrollEventThrottle={16}
         renderItem={({ item }) => {
-          const uri = item ? item[0].photo_reference : null;
+          let uri;
+          // eslint-disable-next-line no-unused-expressions
+          !review ? (uri = item ? item[0].photo_reference : null) : (uri = item);
           return (
             <>
               {type === 'review' ? (

@@ -6,15 +6,13 @@ import RatingStar from 'components/RatingStar';
 
 const Header = ({ rating, review }) => {
   // const reviewcount = review.length;
-  const temprating = 4;
-  const tempreviewcount = 16;
   return (
     <View style={[styles.container, style.flexRow]}>
       <Text style={styles.textcategory}>리뷰</Text>
-      <Text style={[styles.textelement, styles.elementmargin]}>{tempreviewcount}</Text>
+      <Text style={[styles.textelement, styles.elementmargin]}>{review.length}</Text>
       <Text style={[styles.textcategory, styles.categorymargin]}>별점</Text>
-      <Text style={[styles.textelement, styles.elementmargin]}>{temprating}</Text>
-      <RatingStar number={temprating} size={10} />
+      <Text style={[styles.textelement, styles.elementmargin]}>{rating}</Text>
+      <RatingStar number={rating} size={10} />
     </View>
   );
 };
@@ -28,7 +26,6 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     borderRadius: 24,
-    borderWidth: 1,
   },
   textcategory: {
     fontSize: FS(12),

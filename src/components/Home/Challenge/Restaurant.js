@@ -12,7 +12,6 @@ const Restaurant = ({ information }) => {
   const onClickChallnege = () => {
     push('SelectedList', { id });
   };
-
   return (
     <TouchableOpacity onPress={onClickChallnege} style={styles.container}>
       <State progress={(completeCount / storeCount) * 100}>

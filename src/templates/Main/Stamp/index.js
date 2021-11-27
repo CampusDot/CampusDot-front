@@ -14,7 +14,7 @@ const Stamp = () => {
   return (
     <View style={style.backwhite}>
       <Header
-        title={`${getLevel(user.allStamp)} ${getAchivement(user.allStamp)}`}
+        title="도장 모으기"
         titleStyle={styles.text}
         landings={[<Coupon />]}
         actions={[<Ranking />]}
@@ -29,7 +29,6 @@ const Stamp = () => {
 const styles = StyleSheet.create({
   text: {
     fontSize: FS(20),
-    fontWeight: 'bold',
   },
   backblack: {
     flex: 1,
