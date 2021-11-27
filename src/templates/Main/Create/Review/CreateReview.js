@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import Header from 'components/Header';
 import ReviewWriteButton from 'components/Header/Create/ReviewWriteButton';
