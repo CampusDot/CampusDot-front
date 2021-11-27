@@ -1,4 +1,4 @@
-<img src="./src/public/icons/logo.png" width="300" height="300">
+<img src="logo.png" width="300" height="300">
 
 # __CAMPUSDOT__
 
