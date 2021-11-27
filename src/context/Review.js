@@ -6,7 +6,7 @@ const reviewReducer = (state, action) => {
     case 'getReviewStore':
       return { ...state, storeLists: action.payload };
     case 'getSelectedReview':
-      return { ...state, reviewLists: action.payload };
+      return { ...state, reviewLists: action.payload[0], currentStore: action.payload[1] };
     default:
       return state;
   }
@@ -62,5 +62,6 @@ export const { Provider, Context } = createDataContext(
   {
     storeLists: null,
     reviewLists: null,
+    currentStore: null,
   },
 );

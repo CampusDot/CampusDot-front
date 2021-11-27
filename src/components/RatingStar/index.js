@@ -3,15 +3,16 @@ import { Rating as StarRating } from 'react-native-ratings';
 import { MAIN_COLOR } from 'constants/colors';
 import { SCALE_WIDTH } from 'lib/utils/normalize';
 
-const Rating = ({ number }) => {
+const RatingStar = ({ number, size, color }) => {
+  const starcolor = color || MAIN_COLOR;
   return (
     <StarRating
       startingValue={number}
-      imageSize={10 * SCALE_WIDTH}
+      imageSize={size * SCALE_WIDTH}
       type="custom"
-      ratingColor={MAIN_COLOR}
+      ratingColor={starcolor}
     />
   );
 };
 
-export default Rating;
+export default RatingStar;
