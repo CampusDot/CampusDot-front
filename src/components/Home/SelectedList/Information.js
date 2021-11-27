@@ -5,10 +5,11 @@ import { Context as StoreListContext } from 'context/StoreList';
 import style from 'constants/styles';
 import FS, { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
 import { SUB_COLOR } from 'constants/colors';
+import { goBack } from 'lib/utils/navigation';
 
 const Information = ({ finish }) => {
   const { state: user } = useContext(UserContext);
-  const { state: storeList, challengeStoreList } = useContext(StoreListContext);
+  const { state: storeList, challengeStoreList, completeStoreList } = useContext(StoreListContext);
   const [isChallenge, setIsChallenge] = useState(
     storeList.selectedStoreList.SavedUser.includes(user.id),
   );
@@ -20,7 +21,8 @@ const Information = ({ finish }) => {
   };
 
   const onClickComplete = () => {
-    console.log('도전 완료');
+    completeStoreList({ id: storeListId });
+    goBack();
   };
 
   return (

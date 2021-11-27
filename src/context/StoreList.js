@@ -57,6 +57,16 @@ const getChallengeLists = (dispatch) => async () => {
   }
 };
 
+const completeStoreList =
+  (dispatch) =>
+  async ({ id }) => {
+    try {
+      await server.put('/storelist/challenge', { id });
+    } catch (err) {
+      dispatch({ type: 'error', payload: 'Something went wrong with completeStoreList' });
+    }
+  };
+
 export const { Provider, Context } = createDataContext(
   createReducer,
   {
@@ -64,6 +74,7 @@ export const { Provider, Context } = createDataContext(
     getSelectedStoreList,
     challengeStoreList,
     getChallengeLists,
+    completeStoreList,
   },
   {
     selectedStoreList: null,
