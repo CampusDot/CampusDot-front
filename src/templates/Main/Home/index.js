@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useCallback } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import Challenge from 'components/Home/Challenge';
 import RestaurantLists from 'components/Home/RestaurantLists';
@@ -11,15 +11,18 @@ import { Context as StoreListContext } from 'context/StoreList';
 import Divider from 'widgets/Divider';
 import Icon from 'widgets/Icon';
 import FS, { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
+import { useFocusEffect } from '@react-navigation/native';
 
 const Home = () => {
   const { getStoreLists } = useContext(CollegeContext);
   const { getChallengeLists } = useContext(StoreListContext);
 
-  useEffect(() => {
-    getStoreLists({ page: 0 });
-    getChallengeLists();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      getStoreLists({ page: 0 });
+      getChallengeLists();
+    }, []),
+  );
 
   return (
     <View style={styles.container}>

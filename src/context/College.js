@@ -16,7 +16,8 @@ const collegeReducer = (state, action) => {
     case 'getStoreLists':
       return {
         ...state,
-        storeLists: state.storeLists.concat(action.payload),
+        storeLists:
+          state.storeLists.length === 0 ? state.storeLists.concat(action.payload) : action.payload,
         storeListsPage: state.storeListsPage + 1,
       };
     case 'notNextStoreLists':
