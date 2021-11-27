@@ -25,11 +25,6 @@ const ReviewCreateProvider = ({ children }) => {
         ...information,
         review: value,
       });
-    } else if (type === 'store') {
-      setInformation({
-        ...information,
-        storeId: value,
-      });
     }
   };
 
@@ -53,7 +48,6 @@ const ReviewCreateProvider = ({ children }) => {
     });
     navigate('SelectedList', { id });
   };
-
   const value = {
     information,
     images,
