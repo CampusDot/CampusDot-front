@@ -12,7 +12,6 @@ const ReviewCreateProvider = ({ children }) => {
   const [information, setInformation] = useState({
     review: '',
     rating: '0',
-    storeId: null,
   });
 
   const onChangeValue = (type, value) => {
@@ -46,13 +45,13 @@ const ReviewCreateProvider = ({ children }) => {
         });
       });
     }
-    navigate('Home');
     await postReview({
       Content: information.review,
       Rating: Number(information.rating),
       Store: id,
       fd,
     });
+    navigate('SelectedList', { id });
   };
 
   const value = {

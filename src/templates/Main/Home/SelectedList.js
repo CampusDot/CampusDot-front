@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext, useCallback, useState, useEffect } from 'react';
 import { ScrollView, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Header from 'components/PostUserHeader';
 import Information from 'components/Home/SelectedList/Information';
@@ -14,17 +14,37 @@ import { push } from 'lib/utils/navigation';
 import CardHeader from 'components/CardView/SelectedList/Header';
 import Footer from 'components/CardView/SelectedList/Footer';
 import Icon from 'widgets/Icon';
+import { useFocusEffect } from '@react-navigation/native';
 
 const SelectedList = ({ id }) => {
   const { state, getSelectedStoreList } = useContext(StoreListContext);
-
+  const [finishNum, setFinishNum] = useState(0);
   const onClickCard = (_id) => {
     push('SelectedStore', { id: _id });
   };
 
+  useFocusEffect(
+    useCallback(() => {
+      getSelectedStoreList({ id });
+      if (state.reviewClearList) {
+        Object.values(state.reviewClearList).forEach((item) => {
+          if (item) {
+            setFinishNum((prev) => prev + 1);
+          }
+        });
+      }
+    }, []),
+  );
+
   useEffect(() => {
-    getSelectedStoreList({ id });
-  }, []);
+    if (state.reviewClearList) {
+      Object.values(state.reviewClearList).forEach((item) => {
+        if (item) {
+          setFinishNum((prev) => prev + 1);
+        }
+      });
+    }
+  }, [state.reviewClearList]);
 
   return (
     <View style={styles.container}>
@@ -40,9 +60,7 @@ const SelectedList = ({ id }) => {
               <Header PostUser={state.selectedStoreList.PostUser[0]} />
               <Text style={styles.time}>{timeConverter(state.selectedStoreList.Time)}</Text>
             </View>
-            <Information
-              finish={state.reviewClearList.length === state.selectedStoreList.StoreList.length}
-            />
+            <Information finish={finishNum === state.selectedStoreList.StoreList.length} />
             <View style={styles.cardContainer}>
               {state.selectedStoreList.StoreList.map((item) => {
                 const { Information: info, _id } = item;
