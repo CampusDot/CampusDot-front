@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { useStoreListCreate } from 'providers/StoreListCreate';
 import { Context as StoreListContext } from 'context/StoreList';
 import { goBack } from 'lib/utils/navigation';
+import FS, { SCALE_WIDTH } from 'lib/utils/normalize';
 
 const CreateListButton = () => {
   const { postStoreList } = useContext(StoreListContext);
@@ -27,11 +28,24 @@ const CreateListButton = () => {
   };
 
   return (
-    <TouchableOpacity
-      onPress={onClickPostStoreList}
-      style={{ width: 40, height: 40, borderWidth: 1 }}
-    />
+    <TouchableOpacity onPress={onClickPostStoreList} style={styles.icon}>
+      <Text style={styles.title}>완료</Text>
+    </TouchableOpacity>
   );
 };
+
+const styles = StyleSheet.create({
+  icon: {
+    width: 40 * SCALE_WIDTH,
+    height: 40 * SCALE_WIDTH,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title: {
+    fontSize: FS(18),
+    fontWeight: 'normal',
+    color: '#111111',
+  },
+});
 
 export default CreateListButton;
