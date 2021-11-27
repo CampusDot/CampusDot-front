@@ -3,8 +3,6 @@ import createDataContext from 'lib/utils/createDataContext';
 
 const createReducer = (state, action) => {
   switch (action.type) {
-    case 'postStoreList':
-      return { ...state };
     case 'getSelectedStoreList':
       return { ...state, selectedStoreList: action.payload[0], reviewClearList: action.payload[1] };
     case 'getChallengeLists':
@@ -18,13 +16,12 @@ const postStoreList =
   (dispatch) =>
   async ({ Stores, Title, Comment, StoreComment }) => {
     try {
-      const response = await server.post(`/storelist`, {
+      await server.post(`/storelist`, {
         Stores,
         Title,
         Comment,
         StoreComment,
       });
-      dispatch({ type: 'postStoreList', payload: response.data });
     } catch (err) {
       dispatch({ type: 'error', payload: 'Something went wrong with postStoreList' });
     }

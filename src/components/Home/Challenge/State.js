@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { View, StyleSheet, Animated } from 'react-native';
 import { SUB_COLOR } from 'constants/colors';
-import { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
+import { SCALE_WIDTH } from 'lib/utils/normalize';
 
 const EMPTY_COLOR = '#E1E1E1';
 
