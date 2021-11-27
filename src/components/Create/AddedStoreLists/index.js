@@ -28,7 +28,7 @@ const AddedStoreLists = () => {
           <View key={item.info._id}>
             <CardView
               header={<Header info={info.Information} />}
-              photo={info.Information.photos && info.Information.photos[0]}
+              photo={info.Information.photos && info.Information.photos}
             />
             <Text>{comment}</Text>
             <TouchableOpacity onPress={() => onClickEdit(item)}>

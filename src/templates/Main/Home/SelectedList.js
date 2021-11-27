@@ -13,6 +13,7 @@ import CardView from 'components/CardView';
 import { push } from 'lib/utils/navigation';
 import CardHeader from 'components/CardView/SelectedList/Header';
 import Footer from 'components/CardView/SelectedList/Footer';
+import Icon from 'widgets/Icon';
 
 const SelectedList = ({ id }) => {
   const { state, getSelectedStoreList } = useContext(StoreListContext);
@@ -24,6 +25,7 @@ const SelectedList = ({ id }) => {
   useEffect(() => {
     getSelectedStoreList({ id });
   }, []);
+
   return (
     <View style={styles.container}>
       {state.selectedStoreList ? (
@@ -38,17 +40,28 @@ const SelectedList = ({ id }) => {
               <Header PostUser={state.selectedStoreList.PostUser[0]} />
               <Text style={styles.time}>{timeConverter(state.selectedStoreList.Time)}</Text>
             </View>
-            <Information />
+            <Information
+              finish={state.reviewClearList.length === state.selectedStoreList.StoreList.length}
+            />
             <View style={styles.cardContainer}>
               {state.selectedStoreList.StoreList.map((item) => {
                 const { Information: info, _id } = item;
                 return (
-                  <TouchableOpacity key={_id} onPress={() => onClickCard(_id)}>
+                  <TouchableOpacity
+                    key={_id}
+                    onPress={() => onClickCard(_id)}
+                    style={styles.marginBottom}
+                  >
                     <CardView
                       header={<CardHeader info={info} />}
                       footer={<Footer comment={state.selectedStoreList.StoreComment[_id]} />}
-                      photo={info.photos && info.photos[0]}
+                      photo={info.photos ? info.photos : []}
                     />
+                    {state.reviewClearList[_id] && (
+                      <View style={styles.clearContainer}>
+                        <Icon source={require('public/icons/clear.png')} style={styles.clearIcon} />
+                      </View>
+                    )}
                   </TouchableOpacity>
                 );
               })}
@@ -87,8 +100,24 @@ const styles = StyleSheet.create({
   button: {
     position: 'absolute',
     zIndex: 3,
-    bottom: 140 * SCALE_HEIGHT,
-    right: 110 * SCALE_WIDTH,
+    bottom: 100 * SCALE_HEIGHT,
+    right: 90 * SCALE_WIDTH,
+  },
+  clearContainer: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(17,17,17,0.59)',
+    borderRadius: 10 * SCALE_HEIGHT,
+  },
+  clearIcon: {
+    width: 139 * SCALE_WIDTH,
+    height: 139 * SCALE_WIDTH,
+  },
+  marginBottom: {
+    marginBottom: 14 * SCALE_WIDTH,
   },
 });
 

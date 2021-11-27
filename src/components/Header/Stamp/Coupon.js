@@ -11,15 +11,15 @@ const Coupon = () => {
 
   return (
     <TouchableOpacity onPress={onClickButton}>
-      <Icon source={require('public/icons/stamp_coupon.png')} style={styles.icon} />
+      <Icon source={require('public/icons/coupon.png')} style={styles.icon} />
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   icon: {
-    height: 27 * SCALE_HEIGHT,
-    width: 71 * SCALE_WIDTH,
+    height: 40 * SCALE_HEIGHT,
+    width: 40 * SCALE_WIDTH,
   },
 });
 export default Coupon;

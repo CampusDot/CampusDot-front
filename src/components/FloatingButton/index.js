@@ -30,7 +30,7 @@ const FloatingButton = ({ data }) => {
             {
               translateY: animation.interpolate({
                 inputRange: [0, 1],
-                outputRange: [0, -110 * (index + 1)],
+                outputRange: [0, -80 * (index + 1)],
               }),
             },
           ],
@@ -39,14 +39,15 @@ const FloatingButton = ({ data }) => {
         return (
           <TouchableWithoutFeedback onPress={() => onClickPostReview(_id)} key={_id}>
             <Animated.View style={[styles.button, pinStyle]}>
-              <Text style={styles.store}>{info.name}</Text>
+              <Text style={styles.store} numberOfLines={2}>
+                {info.name}
+              </Text>
             </Animated.View>
           </TouchableWithoutFeedback>
         );
       })}
       <TouchableWithoutFeedback onPress={toggleMenu}>
         <Animated.View style={styles.button}>
-          <Text style={styles.store}>리뷰쓰고</Text>
           <Text style={styles.clear}>식당 Clear</Text>
           <Text style={styles.store}>하기</Text>
         </Animated.View>
@@ -57,9 +58,9 @@ const FloatingButton = ({ data }) => {
 
 const styles = StyleSheet.create({
   button: {
-    width: 86 * SCALE_WIDTH,
-    height: 86 * SCALE_WIDTH,
-    borderRadius: 86 * SCALE_WIDTH,
+    width: 70 * SCALE_WIDTH,
+    height: 70 * SCALE_WIDTH,
+    borderRadius: 70 * SCALE_WIDTH,
     backgroundColor: 'rgba(123,181,127,0.89)',
     justifyContent: 'center',
     alignItems: 'center',
@@ -69,11 +70,12 @@ const styles = StyleSheet.create({
     fontSize: FS(12),
     color: '#fff',
     fontWeight: 'bold',
+    textAlign: 'center',
   },
   clear: {
-    fontSize: FS(14),
+    fontSize: FS(12),
     color: '#fff',
-    marginVertical: 4 * SCALE_HEIGHT,
+    marginVertical: 2 * SCALE_HEIGHT,
     fontWeight: 'bold',
   },
 });

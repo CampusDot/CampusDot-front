@@ -41,11 +41,11 @@ const ChallengeStore = () => {
         <ScrollView style={styles.scrollview} showsVerticalScrollIndicator={false}>
           {storeLists.map(({ Information, Review, Rating, _id: id }) => {
             return (
-              <TouchableOpacity id={id} onPress={() => onClickCard(id)}>
+              <TouchableOpacity id={id} onPress={() => onClickCard(id)} style={styles.marginBottom}>
                 <CardView
                   header={<Header rating={Rating} review={Review} />}
                   footer={<Footer name={Information.name} address={Information.vicinity} />}
-                  photo={Information.photos && Information.photos[0]}
+                  photo={Information.photos && Information.photos}
                 />
               </TouchableOpacity>
             );
@@ -62,6 +62,9 @@ const styles = StyleSheet.create({
   scrollview: {
     paddingHorizontal: 14 * SCALE_WIDTH,
     paddingTop: 16 * SCALE_HEIGHT,
+  },
+  marginBottom: {
+    marginBottom: 14 * SCALE_HEIGHT,
   },
 });
 
