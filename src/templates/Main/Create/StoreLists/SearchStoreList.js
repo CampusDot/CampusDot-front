@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { View, StyleSheet } from 'react-native';
 import { Context as SearchContext } from 'context/Search';
 import { useSearch } from 'providers/Search';
 import SearchBar from 'components/SearchBar';
@@ -38,7 +39,7 @@ const SearchStoreList = () => {
   }, [text]);
 
   return (
-    <>
+    <View style={styles.container}>
       <SearchBar placeholder="식당 이름을 검색해주세요" onSubmit={onPressSearch} />
       {searching ? (
         <>
@@ -50,8 +51,14 @@ const SearchStoreList = () => {
       ) : (
         <StoreSearchHint setSearching={setSearching} />
       )}
-    </>
+    </View>
   );
 };
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+});
 export default SearchStoreList;

@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 import { Context as SearchContext } from 'context/Search';
 import { useSearch } from 'providers/Search';
+import FS, { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
 
 const StoreSearchHint = ({ setSearching }) => {
   const { state, getStoreResult } = useContext(SearchContext);
@@ -17,11 +18,12 @@ const StoreSearchHint = ({ setSearching }) => {
     <FlatList
       data={state.hint}
       keyExtractor={(el) => el._id}
+      style={styles.listContainer}
       renderItem={({ item }) => {
         const { Name } = item;
         return (
-          <TouchableOpacity onPress={() => onPressHint(Name)} style={styles.container}>
-            <Text>{Name}</Text>
+          <TouchableOpacity onPress={() => onPressHint(Name)} style={styles.college}>
+            <Text style={styles.name}>{Name}</Text>
           </TouchableOpacity>
         );
       }}
@@ -30,8 +32,15 @@ const StoreSearchHint = ({ setSearching }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    height: 40,
+  listContainer: {
+    paddingTop: 24 * SCALE_HEIGHT,
+    paddingLeft: 37 * SCALE_WIDTH,
+  },
+  college: {
+    marginBottom: 20 * SCALE_HEIGHT,
+  },
+  name: {
+    fontSize: FS(16),
   },
 });
 
