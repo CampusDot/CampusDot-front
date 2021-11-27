@@ -25,14 +25,10 @@ const SelectedStoreInfo = () => {
         </View>
       </View>
       <View style={style.flexRow}>
-        <Text style={styles.textcategory}>
-          {' '}
-          별점<Text style={styles.textelement}>{`  ${Rating}`}</Text>
-        </Text>
-        <Text style={styles.textcategory}>
-          {'    '}
-          리뷰<Text style={styles.textelement}>{`  ${Reviewlen}`}</Text>
-        </Text>
+        <Text style={styles.textcategory}>별점</Text>
+        <Text style={styles.textelement}>{Rating}</Text>
+        <Text style={styles.textcategory}>리뷰</Text>
+        <Text style={styles.textelement}>{Reviewlen}</Text>
       </View>
     </View>
   );
@@ -64,6 +60,8 @@ const styles = StyleSheet.create({
   textelement: {
     fontSize: FS(12),
     fontWeight: 'normal',
+    marginRight: 10 * SCALE_WIDTH,
+    marginLeft: 5 * SCALE_WIDTH,
   },
 });
 

@@ -37,7 +37,7 @@ const SelectedStoreReview = ({ id }) => {
                   <CardView
                     header={<Header PostUser={PostUser} />}
                     footer={<Footer comment={Content} />}
-                    photo={Photo && Photo[0]}
+                    photo={Photo && Photo}
                   />
                 );
               })}
