@@ -58,7 +58,7 @@ const signDelete =
       await AsyncStorage.removeItem('token');
       dispatch({ type: 'signOut' });
     } catch (err) {
-      dispatch({ type: 'error', payload: 'Something went wrong with signOut' });
+      dispatch({ type: 'error', payload: 'Something went wrong with signDelete' });
     }
   };
 
@@ -78,7 +78,7 @@ const getGoogleInfo =
         dispatch({ type: 'signIn', payload: res.data });
       }
     } catch (err) {
-      dispatch({ type: 'error', payload: '이메일과 비밀번호가 틀립니다' });
+      dispatch({ type: 'error', payload: 'Something went wrong with getGoogleInfo' });
     }
   };
 
@@ -99,7 +99,7 @@ const getNaverInfo =
         // navigate('Main');
       }
     } catch (err) {
-      dispatch({ type: 'error', payload: '이메일과 비밀번호가 틀립니다' });
+      dispatch({ type: 'error', payload: 'Something went wrong with getNaverInfo' });
     }
   };
 
