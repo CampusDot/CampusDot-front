@@ -45,7 +45,16 @@ const SearchStoreList = () => {
         <>
           <StoreListSearchResult onClickStore={onClickStore} />
           {commentModal && (
-            <StoreComment onCloseModal={onCloseModal} store={store} currentComment="" />
+            <StoreComment
+              onCloseModal={onCloseModal}
+              store={store}
+              currentComment=""
+              currentImage={{
+                name: '',
+                type: '',
+                uri: '',
+              }}
+            />
           )}
         </>
       ) : (

@@ -15,9 +15,15 @@ const RestaurantLists = () => {
     <View style={styles.container}>
       <Text style={styles.title}>우리학교 맛집</Text>
       {state.storeLists.map((item) => {
-        const { PostUser, Title, Comment, _id, StoreList, FinishedUser } = item;
+        const { PostUser, Title, Comment, _id, StoreList, FinishedUser, StorePhoto } = item;
         const photo = [];
-        Object.values(StoreList).forEach((store) => photo.push(store.Information.photos));
+        Object.values(StoreList).forEach((store) => {
+          if (StorePhoto[store._id] !== undefined) {
+            photo.push(StorePhoto[store._id]);
+          } else {
+            photo.push(store.Information.photos ? store.Information.photos[0].photo_reference : '');
+          }
+        });
         return (
           <View key={_id}>
             {!FinishedUser.includes(user.id) && (

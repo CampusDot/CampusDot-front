@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, StyleSheet, Image } from 'react-native';
 import Modal from 'react-native-modal';
 import { navigate } from 'lib/utils/navigation';
 import Header from 'components/CardView/SelectedList/Header';
 import FS, { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/normalize';
+import { onClickSingle } from 'lib/utils/ImageEditor';
 
-const StoreComment = ({ onCloseModal, store, currentComment }) => {
+const StoreComment = ({ onCloseModal, store, currentComment, currentImage }) => {
   const [comment, setComment] = useState(currentComment);
+  const [images, setImages] = useState(currentImage);
 
   const onChangeComment = (text) => {
     setComment(text);
@@ -14,7 +16,11 @@ const StoreComment = ({ onCloseModal, store, currentComment }) => {
 
   const onClickComplete = () => {
     onCloseModal();
-    navigate('CreateStoreList', { store: { info: store, comment } });
+    navigate('CreateStoreList', { store: { info: store, comment, images } });
+  };
+
+  const onClickCamera = () => {
+    onClickSingle(setImages);
   };
 
   return (
@@ -29,11 +35,15 @@ const StoreComment = ({ onCloseModal, store, currentComment }) => {
       <View style={styles.container}>
         <View style={styles.card}>
           <Header info={store.Information} />
-          <View style={styles.photoBox}>
-            <TouchableOpacity style={styles.photoPlus}>
-              <Text style={styles.plus}>+사진 추가하기</Text>
-            </TouchableOpacity>
-          </View>
+          {images.uri ? (
+            <Image style={styles.photoBox} source={{ uri: images.uri }} />
+          ) : (
+            <View style={styles.photoBox}>
+              <TouchableOpacity style={styles.photoPlus} onPress={onClickCamera}>
+                <Text style={styles.plus}>+사진 추가하기</Text>
+              </TouchableOpacity>
+            </View>
+          )}
           <View style={styles.footer}>
             <TextInput
               value={comment}
@@ -48,7 +58,9 @@ const StoreComment = ({ onCloseModal, store, currentComment }) => {
           </View>
         </View>
         <TouchableOpacity style={styles.completeBox} onPress={onClickComplete}>
-          <Text style={styles.complete}>{comment.length === 0 ? '건너뛰기' : '완료'}</Text>
+          <Text style={styles.complete}>
+            {comment.length === 0 && !images.uri ? '건너뛰기' : '완료'}
+          </Text>
         </TouchableOpacity>
       </View>
     </Modal>

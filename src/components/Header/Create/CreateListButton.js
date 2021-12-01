@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useContext } from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { useStoreListCreate } from 'providers/StoreListCreate';
@@ -12,9 +13,19 @@ const CreateListButton = () => {
   const onClickPostStoreList = () => {
     const storeLists = [];
     const commentLists = {};
+    const photoLists = {};
+    const fd = new FormData();
     Object.values(stores).forEach((store) => {
       if (store.comment !== '') {
         commentLists[store.info._id] = store.comment;
+      }
+      if (store.images.uri !== '') {
+        fd.append('img', {
+          name: store.images.name,
+          type: store.images.type,
+          uri: store.images.uri,
+        });
+        photoLists[store.images.name] = store.info._id;
       }
       storeLists.push(store.info._id);
     });
@@ -23,6 +34,8 @@ const CreateListButton = () => {
       Title: information.title,
       Comment: information.content,
       StoreComment: commentLists,
+      PhotoLists: photoLists,
+      fd,
     });
     goBack();
   };
