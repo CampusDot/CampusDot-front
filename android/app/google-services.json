@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "405413012159",
+    "project_id": "cogent-joy-332210",
+    "storage_bucket": "cogent-joy-332210.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405413012159:android:5184f5bcd35a54a4e81c0a",
+        "android_client_info": {
+          "package_name": "com.campusdot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405413012159-rrmsi8brl05h3smh23dfak5qa3krvj3h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.campusdot",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "405413012159-iqpm9mb7bvfmra65ssckiiimjecqh2q4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwzQUT5FkzVPmsMwW-yIxBgn-2kpqx6xQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405413012159-iqpm9mb7bvfmra65ssckiiimjecqh2q4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
