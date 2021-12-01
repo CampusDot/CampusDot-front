@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
   name: {
     fontSize: FS(18),
     color: '#505050',
-    fontWeight: 'bold',
   },
   level: {
     fontSize: FS(12),

@@ -17,9 +17,9 @@ const ProfileEdit = () => {
 const styles = StyleSheet.create({
   container: {
     marginTop: 28 * SCALE_HEIGHT,
-    marginLeft: 14 * SCALE_WIDTH,
+    marginLeft: 20 * SCALE_WIDTH,
     marginBottom: 30 * SCALE_HEIGHT,
-    width: 347 * SCALE_WIDTH,
+    width: 335 * SCALE_WIDTH,
     height: 37 * SCALE_HEIGHT,
     justifyContent: 'center',
     alignItems: 'center',

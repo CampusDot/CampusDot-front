@@ -11,6 +11,13 @@ const Achivement = {
   'Lv.3': '맛집을 찾아서',
   'Lv.4': '단골이 되었다!',
 };
+const levelbadge = {
+  'Lv.0': require('public/icons/stamp_level0_icon.png'),
+  'Lv.1': require('public/icons/stamp_level0_icon.png'),
+  'Lv.2': require('public/icons/stamp_level0_icon.png'),
+  'Lv.3': require('public/icons/stamp_level0_icon.png'),
+  'Lv.4': require('public/icons/stamp_level0_icon.png'),
+};
 
 export const getLevel = (stampCount) => {
   if (stampCount < LEVEL_1) {
@@ -78,6 +85,10 @@ export const getNextStamp = (stampCount) => {
 
 const getAchivement = (stampCount) => {
   return Achivement[getLevel(stampCount)];
+};
+
+export const getBadge = (stampCount) => {
+  return levelbadge[getLevel(stampCount)];
 };
 
 export const getNextAchivement = (stampCount) => {

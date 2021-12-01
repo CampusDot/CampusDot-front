@@ -62,7 +62,6 @@ const styles = StyleSheet.create({
     color: '#505050',
   },
   ranking: {
-    fontWeight: 'bold',
     fontSize: FS(20),
     position: 'absolute',
     color: '#505050',
