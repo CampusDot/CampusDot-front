@@ -20,29 +20,33 @@ const SelectedList = ({ id }) => {
   const { state, getSelectedStoreList } = useContext(StoreListContext);
   const [finishNum, setFinishNum] = useState(0);
   const onClickCard = (_id) => {
-    push('SelectedStore', { id: _id });
+    push('SelectedStore', { id: _id, storeListId: id });
   };
 
   useFocusEffect(
     useCallback(() => {
+      let finishCount = 0;
       getSelectedStoreList({ id });
       if (state.reviewClearList) {
         Object.values(state.reviewClearList).forEach((item) => {
           if (item) {
-            setFinishNum((prev) => prev + 1);
+            finishCount += 1;
           }
         });
+        setFinishNum(finishCount);
       }
     }, []),
   );
 
   useEffect(() => {
+    let finishCount = 0;
     if (state.reviewClearList) {
       Object.values(state.reviewClearList).forEach((item) => {
         if (item) {
-          setFinishNum((prev) => prev + 1);
+          finishCount += 1;
         }
       });
+      setFinishNum(finishCount);
     }
   }, [state.reviewClearList]);
 
@@ -64,6 +68,11 @@ const SelectedList = ({ id }) => {
             <View style={styles.cardContainer}>
               {state.selectedStoreList.StoreList.map((item) => {
                 const { Information: info, _id } = item;
+                const storePhoto = info.photos ? [info.photos[0].photo_reference] : [''];
+                const photo =
+                  state.selectedStoreList.StorePhoto[_id] !== undefined
+                    ? state.selectedStoreList.StorePhoto[_id]
+                    : storePhoto;
                 return (
                   <TouchableOpacity
                     key={_id}
@@ -71,9 +80,10 @@ const SelectedList = ({ id }) => {
                     style={styles.marginBottom}
                   >
                     <CardView
+                      custom={state.selectedStoreList.StorePhoto[_id] !== undefined}
                       header={<CardHeader info={info} />}
                       footer={<Footer comment={state.selectedStoreList.StoreComment[_id]} />}
-                      photo={info.photos ? info.photos : []}
+                      photo={photo}
                     />
                     {state.reviewClearList[_id] && (
                       <View style={styles.clearContainer}>
@@ -86,7 +96,7 @@ const SelectedList = ({ id }) => {
             </View>
           </ScrollView>
           <View style={styles.button}>
-            <FloatingButton data={state.selectedStoreList.StoreList} />
+            <FloatingButton data={state.selectedStoreList} clear={state.reviewClearList} />
           </View>
         </>
       ) : (
