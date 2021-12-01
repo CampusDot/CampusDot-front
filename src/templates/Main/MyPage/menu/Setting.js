@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 import { Context as AuthContext } from 'context/Auth';
 import { Context as UserContext } from 'context/User';
+
 const Setting = () => {
   const { signOut, signDelete } = useContext(AuthContext);
   const { state } = useContext(UserContext);
