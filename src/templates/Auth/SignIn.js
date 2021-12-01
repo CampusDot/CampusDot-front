@@ -1,27 +1,28 @@
-import React, { useState, useContext } from 'react';
-import { View, TextInput, Button } from 'react-native';
-import { Context } from 'context/Auth';
-import { navigate } from 'lib/utils/navigation';
+import React, { useEffect } from 'react';
+import { View } from 'react-native';
+import SignInInput from 'components/Auth/SignIn/SignInInput';
+import SignInButton from 'components/Auth/SignInButton';
+import SocialLogin from 'components/Auth/SocialLogin';
+import SignUpOptButton from 'components/Auth/SignUpOptButton';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import * as env from 'constants/app';
 
 const SignIn = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPasswrod] = useState('');
-  const { signIn } = useContext(Context);
-
-  const onClickSignIn = async () => {
-    await signIn({ email, password });
-  };
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId: env.webClientIdIOS,
+      offlineAccess: true,
+      hostedDomain: '',
+      forceConsentPrompt: true,
+    });
+  }, []);
 
   return (
-    <View style={{ marginTop: 100 }}>
-      <TextInput onChangeText={(text) => setEmail(text)} autoCorrect={false} placeholder="email" />
-      <TextInput
-        onChangeText={(text) => setPasswrod(text)}
-        autoCorrect={false}
-        placeholder="password"
-      />
-      <Button title="sign in" onPress={onClickSignIn} />
-      <Button title="go to sign up" onPress={() => navigate('SignUp')} />
+    <View style={{ flex: 1 }}>
+      <SignInInput />
+      <SignInButton />
+      <SocialLogin />
+      <SignUpOptButton />
     </View>
   );
 };
