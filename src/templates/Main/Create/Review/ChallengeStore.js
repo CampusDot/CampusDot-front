@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { View, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, ScrollView, StyleSheet } from 'react-native';
 import { Context as ReviewContext } from 'context/Review';
 import LoadingIndicator from 'components/LoadingIndicator';
 import SearchBar from 'components/SearchBar';
@@ -9,15 +9,13 @@ import { useSearch } from 'providers/Search';
 import CardView from 'components/CardView';
 import Header from 'components/CardView/ChallengeStore/Header';
 import Footer from 'components/CardView/ChallengeStore/Footer';
-import { push } from 'lib/utils/navigation';
+import isCustomImage from 'lib/utils/customImage';
 
 const ChallengeStore = () => {
   const [storeLists, setStoreLists] = useState(null);
   const { getReviewStore, state } = useContext(ReviewContext);
   const { text } = useSearch();
-  const onClickCard = (id) => {
-    push('SelectedStore', { id });
-  };
+
   useEffect(() => {
     getReviewStore();
   }, []);
@@ -34,20 +32,32 @@ const ChallengeStore = () => {
       setStoreLists(state.storeLists);
     }
   }, [text]);
+
   return (
     <View style={[style.backwhite]}>
       <SearchBar placeholder="리뷰를 작성할 식당 이름을 검색해주세요" />
       {storeLists ? (
         <ScrollView style={styles.scrollview} showsVerticalScrollIndicator={false}>
-          {storeLists.map(({ Information, Review, Rating, _id: id }) => {
+          {storeLists.map(({ Information, Review, Rating, _id: id, storeListId }) => {
+            const photo = isCustomImage(Information.photo)
+              ? Information.photo
+              : [Information.photo];
             return (
-              <TouchableOpacity id={id} onPress={() => onClickCard(id)} style={styles.marginBottom}>
+              <View key={Math.random()} style={styles.marginBottom}>
                 <CardView
+                  custom={isCustomImage(Information.photo)}
                   header={<Header rating={Rating} review={Review} />}
-                  footer={<Footer name={Information.name} address={Information.vicinity} />}
-                  photo={Information.photos && Information.photos}
+                  footer={
+                    <Footer
+                      name={Information.name}
+                      address={Information.vicinity}
+                      id={id}
+                      storeListId={storeListId}
+                    />
+                  }
+                  photo={photo}
                 />
-              </TouchableOpacity>
+              </View>
             );
           })}
         </ScrollView>
