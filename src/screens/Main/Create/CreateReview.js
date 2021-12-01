@@ -4,11 +4,11 @@ import ReviewCreateProvider from 'providers/ReviewCreate';
 import { Provider as ReviewProvider } from 'context/Review';
 
 export default function ({ route }) {
-  const { id } = route.params;
+  const { id, storeListId, type } = route.params;
   return (
     <ReviewProvider>
       <ReviewCreateProvider>
-        <CreateReview id={id} />
+        <CreateReview id={id} storeListId={storeListId} type={type} />
       </ReviewCreateProvider>
     </ReviewProvider>
   );

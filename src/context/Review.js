@@ -14,12 +14,13 @@ const reviewReducer = (state, action) => {
 
 const postReview =
   (dispatch) =>
-  async ({ Content, Rating, Store, fd }) => {
+  async ({ Content, Rating, Store, fd, StoreList }) => {
     try {
       const response = await server.post(`/review`, {
         Content,
         Rating,
         Store,
+        StoreList,
       });
       if (fd._parts.length > 0) {
         fd.append('reviewId', response.data);

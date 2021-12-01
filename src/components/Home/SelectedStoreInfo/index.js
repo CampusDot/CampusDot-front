@@ -10,7 +10,7 @@ import FS, { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
 const SelectedStoreInfo = () => {
   const { state } = useContext(ReviewContext);
   const Reviewlen = state.reviewLists.length;
-  const { Rating, Information } = state.currentStore[0];
+  const { Rating, Information } = state.currentStore;
   const { name, vicinity } = Information;
   return (
     <View style={style.flexRow}>

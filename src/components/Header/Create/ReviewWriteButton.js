@@ -4,13 +4,13 @@ import { useReviewCreate } from 'providers/ReviewCreate';
 import style from 'constants/styles';
 import FS from 'lib/utils/normalize';
 
-const ReviewWriteButton = ({ id }) => {
+const ReviewWriteButton = ({ id, storeListId }) => {
   const { onClickPostReview } = useReviewCreate();
 
   return (
     <TouchableOpacity
       onPress={() => {
-        onClickPostReview(id);
+        onClickPostReview(id, storeListId);
       }}
       style={style.icon}
     >
