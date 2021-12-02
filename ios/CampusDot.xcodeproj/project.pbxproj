@@ -12,6 +12,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		446CD2625890109647FC2B40 /* libPods-CampusDot-CampusDotTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D28DC0F4B667ACA3E6E275E6 /* libPods-CampusDot-CampusDotTests.a */; };
+		7D8D65BA2757612B00CBADBA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7D8D65B92757612B00CBADBA /* GoogleService-Info.plist */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		B00AB7306ACD632642F606C5 /* libPods-CampusDot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 799D7F417E0FE442E46B8B26 /* libPods-CampusDot.a */; };
 /* End PBXBuildFile section */
@@ -39,6 +40,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CampusDot/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = CampusDot/main.m; sourceTree = "<group>"; };
 		799D7F417E0FE442E46B8B26 /* libPods-CampusDot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CampusDot.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D8D65B92757612B00CBADBA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CampusDot/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BCFB27785478BA9D69B7D665 /* Pods-CampusDot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampusDot.debug.xcconfig"; path = "Target Support Files/Pods-CampusDot/Pods-CampusDot.debug.xcconfig"; sourceTree = "<group>"; };
 		C0F2FEBB07B0B6A434280D74 /* Pods-CampusDot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampusDot.release.xcconfig"; path = "Target Support Files/Pods-CampusDot/Pods-CampusDot.release.xcconfig"; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			children = (
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				7D8D65B92757612B00CBADBA /* GoogleService-Info.plist */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
@@ -244,6 +247,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				7D8D65BA2757612B00CBADBA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

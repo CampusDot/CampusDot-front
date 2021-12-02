@@ -8,6 +8,7 @@ import Friend from 'components/Header/Home/Friend';
 import Search from 'components/Header/Home/Search';
 import { Context as CollegeContext } from 'context/College';
 import { Context as StoreListContext } from 'context/StoreList';
+import { Context as UserContext } from 'context/User';
 import Divider from 'widgets/Divider';
 import Icon from 'widgets/Icon';
 import FS, { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
@@ -16,11 +17,13 @@ import { useFocusEffect } from '@react-navigation/native';
 const Home = () => {
   const { getStoreLists } = useContext(CollegeContext);
   const { getChallengeLists } = useContext(StoreListContext);
+  const { getInformation } = useContext(UserContext);
 
   useFocusEffect(
     useCallback(() => {
       getStoreLists({ page: 0 });
       getChallengeLists();
+      getInformation();
     }, []),
   );
 

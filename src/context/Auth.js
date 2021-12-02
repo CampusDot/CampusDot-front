@@ -9,6 +9,8 @@ const authReducer = (state, action) => {
       return { token: action.payload };
     case 'signOut':
       return { token: null };
+    case 'error':
+      return { ...state, errMessage: action.payload };
     default:
       return state;
   }
@@ -32,7 +34,7 @@ const signUp =
     try {
       const response = await server.post('/signUp', { email, password, college, name });
       await AsyncStorage.setItem('token', response.data);
-      dispatch({ type: 'signUp', payload: response.data });
+      dispatch({ type: 'signIn', payload: response.data });
     } catch (err) {
       dispatch({ type: 'error', payload: 'Something went wrong with signUp' });
     }
@@ -46,6 +48,58 @@ const signOut = (dispatch) => async () => {
     dispatch({ type: 'error', payload: 'Something went wrong with signOut' });
   }
 };
+
+const signDelete =
+  (dispatch) =>
+  async ({ id }) => {
+    try {
+      await server.get(`/signDelete/${id}`);
+      await AsyncStorage.removeItem('token');
+      dispatch({ type: 'signOut' });
+    } catch (err) {
+      dispatch({ type: 'error', payload: 'Something went wrong with signDelete' });
+    }
+  };
+
+const getGoogleInfo =
+  (dispatch) =>
+  async ({ email, id }) => {
+    try {
+      const response = await server.get(`/social/google/${email}/${id}`);
+      if (response.data[0] === false) {
+        navigate('SignUp', { email: response.data[1], password: response.data[2], isSNS: true });
+      } else {
+        const res = await server.post('/signIn', {
+          email: response.data[1],
+          password: response.data[2],
+        });
+        await AsyncStorage.setItem('token', res.data);
+        dispatch({ type: 'signIn', payload: res.data });
+      }
+    } catch (err) {
+      dispatch({ type: 'error', payload: 'Something went wrong with getGoogleInfo' });
+    }
+  };
+
+const getNaverInfo =
+  (dispatch) =>
+  async ({ token }) => {
+    try {
+      const response = await server.get(`/social/naver/${token}`);
+      if (response.data[0] === false) {
+        navigate('SignUp', { email: response.data[1], password: response.data[2], isSNS: true });
+      } else {
+        const res = await server.post('/signIn', {
+          email: response.data[1],
+          password: response.data[2],
+        });
+        await AsyncStorage.setItem('token', res.data);
+        dispatch({ type: 'signIn', payload: res.data });
+      }
+    } catch (err) {
+      dispatch({ type: 'error', payload: 'Something went wrong with getNaverInfo' });
+    }
+  };
 
 const localSignIn = (dispatch) => async () => {
   const token = await AsyncStorage.getItem('token');
@@ -62,7 +116,10 @@ export const { Provider, Context } = createDataContext(
     signIn,
     signUp,
     signOut,
+    signDelete,
     localSignIn,
+    getGoogleInfo,
+    getNaverInfo,
   },
   { errMesage: '', token: null },
 );

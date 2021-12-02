@@ -36,7 +36,7 @@ const Profile = () => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 14 * SCALE_WIDTH,
+    paddingHorizontal: 20 * SCALE_WIDTH,
     paddingTop: 20 * SCALE_HEIGHT,
   },
   profileImg: {

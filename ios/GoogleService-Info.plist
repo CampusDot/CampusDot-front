@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>405413012159-9p7mms0ndj2jdms5cr8u721hbbnr0qmt.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.405413012159-9p7mms0ndj2jdms5cr8u721hbbnr0qmt</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>405413012159-rrmsi8brl05h3smh23dfak5qa3krvj3h.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAmq0Pa-jieN9l18f0y0EfH_Z7VTYNxWVU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>405413012159</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.reactjs.native.example.CampusDot</string>
+	<key>PROJECT_ID</key>
+	<string>cogent-joy-332210</string>
+	<key>STORAGE_BUCKET</key>
+	<string>cogent-joy-332210.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:405413012159:ios:130ea57a790030d1e81c0a</string>
+</dict>
+</plist>
