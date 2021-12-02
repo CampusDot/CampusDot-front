@@ -11,10 +11,10 @@ import style from 'constants/styles';
 import FS, { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/normalize';
 import { push } from 'lib/utils/navigation';
 
-const SelectedStoreReview = ({ id }) => {
+const SelectedStoreReview = ({ id, storeListId }) => {
   const { state, getSelectedReview } = useContext(ReviewContext);
   const onClickPostReview = () => {
-    push('CreateReview', { id });
+    push('CreateReview', { id, storeListId });
   };
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const SelectedStoreReview = ({ id }) => {
                     <CardView
                       header={<Header PostUser={PostUser} />}
                       footer={<Footer comment={Content} />}
-                      photo={Photo && Photo}
+                      photo={Photo}
                     />
                   </View>
                 );

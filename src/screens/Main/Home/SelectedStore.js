@@ -3,10 +3,10 @@ import SelectedStoreReview from 'templates/Main/Create/Review/SelectedStoreRevie
 import { Provider as ReviewProvider } from 'context/Review';
 
 export default function ({ route }) {
-  const { id } = route.params;
+  const { id, storeListId } = route.params;
   return (
     <ReviewProvider>
-      <SelectedStoreReview id={id} />
+      <SelectedStoreReview id={id} storeListId={storeListId} />
     </ReviewProvider>
   );
 }

@@ -14,14 +14,21 @@ const createReducer = (state, action) => {
 
 const postStoreList =
   (dispatch) =>
-  async ({ Stores, Title, Comment, StoreComment }) => {
+  async ({ Stores, Title, Comment, StoreComment, PhotoLists, fd }) => {
     try {
-      await server.post(`/storelist`, {
+      const response = await server.post(`/storelist`, {
         Stores,
         Title,
         Comment,
         StoreComment,
+        PhotoLists,
       });
+      if (fd._parts.length > 0) {
+        fd.append('storeListId', response.data);
+        await server.post('/storelist/imgUpload', fd, {
+          header: { 'content-type': 'multipart/form-data' },
+        });
+      }
     } catch (err) {
       dispatch({ type: 'error', payload: 'Something went wrong with postStoreList' });
     }

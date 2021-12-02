@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { push } from 'lib/utils/navigation';
 import storeImage from 'lib/utils/storeImage';
 import FS, { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
+import isCustomImage from 'lib/utils/customImage';
 import State from './State';
 
 const Restaurant = ({ information }) => {
@@ -21,7 +22,11 @@ const Restaurant = ({ information }) => {
             transform: [{ rotate: '45deg' }],
           }}
         >
-          <Image style={styles.img} source={{ uri: storeImage(photo[0].photo_reference) }} />
+          <Image
+            style={styles.img}
+            source={{ uri: isCustomImage(photo) ? photo : storeImage(photo) }}
+            resizeMode="stretch"
+          />
           <View style={styles.img} />
         </View>
       </State>

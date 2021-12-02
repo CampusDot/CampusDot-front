@@ -25,12 +25,17 @@ const AddedStoreLists = () => {
   return (
     <View style={styles.container}>
       {stores.map((item) => {
-        const { info, comment } = item;
+        const { info, comment, images } = item;
+        const storePhoto = info.Information.photos
+          ? [info.Information.photos[0].photo_reference]
+          : [''];
+        const photo = images.uri !== '' ? images.uri : storePhoto;
         return (
           <View key={item.info._id} style={styles.padding}>
             <CardView
+              custom={images.uri !== ''}
               header={<Header info={info.Information} />}
-              photo={info.Information.photos ? info.Information.photos : []}
+              photo={photo}
               footer={
                 <>
                   <Text style={styles.comment}>{comment}</Text>
@@ -53,6 +58,7 @@ const AddedStoreLists = () => {
           onCloseModal={onCloseModal}
           store={editStore.info}
           currentComment={editStore.comment}
+          currentImage={editStore.images}
         />
       )}
     </View>

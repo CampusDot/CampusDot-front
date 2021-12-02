@@ -1,11 +1,13 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { View, Text, Animated, TouchableWithoutFeedback, StyleSheet } from 'react-native';
 import { push } from 'lib/utils/navigation';
 import FS, { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
 
-const FloatingButton = ({ data }) => {
+const FloatingButton = ({ data, clear }) => {
+  const { StoreList, _id: storeListId } = data;
   const animation = useRef(new Animated.Value(0)).current;
   const [isopen, setIsopen] = useState(false);
+  const [unClearedStore, setUnClearedStore] = useState(null);
 
   const toggleMenu = () => {
     const toValue = isopen ? 0 : 1;
@@ -18,34 +20,39 @@ const FloatingButton = ({ data }) => {
   };
 
   const onClickPostReview = (id) => {
-    push('CreateReview', { id });
+    push('CreateReview', { id, storeListId });
   };
+
+  useEffect(() => {
+    setUnClearedStore(StoreList.filter((store) => !clear[store._id]));
+  }, []);
 
   return (
     <View>
-      {data.map((item, index) => {
-        const pinStyle = {
-          transform: [
-            { scale: animation },
-            {
-              translateY: animation.interpolate({
-                inputRange: [0, 1],
-                outputRange: [0, -80 * (index + 1)],
-              }),
-            },
-          ],
-        };
-        const { Information: info, _id } = item;
-        return (
-          <TouchableWithoutFeedback onPress={() => onClickPostReview(_id)} key={_id}>
-            <Animated.View style={[styles.button, pinStyle]}>
-              <Text style={styles.store} numberOfLines={2}>
-                {info.name}
-              </Text>
-            </Animated.View>
-          </TouchableWithoutFeedback>
-        );
-      })}
+      {unClearedStore &&
+        unClearedStore.map((item, index) => {
+          const pinStyle = {
+            transform: [
+              { scale: animation },
+              {
+                translateY: animation.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [0, -80 * (index + 1)],
+                }),
+              },
+            ],
+          };
+          const { Information: info, _id } = item;
+          return (
+            <TouchableWithoutFeedback onPress={() => onClickPostReview(_id)} key={_id}>
+              <Animated.View style={[styles.button, pinStyle]}>
+                <Text style={styles.store} numberOfLines={2}>
+                  {info.name}
+                </Text>
+              </Animated.View>
+            </TouchableWithoutFeedback>
+          );
+        })}
       <TouchableWithoutFeedback onPress={toggleMenu}>
         <Animated.View style={styles.button}>
           <Text style={styles.clear}>식당 Clear</Text>

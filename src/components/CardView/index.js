@@ -1,17 +1,23 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import StoreImage from 'widgets/StoreImage';
 import { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
 import StoreCarousel from 'components/StoreCarousel';
 
-const CardView = ({ header, footer, photo }) => {
+const CardView = ({ header, footer, photo, custom = false }) => {
   return (
     <View style={styles.container}>
       {header}
-      {photo.length > 1 ? (
-        <StoreCarousel photo={photo} />
+      {custom ? (
+        <Image style={styles.storeImg} source={{ uri: photo }} />
       ) : (
-        <StoreImage image={photo[0] && photo[0].photo_reference} imageStyle={styles.storeImg} />
+        <>
+          {photo.length > 1 ? (
+            <StoreCarousel photo={photo} />
+          ) : (
+            <StoreImage image={photo[0]} imageStyle={styles.storeImg} />
+          )}
+        </>
       )}
       {footer}
     </View>

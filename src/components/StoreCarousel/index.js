@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FlatList, StyleSheet, View, Text, Image } from 'react-native';
 import StoreImage from 'widgets/StoreImage';
 import FS, { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
+import isCustomImage from 'lib/utils/customImage';
 
 const StoreCarousel = ({ photo, type }) => {
   const [idx, setIdx] = useState(1);
@@ -23,13 +24,13 @@ const StoreCarousel = ({ photo, type }) => {
         decelerationRate={0}
         scrollEventThrottle={16}
         renderItem={({ item }) => {
-          const uri = item ? item[0].photo_reference : null;
+          const custom = isCustomImage(item);
           return (
             <>
-              {type === 'review' ? (
+              {type === 'review' || custom ? (
                 <Image source={{ uri: item }} style={styles.storeImg} />
               ) : (
-                <StoreImage image={uri} imageStyle={styles.storeImg} />
+                <StoreImage image={item} imageStyle={styles.storeImg} />
               )}
             </>
           );

@@ -3,8 +3,12 @@ import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import style from 'constants/styles';
 import Icon from 'widgets/Icon';
 import FS, { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/normalize';
+import { push } from 'lib/utils/navigation';
 
-const Footer = ({ name, address }) => {
+const Footer = ({ name, address, id, storeListId }) => {
+  const onClickPostReview = () => {
+    push('CreateReview', { id, storeListId, type: 'Home' });
+  };
   return (
     <View style={[styles.container, style.flexRow, style.space_between]}>
       <View style={styles.info}>
@@ -14,8 +18,9 @@ const Footer = ({ name, address }) => {
           <Text>{address}</Text>
         </View>
       </View>
-      <Icon source={require('public/icons/review_write.png')} style={styles.reviewicon} />
-      <TouchableOpacity style={styles.icon} />
+      <TouchableOpacity onPress={onClickPostReview}>
+        <Icon source={require('public/icons/review_write.png')} style={styles.reviewicon} />
+      </TouchableOpacity>
     </View>
   );
 };
