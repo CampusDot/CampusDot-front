@@ -6,18 +6,20 @@ import { Context as ReviewContext } from 'context/Review';
 import style from 'constants/styles';
 import Icon from 'widgets/Icon';
 import FS, { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
+import reviewconverter from 'lib/utils/reviewconverter';
 
 const SelectedStoreInfo = () => {
   const { state } = useContext(ReviewContext);
-  const Reviewlen = state.reviewLists.length;
-  const { Rating, Information } = state.currentStore;
+  const { Rating, Information, ReviewLen } = state.currentStore;
+  const realrating = reviewconverter(Rating, ReviewLen);
+
   const { name, vicinity } = Information;
   return (
     <View style={style.flexRow}>
       <View style={[styles.container]}>
         <View style={style.flexRow}>
           <Text style={styles.textname}>{name}</Text>
-          <RatingStar number={Rating} size={14} />
+          <RatingStar number={realrating} size={14} />
         </View>
         <View style={style.flexRow}>
           <Icon source={require('public/icons/selectedstore_location.png')} style={styles.icon} />
@@ -26,9 +28,9 @@ const SelectedStoreInfo = () => {
       </View>
       <View style={style.flexRow}>
         <Text style={styles.textcategory}>별점</Text>
-        <Text style={styles.textelement}>{Rating}</Text>
+        <Text style={styles.textelement}>{realrating}</Text>
         <Text style={styles.textcategory}>리뷰</Text>
-        <Text style={styles.textelement}>{Reviewlen}</Text>
+        <Text style={styles.textelement}>{ReviewLen}</Text>
       </View>
     </View>
   );

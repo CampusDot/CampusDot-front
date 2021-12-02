@@ -3,18 +3,17 @@ import { Text, View, StyleSheet } from 'react-native';
 import style from 'constants/styles';
 import FS, { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/normalize';
 import RatingStar from 'components/RatingStar';
+import reviewconverter from 'lib/utils/reviewconverter';
 
 const Header = ({ rating, review }) => {
-  // const reviewcount = review.length;
-  const temprating = 4;
-  const tempreviewcount = 16;
+  const realrating = reviewconverter(rating, review);
   return (
     <View style={[styles.container, style.flexRow]}>
       <Text style={styles.textcategory}>리뷰</Text>
-      <Text style={[styles.textelement, styles.elementmargin]}>{tempreviewcount}</Text>
+      <Text style={[styles.textelement, styles.elementmargin]}>{review}</Text>
       <Text style={[styles.textcategory, styles.categorymargin]}>별점</Text>
-      <Text style={[styles.textelement, styles.elementmargin]}>{temprating}</Text>
-      <RatingStar number={temprating} size={10} />
+      <Text style={[styles.textelement, styles.elementmargin]}>{realrating}</Text>
+      <RatingStar number={realrating} size={10} />
     </View>
   );
 };

@@ -16,7 +16,9 @@ const Photo = () => {
           <Text style={styles.textcomment}>사진 추가하기</Text>
         </TouchableOpacity>
       ) : (
-        <Image source={{ uri: images[0].uri }} style={styles.image} />
+        <TouchableOpacity style={styles.image} onPress={() => onClickMultiple(setImages)}>
+          <Image source={{ uri: images[0].uri }} style={styles.image} />
+        </TouchableOpacity>
       )}
     </View>
   );

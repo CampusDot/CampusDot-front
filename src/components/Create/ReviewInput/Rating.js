@@ -22,6 +22,7 @@ const Rating = () => {
         type="custom"
         ratingColor={MAIN_COLOR}
         onFinishRating={(el) => onChangeRating(el)}
+        onSwipeRating={(el) => onChangeRating(el)}
       />
     </View>
   );
