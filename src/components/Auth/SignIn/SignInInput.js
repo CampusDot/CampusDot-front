@@ -3,13 +3,17 @@ import { View, TextInput } from 'react-native';
 import { useSign } from 'providers/Sign';
 
 const SignInInput = () => {
-  const { setEmail, setPassword } = useSign();
+  const { onChangeValue } = useSign();
 
   return (
     <View>
-      <TextInput onChangeText={(text) => setEmail(text)} autoCorrect={false} placeholder="email" />
       <TextInput
-        onChangeText={(text) => setPassword(text)}
+        onChangeText={(text) => onChangeValue('email', text)}
+        autoCorrect={false}
+        placeholder="email"
+      />
+      <TextInput
+        onChangeText={(text) => onChangeValue('password', text)}
         autoCorrect={false}
         placeholder="password"
       />

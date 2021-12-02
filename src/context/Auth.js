@@ -34,8 +34,7 @@ const signUp =
     try {
       const response = await server.post('/signUp', { email, password, college, name });
       await AsyncStorage.setItem('token', response.data);
-      dispatch({ type: 'signUp', payload: response.data });
-      navigate('SignIn');
+      dispatch({ type: 'signIn', payload: response.data });
     } catch (err) {
       dispatch({ type: 'error', payload: 'Something went wrong with signUp' });
     }
@@ -96,7 +95,6 @@ const getNaverInfo =
         });
         await AsyncStorage.setItem('token', res.data);
         dispatch({ type: 'signIn', payload: res.data });
-        // navigate('Main');
       }
     } catch (err) {
       dispatch({ type: 'error', payload: 'Something went wrong with getNaverInfo' });

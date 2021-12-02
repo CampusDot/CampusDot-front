@@ -58,13 +58,17 @@ const Ranking = ({ number }) => {
           },
         });
         return !stamped ? (
-          <View style={stylesin.stamp}>
+          <View key={item} style={stylesin.stamp}>
             <ImageBackground source={require('public/icons/stamp_circle.png')} style={styles.icon}>
               <Text style={styles.numbers}>{item}</Text>
             </ImageBackground>
           </View>
         ) : (
-          <Icon source={require('public/icons/stamp_filled.png')} style={stylesin.stampicon} />
+          <Icon
+            key={item}
+            source={require('public/icons/stamp_filled.png')}
+            style={stylesin.stampicon}
+          />
         );
       })}
     </View>

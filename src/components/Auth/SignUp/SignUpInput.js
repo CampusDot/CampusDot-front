@@ -1,31 +1,31 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { View, TextInput } from 'react-native';
 import { useSign } from 'providers/Sign';
 
-const SignUpInput = ({ email, password, isSNS }) => {
-  const { setEmail, setPassword, setName, setIsSNS } = useSign();
-  useEffect(() => {
-    setEmail(email);
-    setPassword(password);
-    setIsSNS(isSNS);
-  }, []);
+const SignUpInput = () => {
+  const { information, onChangeValue } = useSign();
+
   return (
     <View>
-      {isSNS ? null : (
-        <View>
+      {information.isSNS ? null : (
+        <>
           <TextInput
-            onChangeText={(text) => setEmail(text)}
+            onChangeText={(text) => onChangeValue('email', text)}
             autoCorrect={false}
             placeholder="email"
           />
           <TextInput
-            onChangeText={(text) => setPassword(text)}
+            onChangeText={(text) => onChangeValue('password', text)}
             autoCorrect={false}
             placeholder="password"
           />
-        </View>
+        </>
       )}
-      <TextInput onChangeText={(text) => setName(text)} autoCorrect={false} placeholder="name" />
+      <TextInput
+        onChangeText={(text) => onChangeValue('name', text)}
+        autoCorrect={false}
+        placeholder="name"
+      />
     </View>
   );
 };
