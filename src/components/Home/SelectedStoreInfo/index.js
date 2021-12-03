@@ -10,8 +10,8 @@ import reviewconverter from 'lib/utils/reviewconverter';
 
 const SelectedStoreInfo = () => {
   const { state } = useContext(ReviewContext);
-  const { Rating, Information, ReviewLen } = state.currentStore;
-  const realrating = reviewconverter(Rating, ReviewLen);
+  const { Rating, Information, ReviewCount } = state.currentStore;
+  const realrating = reviewconverter(Rating, ReviewCount);
 
   const { name, vicinity } = Information;
   return (
@@ -30,7 +30,7 @@ const SelectedStoreInfo = () => {
         <Text style={styles.textcategory}>별점</Text>
         <Text style={styles.textelement}>{realrating}</Text>
         <Text style={styles.textcategory}>리뷰</Text>
-        <Text style={styles.textelement}>{ReviewLen}</Text>
+        <Text style={styles.textelement}>{ReviewCount}</Text>
       </View>
     </View>
   );
