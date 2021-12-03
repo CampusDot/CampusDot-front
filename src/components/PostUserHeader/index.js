@@ -4,6 +4,7 @@ import ProfileImage from 'widgets/ProfileImage';
 import style from 'constants/styles';
 import getAchivement from 'lib/utils/achivements';
 import FS, { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
+import { SUB_COLOR2 } from 'constants/colors';
 
 const Header = ({ PostUser }) => {
   const { Name, ProfileImage: profileImg, AllStamp } = PostUser;
@@ -26,7 +27,6 @@ const styles = StyleSheet.create({
     width: 24 * SCALE_WIDTH,
     height: 24 * SCALE_WIDTH,
     borderRadius: 24 * SCALE_WIDTH,
-    borderWidth: 1,
     marginLeft: 12 * SCALE_WIDTH,
   },
   name: {
@@ -35,14 +35,14 @@ const styles = StyleSheet.create({
     marginRight: 4 * SCALE_WIDTH,
   },
   box: {
-    backgroundColor: '#7bb57f',
+    backgroundColor: 'rgba(95, 175, 102, 0.19)',
     borderRadius: 10 * SCALE_HEIGHT,
     paddingHorizontal: 8 * SCALE_WIDTH,
     paddingVertical: 2 * SCALE_HEIGHT,
   },
   achivement: {
     fontSize: FS(8),
-    color: '#ffffff',
+    color: SUB_COLOR2,
     fontWeight: 'bold',
   },
 });

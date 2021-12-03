@@ -11,7 +11,7 @@ const Search = () => {
 
   return (
     <TouchableOpacity onPress={onClickButton}>
-      <Icon source={require('public/icons/header_glass.png')} style={style.icons} />
+      <Icon source={require('public/icons/home_search.png')} style={style.icons} />
     </TouchableOpacity>
   );
 };
