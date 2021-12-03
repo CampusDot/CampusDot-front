@@ -16,8 +16,14 @@ const collegeReducer = (state, action) => {
     case 'getStoreLists':
       return {
         ...state,
-        storeLists:
-          state.storeLists.length === 0 ? state.storeLists.concat(action.payload) : action.payload,
+        storeLists: action.payload,
+        storeListsPage: 1,
+        notNextStoreLists: false,
+      };
+    case 'nextStoreLists':
+      return {
+        ...state,
+        storeLists: state.storeLists.concat(action.payload),
         storeListsPage: state.storeListsPage + 1,
       };
     case 'notNextStoreLists':
@@ -58,9 +64,9 @@ const getStore =
 
 const getStoreLists =
   (dispatch) =>
-  async ({ page }) => {
+  async ({ sort, page }) => {
     try {
-      const response = await server.get(`/college/storeLists/${page}`);
+      const response = await server.get(`/college/storeLists/${sort}/${page}`);
       if (response.data.length !== 0) {
         dispatch({ type: 'getStoreLists', payload: response.data });
       } else {
@@ -68,6 +74,21 @@ const getStoreLists =
       }
     } catch (err) {
       dispatch({ type: 'error', payload: 'Something went wrong with getStoreLists' });
+    }
+  };
+
+const nextStoreLists =
+  (dispatch) =>
+  async ({ sort, page }) => {
+    try {
+      const response = await server.get(`/college/storeLists/${sort}/${page}`);
+      if (response.data.length !== 0) {
+        dispatch({ type: 'nextStoreLists', payload: response.data });
+      } else {
+        dispatch({ type: 'notNextStoreLists' });
+      }
+    } catch (err) {
+      dispatch({ type: 'error', payload: 'Something went wrong with nextStoreLists' });
     }
   };
 
@@ -104,6 +125,7 @@ export const { Provider, Context } = createDataContext(
     initStore,
     getStore,
     getStoreLists,
+    nextStoreLists,
     getCollege,
     getMyCollegeRanking,
     getOtherCollegeRanking,
