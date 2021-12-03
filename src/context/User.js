@@ -53,6 +53,20 @@ const updateProfile =
     }
   };
 
+const updateCollege =
+  (dispatch) =>
+  async ({ fd }) => {
+    try {
+      if (fd._parts.length > 0) {
+        await server.post('/user/updateCollege', fd, {
+          header: { 'content-type': 'multipart/form-data' },
+        });
+      }
+    } catch (err) {
+      dispatch({ type: 'error', payload: 'Something went wrong with updateCollege' });
+    }
+  };
+
 const getChallengeLists = (dispatch) => async () => {
   try {
     const response = await server.get('/user/challenge');
@@ -98,6 +112,7 @@ export const { Provider, Context } = createDataContext(
     getStoreLists,
     getReviews,
     getNotices,
+    updateCollege,
   },
   {
     id: null,
