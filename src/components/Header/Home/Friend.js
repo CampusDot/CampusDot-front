@@ -1,8 +1,9 @@
 import React from 'react';
-import { TouchableOpacity, StyleSheet, View, Text } from 'react-native';
+import { TouchableOpacity, StyleSheet } from 'react-native';
 import { navigate } from 'lib/utils/navigation';
-import FS, { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
-import { SUB_COLOR, SUB_COLOR2 } from 'constants/colors';
+import { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
+import Icon from 'widgets/Icon';
+import style from 'constants/styles';
 
 const Friend = () => {
   const onClickButton = () => {
@@ -11,9 +12,7 @@ const Friend = () => {
 
   return (
     <TouchableOpacity onPress={onClickButton} style={styles.container}>
-      <View style={styles.box}>
-        <Text style={styles.title}>친구네</Text>
-      </View>
+      <Icon source={require('public/icons/home_friend.png')} style={style.icons} />
     </TouchableOpacity>
   );
 };
@@ -24,19 +23,6 @@ const styles = StyleSheet.create({
     height: 40 * SCALE_HEIGHT,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  box: {
-    width: 46 * SCALE_WIDTH,
-    height: 20 * SCALE_HEIGHT,
-    borderWidth: 1.6 * SCALE_HEIGHT,
-    borderColor: SUB_COLOR,
-    borderRadius: 4 * SCALE_HEIGHT,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  title: {
-    fontSize: FS(12),
-    color: SUB_COLOR2,
   },
 });
 export default Friend;
