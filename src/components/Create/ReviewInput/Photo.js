@@ -10,14 +10,16 @@ const Photo = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>사진</Text>
-      {images.length === 0 ? (
-        <TouchableOpacity style={styles.image} onPress={() => onClickMultiple(setImages)}>
-          <Icon source={require('public/icons/photo_add.png')} style={styles.icon} />
-          <Text style={styles.textcomment}>사진 추가하기</Text>
-        </TouchableOpacity>
-      ) : (
-        <Image source={{ uri: images[0].uri }} style={styles.image} />
-      )}
+      <TouchableOpacity style={styles.image} onPress={() => onClickMultiple(setImages)}>
+        {images.length === 0 ? (
+          <>
+            <Icon source={require('public/icons/photo_add.png')} style={styles.icon} />
+            <Text style={styles.textcomment}>사진 추가하기</Text>
+          </>
+        ) : (
+          <Image source={{ uri: images[0].uri }} style={styles.image} />
+        )}
+      </TouchableOpacity>
     </View>
   );
 };
