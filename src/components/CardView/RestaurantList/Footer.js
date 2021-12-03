@@ -4,6 +4,7 @@ import FS, { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
 import style from 'constants/styles';
 import { SUB_COLOR } from 'constants/colors';
 import { push } from 'lib/utils/navigation';
+import MoveText from 'components/MoveText';
 
 const Footer = ({ title, comment, id }) => {
   const onClickListCard = () => {
@@ -13,11 +14,13 @@ const Footer = ({ title, comment, id }) => {
   return (
     <View style={[style.flexRow, style.space_between, styles.container]}>
       <View>
-        <Text style={styles.title}>{title}</Text>
-        {comment && <Text style={styles.comment}>{comment}</Text>}
+        <MoveText text={title} textStyles={styles.title} container={styles.moveContainer} />
+        {comment && (
+          <MoveText text={comment} textStyles={styles.comment} container={styles.moveContainer} />
+        )}
       </View>
       <TouchableOpacity style={styles.box} onPress={onClickListCard}>
-        <Text style={styles.text}>+ 먹어 볼래!</Text>
+        <Text style={styles.text}>먹어 볼래!</Text>
       </TouchableOpacity>
     </View>
   );
@@ -48,6 +51,10 @@ const styles = StyleSheet.create({
   text: {
     fontSize: FS(12),
     color: SUB_COLOR,
+  },
+  moveContainer: {
+    borderWidth: 1,
+    width: 241 * SCALE_WIDTH,
   },
 });
 
