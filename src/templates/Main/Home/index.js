@@ -17,8 +17,7 @@ import { useFocusEffect } from '@react-navigation/native';
 const Home = () => {
   const { getStoreLists } = useContext(CollegeContext);
   const { getChallengeLists } = useContext(StoreListContext);
-  const { getInformation } = useContext(UserContext);
-
+  const { state, getInformation } = useContext(UserContext);
   useFocusEffect(
     useCallback(() => {
       getStoreLists({ page: 0 });
@@ -30,7 +29,7 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <Header
-        title="연세대학교"
+        title={state.college}
         titleStyle={styles.title}
         landings={[<Icon source={require('public/icons/logo.png')} style={styles.logo} />]}
         actions={[<Search />, <Friend />]}

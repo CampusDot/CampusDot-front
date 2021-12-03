@@ -1,13 +1,12 @@
 import React from 'react';
-import School from 'templates/Auth/School';
+import School from 'templates/Main/MyPage/menu/School';
 import SignProvider from 'providers/Sign';
 
 export default ({ route }) => {
-  const { email, password, name } = route.params;
-  console.log(email);
+  const { type } = route.params;
   return (
     <SignProvider>
-      <School />
+      <School type={type} />
     </SignProvider>
   );
 };
