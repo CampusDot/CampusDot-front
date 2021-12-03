@@ -56,9 +56,9 @@ const State = ({ children, progress }) => {
 
 const styles = StyleSheet.create({
   circle: {
-    width: 123 * SCALE_WIDTH,
-    height: 123 * SCALE_WIDTH,
-    borderRadius: 123 * SCALE_WIDTH,
+    width: 120 * SCALE_WIDTH,
+    height: 120 * SCALE_WIDTH,
+    borderRadius: 120 * SCALE_WIDTH,
     borderWidth: 6 * SCALE_WIDTH,
   },
   empty: {
