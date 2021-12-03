@@ -17,6 +17,7 @@ const userReducer = (state, action) => {
         reviewLists: action.payload.Review,
         allStamp: action.payload.AllStamp,
         notices: action.payload.Notice,
+        collegeName: action.payload.CollegeName,
       };
     case 'updateProfile':
       return { ...state, name: action.payload.Name, profileImage: action.payload.ProfileImage };
@@ -50,6 +51,20 @@ const updateProfile =
       dispatch({ type: 'updateProfile', payload: response.data });
     } catch (err) {
       dispatch({ type: 'error', payload: 'Something went wrong with updateProfile' });
+    }
+  };
+
+const updateCollege =
+  (dispatch) =>
+  async ({ fd }) => {
+    try {
+      if (fd._parts.length > 0) {
+        await server.post('/user/updateCollege', fd, {
+          header: { 'content-type': 'multipart/form-data' },
+        });
+      }
+    } catch (err) {
+      dispatch({ type: 'error', payload: 'Something went wrong with updateCollege' });
     }
   };
 
@@ -98,6 +113,7 @@ export const { Provider, Context } = createDataContext(
     getStoreLists,
     getReviews,
     getNotices,
+    updateCollege,
   },
   {
     id: null,
@@ -111,5 +127,6 @@ export const { Provider, Context } = createDataContext(
     reviewLists: null,
     allStamp: null,
     notices: null,
+    collegeName: null,
   },
 );

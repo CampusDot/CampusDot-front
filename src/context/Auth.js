@@ -11,6 +11,8 @@ const authReducer = (state, action) => {
       return { token: null };
     case 'error':
       return { ...state, errMessage: action.payload };
+    case 'getCollege':
+      return { ...state, collegeLists: action.payload };
     default:
       return state;
   }
@@ -110,6 +112,15 @@ const localSignIn = (dispatch) => async () => {
   }
 };
 
+const getCollege = (dispatch) => async () => {
+  try {
+    const response = await server.get('/getCollege');
+    dispatch({ type: 'getCollege', payload: response.data });
+  } catch (err) {
+    dispatch({ type: 'error', payload: 'Something went wrong with getCollege' });
+  }
+};
+
 export const { Provider, Context } = createDataContext(
   authReducer,
   {
@@ -120,6 +131,7 @@ export const { Provider, Context } = createDataContext(
     localSignIn,
     getGoogleInfo,
     getNaverInfo,
+    getCollege,
   },
-  { errMesage: '', token: null },
+  { errMesage: '', token: null, collegeLists: [] },
 );

@@ -13,8 +13,8 @@ const AuthStackScreen = () => (
     }}
   >
     <AuthStack.Screen name="SignIn" component={SignIn} />
-    <AuthStack.Screen name="SignUp" component={SignUp} />
     <AuthStack.Screen name="SignUpOpt" component={SignUpOpt} />
+    <AuthStack.Screen name="SignUp" component={SignUp} />
   </AuthStack.Navigator>
 );
 
