@@ -5,12 +5,12 @@ import style from 'constants/styles';
 import { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
 import Icon from 'widgets/Icon';
 
-const Header = ({ title, titleStyle, back, landings = [], actions = [] }) => {
+const Header = ({ headerStyle, title, titleStyle, back, landings = [], actions = [] }) => {
   const onClickBack = () => {
     goBack();
   };
   return (
-    <View style={[styles.container, style.flexRow, style.space_between]}>
+    <View style={[styles.container, style.flexRow, style.space_between, headerStyle]}>
       <View style={styles.landings}>
         {landings.length > 0
           ? landings.map((landing) => {
