@@ -15,7 +15,7 @@ const SignUpInput = () => {
             style={styles.textinput}
             onChangeText={(text) => onChangeValue('email', text)}
             autoCorrect={false}
-            placeholder="아이디를 입력해주세요"
+            placeholder="이메일를 입력해주세요"
           />
           <Text style={styles.text}>비밀번호</Text>
           <TextInput
@@ -26,12 +26,12 @@ const SignUpInput = () => {
           />
         </>
       )}
-      <Text style={styles.text}>아이디</Text>
+      <Text style={styles.text}>닉네임</Text>
       <TextInput
         style={styles.textinput}
         onChangeText={(text) => onChangeValue('name', text)}
         autoCorrect={false}
-        placeholder="이메일을 입력해주세요"
+        placeholder="닉네임을 입력해주세요"
       />
     </View>
   );

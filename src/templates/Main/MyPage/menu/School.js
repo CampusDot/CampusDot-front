@@ -12,10 +12,10 @@ const School = ({ type }) => {
   return (
     <View style={style.backwhite}>
       <Header
-        back={type !== 'Sign' && true}
+        back={type !== 'Sign'}
         title="학교 인증"
         titleStyle={style.headertitle}
-        actions={[type === 'Sign' ? <CollegeNext setModal={setModal} /> : null]}
+        actions={[type === 'Sign' && <CollegeNext setModal={setModal} />]}
       />
       <Photo />
       <CollegeButton />
