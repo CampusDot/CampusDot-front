@@ -1,13 +1,14 @@
 import React from 'react';
-import { TouchableOpacity, StyleSheet, Text } from 'react-native';
-import { useSign } from 'providers/Sign';
+import { StyleSheet, TouchableOpacity, Text } from 'react-native';
 import FS, { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/normalize';
+import { useSign } from 'providers/Sign';
 
-const SignInButton = () => {
-  const { onClickSignIn } = useSign();
+const CollegeButton = () => {
+  const { onClickCertify } = useSign();
+
   return (
-    <TouchableOpacity style={styles.button} onPress={onClickSignIn}>
-      <Text style={styles.text}>로그인</Text>
+    <TouchableOpacity style={styles.button} onPress={onClickCertify}>
+      <Text style={styles.text}>학교 인증</Text>
     </TouchableOpacity>
   );
 };
@@ -22,12 +23,12 @@ const styles = StyleSheet.create({
     width: 335 * SCALE_WIDTH,
     height: 48 * SCALE_HEIGHT,
     borderRadius: 14 * SCALE_HEIGHT,
-    backgroundColor: '#FFDE6E',
+    backgroundColor: '#73B979',
     marginLeft: 20 * SCALE_WIDTH,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 18 * SCALE_HEIGHT,
+    marginTop: 42 * SCALE_HEIGHT,
   },
 });
 
-export default SignInButton;
+export default CollegeButton;
