@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import { Context as AuthContext } from 'context/Auth';
-
+import { navigate } from 'lib/utils/navigation';
 const SignContext = createContext(null);
 export const useSign = () => useContext(SignContext);
 
@@ -46,11 +46,10 @@ const SignProvider = ({ children }) => {
   };
 
   const onClickSignUp = async () => {
-    await signUp({
+    navigate('School', {
       email: information.email,
       password: information.password,
       name: information.name,
-      college: '연세대학교 신촌캠퍼스',
     });
   };
 
