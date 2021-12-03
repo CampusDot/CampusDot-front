@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { View, StyleSheet, Animated } from 'react-native';
 import { MAIN_COLOR } from 'constants/colors';
-import { SCALE_HEIGHT } from 'lib/utils/normalize';
+import { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
 
 const BACKGROUND_COLOR = '#FFF5D1';
 
@@ -51,8 +51,10 @@ const styles = StyleSheet.create({
     height: 10 * SCALE_HEIGHT,
     borderRadius: 5 * SCALE_HEIGHT,
     backgroundColor: BACKGROUND_COLOR,
-    marginTop: 8 * SCALE_HEIGHT,
+    marginLeft: 7 * SCALE_WIDTH,
+    marginTop: 5 * SCALE_HEIGHT,
     overflow: 'hidden',
+    flex: 1,
   },
   inner: {
     height: 10 * SCALE_HEIGHT,
