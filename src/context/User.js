@@ -17,6 +17,7 @@ const userReducer = (state, action) => {
         reviewLists: action.payload.Review,
         allStamp: action.payload.AllStamp,
         notices: action.payload.Notice,
+        collegeName: action.payload.CollegeName,
       };
     case 'updateProfile':
       return { ...state, name: action.payload.Name, profileImage: action.payload.ProfileImage };
@@ -126,5 +127,6 @@ export const { Provider, Context } = createDataContext(
     reviewLists: null,
     allStamp: null,
     notices: null,
+    collegeName: null,
   },
 );

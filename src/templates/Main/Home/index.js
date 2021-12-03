@@ -29,7 +29,7 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <Header
-        title={state.college}
+        title={state.collegeName}
         titleStyle={styles.title}
         landings={[<Icon source={require('public/icons/logo.png')} style={styles.logo} />]}
         actions={[<Search />, <Friend />]}
