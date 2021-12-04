@@ -9,7 +9,7 @@ import Stamp from 'screens/Main/Stamp';
 import Notice from 'screens/Main/Notice';
 import MyPage from 'screens/Main/MyPage';
 import Icon from 'widgets/Icon';
-import ChallengeStore from 'screens/Main/Create/ChallengeStore';
+import SearchStore from 'screens/Main/Create/SearchStore';
 
 const Tab = createBottomTabNavigator();
 const MyModalBackgroundScreen = () => null;
@@ -34,8 +34,8 @@ const TabScreen = () => (
       }}
     />
     <Tab.Screen
-      name="ChallengeStore"
-      component={ChallengeStore}
+      name="SearchStore"
+      component={SearchStore}
       options={{
         tabBarIcon: ({ focused }) =>
           focused ? (
