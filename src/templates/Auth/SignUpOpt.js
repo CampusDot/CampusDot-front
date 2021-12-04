@@ -7,13 +7,8 @@ import style from 'constants/styles';
 import SignLogo from 'components/Auth/SignLogo';
 import { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/normalize';
 import SignDivider from 'components/Auth/SignDivider';
-import { Context as AuthContext } from 'context/Auth';
 
 const SignUpOpt = () => {
-  const { getCollege } = useContext(AuthContext);
-  useEffect(() => {
-    getCollege();
-  }, []);
   return (
     <View style={style.backwhite}>
       <Header back title="회원가입" titleStyle={style.headertitle} />

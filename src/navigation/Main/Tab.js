@@ -9,6 +9,7 @@ import Stamp from 'screens/Main/Stamp';
 import Notice from 'screens/Main/Notice';
 import MyPage from 'screens/Main/MyPage';
 import Icon from 'widgets/Icon';
+import ChallengeStore from 'screens/Main/Create/ChallengeStore';
 
 const Tab = createBottomTabNavigator();
 const MyModalBackgroundScreen = () => null;
@@ -33,14 +34,14 @@ const TabScreen = () => (
       }}
     />
     <Tab.Screen
-      name="Stamp"
-      component={Stamp}
+      name="ChallengeStore"
+      component={ChallengeStore}
       options={{
         tabBarIcon: ({ focused }) =>
           focused ? (
-            <Icon source={require('public/icons/tab_stamp_focused.png')} style={style.icons} />
+            <Icon source={require('public/icons/tab_create.png')} style={style.icons} />
           ) : (
-            <Icon source={require('public/icons/tab_stamp.png')} style={style.icons} />
+            <Icon source={require('public/icons/tab_create.png')} style={style.icons} />
           ),
       }}
     />

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 import SignUpInput from 'components/Auth/SignUp/SignUpInput';
 import SignUpButton from 'components/Auth/SignUp/SignUpButton';
@@ -11,13 +11,13 @@ import College from 'components/Auth/School/College';
 
 const SignUp = ({ email, password, isSNS }) => {
   const { initValue } = useSign();
+
   useEffect(() => {
     initValue(email, password, isSNS);
   }, [email]);
   return (
     <View style={style.backwhite}>
       <Header back title="회원가입" titleStyle={style.headertitle} />
-      <SignLogo logoStyle={styles.logo} />
       <SignUpInput />
       <College />
       <SignUpButton />

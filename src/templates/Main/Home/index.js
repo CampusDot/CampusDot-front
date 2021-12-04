@@ -1,19 +1,11 @@
-import React, { useContext, useCallback, useState, useEffect } from 'react';
+import React, { useContext, useCallback, useState, FlatList, useEffect } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import Challenge from 'components/Home/Challenge';
-import RestaurantLists from 'components/Home/RestaurantLists';
-import Achivement from 'components/Home/Achivement';
 import Header from 'components/Header';
-import Friend from 'components/Header/Home/Friend';
-import Search from 'components/Header/Home/Search';
-import { Context as StoreListContext } from 'context/StoreList';
 import { Context as UserContext } from 'context/User';
-import { Context as CollegeContext } from 'context/College';
-import Divider from 'widgets/Divider';
+import { Context as ReviewContext } from 'context/Review';
 import FS, { SCALE_HEIGHT } from 'lib/utils/normalize';
 import { useFocusEffect } from '@react-navigation/native';
 import { MAIN_COLOR } from 'constants/colors';
-import { useInfinityScroll } from 'providers/InfinityScroll';
 
 const sortParams = {
   0: 'recent',
@@ -21,62 +13,35 @@ const sortParams = {
 };
 
 const Home = () => {
-  const { getChallengeLists } = useContext(StoreListContext);
-  const { getInformation } = useContext(UserContext);
-  const { loading, setLoading, isCloseToBottom } = useInfinityScroll();
-  const { state, nextStoreLists } = useContext(CollegeContext);
-  const [sort, setSort] = useState(0);
-
-  const getData = async () => {
-    if (state.storeLists.length >= 1 && !state.notNextStoreLists) {
-      setLoading(true);
-      await nextStoreLists({ sort: sortParams[sort], page: state.storeListsPage });
-      setLoading(false);
-    }
-  };
-
-  const onEndReached = () => {
-    if (!loading) {
-      getData();
-    }
-  };
-
-
-  useFocusEffect(
-    useCallback(() => {
-      getChallengeLists();
-    }, []),
-  );
+  const { state:user, getInformation } = useContext(UserContext);
+  const { state, getReview, upReview, upDown } = useContext(ReviewContext);
 
   useEffect(() => {
     getInformation();
+    getReview();
   }, []);
 
   return (
+    state.reviews !=null &&
     <View style={styles.container}>
       <View style={styles.headerContainer}>
         <Header
           headerStyle={styles.header}
-          title="연세대학교"
+          title={user.collegeName}
           titleStyle={styles.title}
-          landings={[<Search />]}
-          actions={[<Friend />]}
         />
-        <Achivement />
       </View>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        scrollEventThrottle={1000}
-        onScroll={({ nativeEvent }) => {
-          if (isCloseToBottom(nativeEvent)) {
-            onEndReached();
-          }
-        }}
-      >
-        <Challenge />
-        <Divider />
-        <RestaurantLists sort={sort} setSort={setSort} />
-      </ScrollView>
+      <FlatList
+      data={state.reviews && state.reviews}
+      keyExtractor={(item) => item}
+      renderItem={({ item, index }) => {
+        return(
+        <View>
+            <Text>1</Text>
+        </View>
+        )
+      }}
+    />
     </View>
   );
 };
