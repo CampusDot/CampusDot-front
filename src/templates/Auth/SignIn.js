@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { View, StyleSheet } from 'react-native';
 import SignInInput from 'components/Auth/SignIn/SignInInput';
 import SignInButton from 'components/Auth/SignInButton';
@@ -10,8 +10,15 @@ import * as env from 'constants/app';
 import { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/normalize';
 import style from 'constants/styles';
 import SignDivider from 'components/Auth/SignDivider';
+import { Context as AuthContext } from 'context/Auth';
 
 const SignIn = () => {
+  const { getCollege } = useContext(AuthContext);
+
+  useEffect(() => {
+    getCollege();
+  }, []);
+
   useEffect(() => {
     GoogleSignin.configure({
       webClientId: env.webClientIdIOS,

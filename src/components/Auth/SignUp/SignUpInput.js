@@ -1,11 +1,11 @@
-import React from 'react';
-import { View, TextInput, Text, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, TextInput, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import { useSign } from 'providers/Sign';
 import FS, { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/normalize';
+import style from 'constants/styles';
 
 const SignUpInput = () => {
   const { information, onChangeValue } = useSign();
-
   return (
     <View>
       {information.isSNS ? null : (

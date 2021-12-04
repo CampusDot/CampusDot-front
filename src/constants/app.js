@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/prefer-default-export
-export const SERVER_URL = 'https://5103-121-137-73-162.ngrok.io';
+export const SERVER_URL = 'https://1b6a-121-137-73-162.ngrok.io';
 export const GOOGLE_MAPS_KEY = 'AIzaSyAnZoJeEHQJEHOWbi0qUIu8-Tlj0Ty-rto';
 export const webClientIdIOS =
   '405413012159-9p7mms0ndj2jdms5cr8u721hbbnr0qmt.apps.googleusercontent.com';

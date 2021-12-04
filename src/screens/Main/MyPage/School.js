@@ -3,10 +3,10 @@ import School from 'templates/Main/MyPage/menu/School';
 import SignProvider from 'providers/Sign';
 
 export default ({ route }) => {
-  const { type } = route.params;
+  const { email, password, name, college } = route.params;
   return (
     <SignProvider>
-      <School type={type} />
+      <School email={email} password={password} name={name} college={college} />
     </SignProvider>
   );
 };

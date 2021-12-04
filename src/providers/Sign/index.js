@@ -69,7 +69,6 @@ const SignProvider = ({ children }) => {
       name: information.name,
       college: information.college,
     });
-    await navigate('School', { type: 'Sign' });
   };
   const onClickCertify = async () => {
     // eslint-disable-next-line no-undef
