@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import Header from 'components/Header';
 import ReviewWriteButton from 'components/Header/Create/ReviewWriteButton';
@@ -6,13 +6,8 @@ import style from 'constants/styles';
 import Photo from 'components/Create/ReviewInput/Photo';
 import ReviewText from 'components/Create/ReviewInput/ReviewText';
 import Rating from 'components/Create/ReviewInput/Rating';
-import { useReviewCreate } from 'providers/ReviewCreate';
 
-const CreateReview = ({ id, storeListId, type }) => {
-  const { setNavigation } = useReviewCreate();
-  useEffect(() => {
-    if (type) setNavigation(type);
-  }, [type]);
+const CreateReview = ({ id, storeListId }) => {
   return (
     <View style={style.backwhite}>
       <Header

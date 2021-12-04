@@ -7,3 +7,4 @@ export const webClientIdANDROID =
   '405413012159-rrmsi8brl05h3smh23dfak5qa3krvj3h.apps.googleusercontent.com';
 export const kConsumerKeyIOS = 'dnMPUn1lhfsNa4BfPRzB';
 export const kConsumerSecretIOS = 'FHGp8Dp7K8';
+// dev 서버: https://54.180.112.194:3000

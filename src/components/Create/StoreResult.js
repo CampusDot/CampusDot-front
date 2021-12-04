@@ -7,9 +7,15 @@ import FS, { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/normalize';
 import Icon from 'widgets/Icon';
 import StoreImage from 'widgets/StoreImage';
 import { MAIN_COLOR } from 'constants/colors';
+import { push } from 'lib/utils/navigation';
 
-const StoreListSearchResult = ({ onClickStore }) => {
+const StoreResult = () => {
   const { state } = useContext(SearchContext);
+
+  const onClickPostReview = (id) => {
+    push('CreateReview', { id });
+  };
+
   return (
     <>
       {state.result ? (
@@ -19,11 +25,14 @@ const StoreListSearchResult = ({ onClickStore }) => {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.contentContainer}
           renderItem={({ item }) => {
-            const { Information } = item;
+            const { Information, _id: id } = item;
             const { name, vicinity, photos } = Information;
             const uri = photos ? photos[0].photo_reference : '';
             return (
-              <View style={[style.flexRow, style.space_between, styles.box]}>
+              <TouchableOpacity
+                style={[style.flexRow, style.space_between, styles.box]}
+                onPress={() => onClickPostReview(id)}
+              >
                 <View style={style.flexRow}>
                   <StoreImage image={uri} imageStyle={styles.image} />
                   <View style={styles.widthArea}>
@@ -39,10 +48,7 @@ const StoreListSearchResult = ({ onClickStore }) => {
                     </View>
                   </View>
                 </View>
-                <TouchableOpacity onPress={() => onClickStore(item)} style={styles.plusBox}>
-                  <Text style={styles.plus}>추가+</Text>
-                </TouchableOpacity>
-              </View>
+              </TouchableOpacity>
             );
           }}
         />
@@ -98,4 +104,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default StoreListSearchResult;
+export default StoreResult;
