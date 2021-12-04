@@ -3,26 +3,13 @@ import { View, StyleSheet } from 'react-native';
 import { Context as SearchContext } from 'context/Search';
 import { useSearch } from 'providers/Search';
 import SearchBar from 'components/SearchBar';
-import StoreListSearchResult from 'components/Create/StoreListSearchResult';
-import StoreComment from 'components/Create/StoreComment';
 import StoreSearchHint from 'components/Search/StoreSearchHint';
+import StoreResult from 'components/Create/StoreResult';
 
-const SearchStoreList = () => {
+const SearchStore = () => {
   const { getStoreHint, getStoreResult, initHint } = useContext(SearchContext);
   const { text } = useSearch();
-  const [commentModal, setCommentModal] = useState(false);
-  const [store, setStore] = useState(null);
   const [searching, setSearching] = useState(false);
-
-  const onClickStore = (info) => {
-    setCommentModal(true);
-    setStore(info);
-  };
-
-  const onCloseModal = () => {
-    setCommentModal(false);
-    setStore(null);
-  };
 
   const onPressSearch = () => {
     getStoreResult({ term: text });
@@ -41,25 +28,7 @@ const SearchStoreList = () => {
   return (
     <View style={styles.container}>
       <SearchBar placeholder="식당 이름을 검색해주세요" onSubmit={onPressSearch} />
-      {searching ? (
-        <>
-          <StoreListSearchResult onClickStore={onClickStore} />
-          {commentModal && (
-            <StoreComment
-              onCloseModal={onCloseModal}
-              store={store}
-              currentComment=""
-              currentImage={{
-                name: '',
-                type: '',
-                uri: '',
-              }}
-            />
-          )}
-        </>
-      ) : (
-        <StoreSearchHint setSearching={setSearching} />
-      )}
+      {searching ? <StoreResult /> : <StoreSearchHint setSearching={setSearching} />}
     </View>
   );
 };
@@ -70,4 +39,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
-export default SearchStoreList;
+
+export default SearchStore;

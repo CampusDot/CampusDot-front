@@ -53,7 +53,6 @@ const styles = StyleSheet.create({
     color: SUB_COLOR,
   },
   moveContainer: {
-    borderWidth: 1,
     width: 241 * SCALE_WIDTH,
   },
 });

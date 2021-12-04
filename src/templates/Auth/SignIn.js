@@ -20,7 +20,6 @@ const SignIn = () => {
       forceConsentPrompt: true,
     });
   }, []);
-
   return (
     <View style={style.backwhite}>
       <SignLogo logoStyle={styles.logo} />

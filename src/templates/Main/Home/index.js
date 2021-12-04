@@ -41,7 +41,6 @@ const Home = () => {
     }
   };
 
-
   useFocusEffect(
     useCallback(() => {
       getChallengeLists();

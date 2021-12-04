@@ -13,10 +13,12 @@ const Setting = () => {
       <TouchableOpacity onPress={signOut}>
         <Text>로그아웃</Text>
       </TouchableOpacity>
+      {/* 
       <TouchableOpacity onPress={() => signDelete({ id: state.id })}>
         <Text>회원탈퇴</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigate('School', {type:'User'})}>
+      */}
+      <TouchableOpacity onPress={() => navigate('School', { type: 'User' })}>
         <Text>대학교인증</Text>
       </TouchableOpacity>
     </View>
