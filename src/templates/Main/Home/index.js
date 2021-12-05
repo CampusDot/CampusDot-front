@@ -13,7 +13,7 @@ const sortParams = {
 };
 
 const Home = () => {
-  const { state:user, getInformation } = useContext(UserContext);
+  const { state: user, getInformation } = useContext(UserContext);
   const { state, getReview, upReview, upDown } = useContext(ReviewContext);
 
   useEffect(() => {
@@ -22,27 +22,24 @@ const Home = () => {
   }, []);
 
   return (
-    state.reviews !=null &&
-    <View style={styles.container}>
-      <View style={styles.headerContainer}>
-        <Header
-          headerStyle={styles.header}
-          title={user.collegeName}
-          titleStyle={styles.title}
+    state.reviews != null && (
+      <View style={styles.container}>
+        <View style={styles.headerContainer}>
+          <Header headerStyle={styles.header} title={user.collegeName} titleStyle={styles.title} />
+        </View>
+        <FlatList
+          data={state.reviews && state.reviews}
+          keyExtractor={(item) => item}
+          renderItem={({ item, index }) => {
+            return (
+              <View>
+                <Text>1</Text>
+              </View>
+            );
+          }}
         />
       </View>
-      <FlatList
-      data={state.reviews && state.reviews}
-      keyExtractor={(item) => item}
-      renderItem={({ item, index }) => {
-        return(
-        <View>
-            <Text>1</Text>
-        </View>
-        )
-      }}
-    />
-    </View>
+    )
   );
 };
 

@@ -9,6 +9,10 @@ const reviewReducer = (state, action) => {
       return { ...state, reviewLists: action.payload[0], currentStore: action.payload[1] };
     case 'getReview':
       return { ...state, reviews: action.payload };
+    case 'getFilter':
+      return { ...state, filterType: action.payload };
+    case 'getRecommendStore':
+      return { ...state, recommend: action.payload[0] };
     default:
       return state;
   }
@@ -16,13 +20,12 @@ const reviewReducer = (state, action) => {
 
 const postReview =
   (dispatch) =>
-  async ({ Content, Rating, Store, fd, StoreList }) => {
+  async ({ Content, Store, Filters, fd }) => {
     try {
       const response = await server.post(`/review`, {
         Content,
-        Rating,
         Store,
-        StoreList,
+        Filters,
       });
       if (fd._parts.length > 0) {
         fd.append('reviewId', response.data);
@@ -34,6 +37,15 @@ const postReview =
       dispatch({ type: 'error', payload: 'Something went wrong with postReview' });
     }
   };
+
+const getFilterType = (dispatch) => async () => {
+  try {
+    const response = await server.get('/review/filter');
+    dispatch({ type: 'getFilter', payload: response.data });
+  } catch (err) {
+    dispatch({ type: 'error', payload: 'Something went wrong with getFilterType' });
+  }
+};
 
 const getReviewStore = (dispatch) => async () => {
   try {
@@ -55,7 +67,7 @@ const getReview = (dispatch) => async () => {
 
 const UpReview = (dispatch) => async () => {
   try {
-    const response = await server.post('/up');
+    const response = await server.post('/review/up');
   } catch (err) {
     dispatch({ type: 'error', payload: 'Something went wrong with getReviewStore' });
   }
@@ -63,7 +75,7 @@ const UpReview = (dispatch) => async () => {
 
 const DownReview = (dispatch) => async () => {
   try {
-    const response = await server.post('/down');
+    const response = await server.post('/review/down');
   } catch (err) {
     dispatch({ type: 'error', payload: 'Something went wrong with getReviewStore' });
   }
@@ -80,6 +92,17 @@ const getSelectedReview =
     }
   };
 
+const getRecommendStore =
+  (dispatch) =>
+  async ({ filters }) => {
+    try {
+      const response = await server.post('/review/recommend', { filters });
+      dispatch({ type: 'getRecommendStore', payload: response.data });
+    } catch (err) {
+      dispatch({ type: 'error', payload: 'Something went wrong with getRecommendStore' });
+    }
+  };
+
 export const { Provider, Context } = createDataContext(
   reviewReducer,
   {
@@ -87,11 +110,17 @@ export const { Provider, Context } = createDataContext(
     getReviewStore,
     getSelectedReview,
     getReview,
+    getFilterType,
+    UpReview,
+    DownReview,
+    getRecommendStore,
   },
   {
     reviews: null,
     storeLists: null,
     reviewLists: null,
     currentStore: null,
+    filterType: null,
+    recommend: null,
   },
 );

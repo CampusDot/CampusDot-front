@@ -2,14 +2,8 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SelectedList from 'screens/Main/Home/SelectedList';
 import CreateReview from 'screens/Main/Create/CreateReview';
-import FriendCollege from 'screens/Main/Home/FriendCollege';
-import SearchStoreLists from 'screens/Main/Home/SearchStoreLists';
 import SelectedSection from 'screens/Main/MyPage/SelectedSection';
-import CreateModal from 'components/CreateModal';
 import SelectedStore from 'screens/Main/Home/SelectedStore';
-import Coupon from 'screens/Main/Stamp/Coupon';
-import Ranking from 'screens/Main/Stamp/Ranking';
-import School from 'screens/Main/MyPage/School';
 import SearchStore from 'screens/Main/Create/SearchStore';
 import TabScreen from './Tab';
 
@@ -24,21 +18,9 @@ const MainStackScreen = () => (
     <MainStack.Screen name="Tab" component={TabScreen} />
     <MainStack.Screen name="SelectedList" component={SelectedList} />
     <MainStack.Screen name="CreateReview" component={CreateReview} />
-    <MainStack.Screen name="FriendCollege" component={FriendCollege} />
-    <MainStack.Screen name="SearchStoreLists" component={SearchStoreLists} />
     <MainStack.Screen name="SelectedSection" component={SelectedSection} />
     <MainStack.Screen name="SelectedStore" component={SelectedStore} />
-    <MainStack.Screen name="Coupon" component={Coupon} />
-    <MainStack.Screen name="Ranking" component={Ranking} />
-    <MainStack.Screen name="School" component={School} />
     <MainStack.Screen name="SearchStore" component={SearchStore} />
-    <MainStack.Screen
-      name="CreatePosts"
-      component={CreateModal}
-      options={{
-        presentation: 'transparentModal',
-      }}
-    />
   </MainStack.Navigator>
 );
 

@@ -5,14 +5,13 @@ import { SCALE_WIDTH } from 'lib/utils/normalize';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import style from 'constants/styles';
 import Home from 'screens/Main/Home';
-import Stamp from 'screens/Main/Stamp';
 import Notice from 'screens/Main/Notice';
 import MyPage from 'screens/Main/MyPage';
 import Icon from 'widgets/Icon';
 import SearchStore from 'screens/Main/Create/SearchStore';
+import Recommend from 'screens/Main/Recommend';
 
 const Tab = createBottomTabNavigator();
-const MyModalBackgroundScreen = () => null;
 
 const TabScreen = () => (
   <Tab.Navigator
@@ -39,28 +38,26 @@ const TabScreen = () => (
       options={{
         tabBarIcon: ({ focused }) =>
           focused ? (
-            <Icon source={require('public/icons/tab_create.png')} style={style.icons} />
+            <Icon source={require('public/icons/tab_write_focused.png')} style={style.icons} />
           ) : (
-            <Icon source={require('public/icons/tab_create.png')} style={style.icons} />
+            <Icon source={require('public/icons/tab_write.png')} style={style.icons} />
           ),
       }}
     />
     <Tab.Screen
-      name="Create"
-      component={MyModalBackgroundScreen}
+      name="Recommend"
+      component={Recommend}
       options={{
-        tabBarIcon: () => (
+        tabBarIcon: ({ focused }) => (
           <View style={styles.floating}>
-            <Icon source={require('public/icons/tab_create.png')} style={styles.icon} />
+            {focused ? (
+              <Icon source={require('public/icons/tab_go_focused.png')} style={styles.icon} />
+            ) : (
+              <Icon source={require('public/icons/tab_go.png')} style={styles.icon} />
+            )}
           </View>
         ),
       }}
-      listeners={({ navigation }) => ({
-        tabPress: (e) => {
-          e.preventDefault();
-          navigation.navigate('CreatePosts');
-        },
-      })}
     />
     <Tab.Screen
       name="Notice"

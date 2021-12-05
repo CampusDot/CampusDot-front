@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TextInput } from 'react-native';
 import style from 'constants/styles';
-import { goBack } from 'lib/utils/navigation';
 import { useSearch } from 'providers/Search';
 import Icon from 'widgets/Icon';
 import FS, { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
@@ -10,9 +9,6 @@ const SearchBar = ({ placeholder, onSubmit }) => {
   const { text, setText } = useSearch();
   return (
     <View style={style.flexRow}>
-      <TouchableOpacity onPress={goBack}>
-        <Icon source={require('public/icons/back.png')} style={style.icons} />
-      </TouchableOpacity>
       <View style={[styles.container, style.flexRow]}>
         <Icon source={require('public/icons/reading_glass.png')} style={styles.glass} />
         <TextInput
@@ -32,11 +28,12 @@ const SearchBar = ({ placeholder, onSubmit }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: 324 * SCALE_WIDTH,
-    height: 40 * SCALE_HEIGHT,
-    backgroundColor: '#E5E5EC',
-    borderRadius: 20 * SCALE_HEIGHT,
-    marginTop: 10 * SCALE_HEIGHT,
+    width: 343 * SCALE_WIDTH,
+    borderBottomWidth: 1 * SCALE_HEIGHT,
+    paddingBottom: 5 * SCALE_HEIGHT,
+    borderBottomColor: '#707070',
+    marginHorizontal: 14 * SCALE_WIDTH,
+    marginTop: 12 * SCALE_HEIGHT,
   },
   textInput: {
     marginLeft: 2 * SCALE_WIDTH,
@@ -45,7 +42,6 @@ const styles = StyleSheet.create({
   glass: {
     width: 24 * SCALE_WIDTH,
     height: 24 * SCALE_WIDTH,
-    marginLeft: 10 * SCALE_WIDTH,
   },
 });
 

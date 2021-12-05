@@ -26,22 +26,21 @@ const Photo = () => {
 const styles = StyleSheet.create({
   container: {
     width: 335 * SCALE_WIDTH,
-    height: 260 * SCALE_HEIGHT,
-    justifyContent: 'space-between',
-    marginTop: 42 * SCALE_HEIGHT,
+    marginTop: 16 * SCALE_HEIGHT,
   },
   text: {
     fontSize: FS(16),
+    marginBottom: 16 * SCALE_HEIGHT,
   },
   image: {
     width: 335 * SCALE_WIDTH,
     height: 212 * SCALE_HEIGHT,
     borderRadius: 23 * SCALE_HEIGHT,
-    borderWidth: 1 * SCALE_WIDTH,
     borderColor: '#999999',
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
+    borderWidth: 1 * SCALE_HEIGHT,
   },
   icon: {
     width: 10 * SCALE_WIDTH,
@@ -49,7 +48,7 @@ const styles = StyleSheet.create({
   },
   textcomment: {
     fontSize: FS(14),
-    color: '#7BB57F',
+    color: '#CE476B',
   },
 });
 export default Photo;

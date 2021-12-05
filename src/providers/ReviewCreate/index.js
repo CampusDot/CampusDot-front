@@ -8,20 +8,14 @@ export const useReviewCreate = () => useContext(ReviewCreateContext);
 
 const ReviewCreateProvider = ({ children }) => {
   const { postReview } = useContext(ReviewContext);
-  const [navigation, setNavigation] = useState('Selected');
   const [images, setImages] = useState([]);
+  const [selectedFilter, setSelectedFilter] = useState([]);
   const [information, setInformation] = useState({
     review: '',
-    rating: '0',
   });
 
   const onChangeValue = (type, value) => {
-    if (type === 'rating') {
-      setInformation({
-        ...information,
-        rating: value,
-      });
-    } else if (type === 'review') {
+    if (type === 'review') {
       setInformation({
         ...information,
         review: value,
@@ -29,7 +23,7 @@ const ReviewCreateProvider = ({ children }) => {
     }
   };
 
-  const onClickPostReview = async (id, storeListId) => {
+  const onClickPostReview = async (id) => {
     // eslint-disable-next-line no-undef
     const fd = new FormData();
     if (images.length > 0) {
@@ -43,22 +37,19 @@ const ReviewCreateProvider = ({ children }) => {
     }
     await postReview({
       Content: information.review,
-      Rating: Number(information.rating),
       Store: id,
-      StoreList: storeListId,
+      Filters: selectedFilter,
       fd,
     });
-    if (navigation === 'Selected') {
-      navigate('SelectedList', { id });
-    } else {
-      navigate('Home');
-    }
+    navigate('Home');
   };
+
   const value = {
     information,
     images,
-    setNavigation,
+    selectedFilter,
     setImages,
+    setSelectedFilter,
     setInformation,
     onChangeValue,
     onClickPostReview,
