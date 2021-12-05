@@ -7,6 +7,7 @@ import { MAIN_COLOR } from 'constants/colors';
 import Divider from 'widgets/Divider';
 import ReviewCard from 'components/Home/ReviewCard';
 import { useFocusEffect } from '@react-navigation/native';
+import LoadingIndicator from 'components/LoadingIndicator';
 
 const Home = () => {
   const { state: user, getInformation } = useContext(UserContext);
@@ -26,28 +27,34 @@ const Home = () => {
 
   return (
     <View style={styles.container}>
-      <View
-        style={{
-          height: 48 * SCALE_HEIGHT,
-          justifyContent: 'center',
-          borderBottomWidth: 1 * SCALE_HEIGHT,
-          borderBottomColor: '#E3E3E3',
-        }}
-      >
-        <Text style={styles.college}>{user.collegeName}</Text>
-      </View>
-      <FlatList
-        data={state.reviews}
-        keyExtractor={(item) => item.Content}
-        renderItem={({ item }) => {
-          return (
-            <>
-              <ReviewCard item={item} container={styles.cardContainer} />
-              <Divider />
-            </>
-          );
-        }}
-      />
+      {state.reviews ? (
+        <>
+          <View
+            style={{
+              height: 48 * SCALE_HEIGHT,
+              justifyContent: 'center',
+              borderBottomWidth: 1 * SCALE_HEIGHT,
+              borderBottomColor: '#E3E3E3',
+            }}
+          >
+            <Text style={styles.college}>{user.collegeName}</Text>
+          </View>
+          <FlatList
+            data={state.reviews}
+            keyExtractor={(item) => item.Content}
+            renderItem={({ item }) => {
+              return (
+                <>
+                  <ReviewCard item={item} container={styles.cardContainer} />
+                  <Divider />
+                </>
+              );
+            }}
+          />
+        </>
+      ) : (
+        <LoadingIndicator />
+      )}
     </View>
   );
 };
