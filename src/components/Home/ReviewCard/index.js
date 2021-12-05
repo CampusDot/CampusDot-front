@@ -4,101 +4,95 @@ import FS, { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
 import { MAIN_COLOR } from 'constants/colors';
 import style from 'constants/styles';
 import Icon from 'widgets/Icon';
-import Divider from 'widgets/Divider';
 import { Context as ReviewContext } from 'context/Review';
 import { Context as UserContext } from 'context/User';
+import filterType from 'lib/utils/filterType';
+import StoreCarousel from 'components/StoreCarousel';
 
-const ReviewCard = ({ item }) => {
-  const {
-    PostUserName,
-    ProfileImage,
-    Content,
-    Photo,
-    StoreName,
-    StorePalce,
-    Filters,
-    Up,
-    Down,
-    _id,
-  } = item;
-  const { upReview, upDown } = useContext(ReviewContext);
+const ReviewCard = ({ item, container }) => {
+  const { PostUser, Content, Store, Photo, Filters, Up, Down, _id } = item;
+  const { upReview, downReview, state: review } = useContext(ReviewContext);
   const { state } = useContext(UserContext);
   const isUp = Down.includes(state.id);
   const isDown = Down.includes(state.id);
   const onUp = () => {
-    upReview({ id: _id });
+    if (!isUp) {
+      upReview({ id: _id });
+    }
   };
   const onDown = () => {
-    upDown({ id: _id });
+    if (!isDown) {
+      downReview({ id: _id });
+    }
   };
   return (
-    <View>
-      <View style={style.flexRow}>
-        {ProfileImage ? (
-          // eslint-disable-next-line react/jsx-no-undef
-          <Image source={{ uri: ProfileImage }} style={styles.profileImage} />
-        ) : (
-          <View style={styles.profileImage} />
-        )}
+    <View style={container}>
+      {review.filterType && (
+        <>
+          <View style={style.flexRow}>
+            {PostUser.ProfileImage ? (
+              // eslint-disable-next-line react/jsx-no-undef
+              <Image source={{ uri: PostUser.ProfileImage }} style={styles.profileImage} />
+            ) : (
+              <View style={styles.profileImage} />
+            )}
 
-        <Text style={styles.name}>{PostUserName}</Text>
-      </View>
-      {Photo ? (
-        <Image source={{ uri: Photo }} style={styles.photo} />
-      ) : (
-        <View style={styles.photo} />
-      )}
-      <View style={styles.paddinghoriztontal}>
-        <View style={style.flexRow}>
-          <Text style={styles.storename}>{StoreName}</Text>
-          <Icon source={require('public/icons/location.png')} style={styles.locationicon} />
-          <Text style={styles.placetext}>{StorePalce}</Text>
-        </View>
-        <View style={[style.flexRow, styles.filter]}>
-          {Filters.map((el) => {
-            return <Text style={styles.filterColor}>{`#${el}`}</Text>;
-          })}
-        </View>
-        <View style={styles.content}>
-          <Text>{Content}</Text>
-        </View>
-        <View style={[style.flexRow, styles.spacebetween, styles.marginbottomfoot]}>
-          <View style={[styles.widthspace, style.flexRow]}>
-            <TouchableOpacity onPress={onUp} style={style.flexRow}>
-              {isUp ? (
-                <Icon source={require('public/icons/upfill.png')} style={styles.updownicon} />
-              ) : (
-                <Icon source={require('public/icons/up.png')} style={styles.updownicon} />
-              )}
-              <Text style={{ marginRight: 4 * SCALE_WIDTH }}>{Up.length}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={onDown} style={style.flexRow}>
-              {isDown ? (
-                <Icon source={require('public/icons/downfill.png')} style={styles.updownicon} />
-              ) : (
-                <Icon source={require('public/icons/down.png')} style={styles.updownicon} />
-              )}
-              <Text>{Down.length}</Text>
-            </TouchableOpacity>
+            <Text style={styles.name}>{PostUser.Name}</Text>
           </View>
-          <Icon source={require('public/icons/save.png')} style={styles.updownicon} />
-        </View>
-      </View>
-      <Divider />
+          {Photo.length > 0 && <StoreCarousel photo={Photo} />}
+          <View style={styles.paddinghoriztontal}>
+            <View style={style.flexRow}>
+              <Text style={styles.storename}>{Store.Information.name}</Text>
+              <Icon source={require('public/icons/location.png')} style={styles.locationicon} />
+              <Text style={styles.placetext}>{Store.Information.vicinity}</Text>
+            </View>
+            <View style={[style.flexRow, styles.filter]}>
+              {Filters.map((el) => {
+                return (
+                  <Text style={styles.filterColor} key={el}>{`#${filterType(
+                    review.filterType,
+                    el,
+                  )}`}</Text>
+                );
+              })}
+            </View>
+            <View style={styles.content}>
+              <Text>{Content}</Text>
+            </View>
+            <View style={[style.flexRow, styles.spacebetween, styles.marginbottomfoot]}>
+              <View style={[styles.widthspace, style.flexRow]}>
+                <TouchableOpacity onPress={onUp} style={style.flexRow}>
+                  {isUp ? (
+                    <Icon source={require('public/icons/upfill.png')} style={styles.updownicon} />
+                  ) : (
+                    <Icon source={require('public/icons/up.png')} style={styles.updownicon} />
+                  )}
+                  <Text style={{ marginRight: 4 * SCALE_WIDTH }}>{Up.length}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={onDown} style={style.flexRow}>
+                  {isDown ? (
+                    <Icon source={require('public/icons/downfill.png')} style={styles.updownicon} />
+                  ) : (
+                    <Icon source={require('public/icons/down.png')} style={styles.updownicon} />
+                  )}
+                  <Text>{Down.length}</Text>
+                </TouchableOpacity>
+              </View>
+              <Icon source={require('public/icons/save.png')} style={styles.updownicon} />
+            </View>
+          </View>
+        </>
+      )}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-  },
   spacebetween: {
     justifyContent: 'space-between',
   },
   widthspace: {
-    width: '80%'
+    width: '80%',
   },
   title: {
     fontSize: FS(20),
@@ -126,11 +120,12 @@ const styles = StyleSheet.create({
   },
   filterColor: {
     color: '#CE476B',
-    marginRight: 3 * SCALE_WIDTH
+    marginRight: 3 * SCALE_WIDTH,
   },
   name: {
-    marginLeft:6 * SCALE_WIDTH, 
-    fontSize:FS(12)
+    marginLeft: 6 * SCALE_WIDTH,
+    fontSize: FS(12),
+    marginTop: 8 * SCALE_HEIGHT,
   },
   marginbottomfoot: {
     marginBottom: 8 * SCALE_HEIGHT,

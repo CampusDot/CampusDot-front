@@ -20,7 +20,7 @@ const StoreCarousel = ({ photo, type }) => {
         horizontal
         showsHorizontalScrollIndicator={false}
         bounces={false}
-        snapToInterval={347 * SCALE_WIDTH}
+        snapToInterval={375 * SCALE_WIDTH}
         decelerationRate={0}
         scrollEventThrottle={16}
         renderItem={({ item }) => {
@@ -47,8 +47,9 @@ const StoreCarousel = ({ photo, type }) => {
 
 const styles = StyleSheet.create({
   storeImg: {
-    height: 163 * SCALE_HEIGHT,
-    width: 347 * SCALE_WIDTH,
+    height: 334 * SCALE_HEIGHT,
+    width: 375 * SCALE_WIDTH,
+    marginTop: 7 * SCALE_HEIGHT,
   },
   box: {
     width: 30 * SCALE_WIDTH,
