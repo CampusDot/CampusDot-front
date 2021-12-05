@@ -20,7 +20,7 @@ const reviewReducer = (state, action) => {
 
 const postReview =
   (dispatch) =>
-  async ({ Content, Store, Filters, fd }) => {
+  async ({ Content, Store, fd, Filters }) => {
     try {
       const response = await server.post(`/review`, {
         Content,
@@ -65,21 +65,27 @@ const getReview = (dispatch) => async () => {
   }
 };
 
-const UpReview = (dispatch) => async () => {
-  try {
-    const response = await server.post('/review/up');
-  } catch (err) {
-    dispatch({ type: 'error', payload: 'Something went wrong with getReviewStore' });
-  }
-};
+const upReview =
+  (dispatch) =>
+  async ({ id }) => {
+    try {
+      const response = await server.post('/review/up', { id });
+      dispatch({ type: 'getReview', payload: response.data });
+    } catch (err) {
+      dispatch({ type: 'error', payload: 'Something went wrong with getReviewStore' });
+    }
+  };
 
-const DownReview = (dispatch) => async () => {
-  try {
-    const response = await server.post('/review/down');
-  } catch (err) {
-    dispatch({ type: 'error', payload: 'Something went wrong with getReviewStore' });
-  }
-};
+const downReview =
+  (dispatch) =>
+  async ({ id }) => {
+    try {
+      const response = await server.post('/review/down', { id });
+      dispatch({ type: 'getReview', payload: response.data });
+    } catch (err) {
+      dispatch({ type: 'error', payload: 'Something went wrong with getReviewStore' });
+    }
+  };
 
 const getSelectedReview =
   (dispatch) =>
@@ -111,8 +117,8 @@ export const { Provider, Context } = createDataContext(
     getSelectedReview,
     getReview,
     getFilterType,
-    UpReview,
-    DownReview,
+    upReview,
+    downReview,
     getRecommendStore,
   },
   {
