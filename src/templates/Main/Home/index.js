@@ -1,64 +1,51 @@
-import React, { useContext, useCallback, useState, useEffect } from 'react';
-import { ScrollView, FlatList, StyleSheet, View ,Text, TouchableOpacity} from 'react-native';
-import Header from 'components/Header';
+import React, { useContext, useEffect, useCallback } from 'react';
+import { FlatList, StyleSheet, View, Text } from 'react-native';
 import { Context as UserContext } from 'context/User';
 import { Context as ReviewContext } from 'context/Review';
 import FS, { SCALE_HEIGHT, SCALE_WIDTH } from 'lib/utils/normalize';
-import { useFocusEffect } from '@react-navigation/native';
 import { MAIN_COLOR } from 'constants/colors';
-import style from 'constants/styles';
-import Icon from 'widgets/Icon';
 import Divider from 'widgets/Divider';
 import ReviewCard from 'components/Home/ReviewCard';
-
-const sortParams = [
-{
-  _id : 'aasdasdada',
-  PostUserName: 'SS',
-  ProfileImage :null,
-  Content: "여기는 진짜 회의 끝판왕, 다른 반찬 없이 회만 나오는데 그양이 엄청많음",
-  Time: Date(),
-  Photo: null,
-  StoreName: '공복',
-  StorePalce: '서울시 서대문구 연희동 131',
-  Filters: ['회', '소주', '매운탕'],
-  Up: ['a','b','q','e','a','z','c','s','g'],
-  Down: ['c','d','t','b','h','y','x','b'],
-},
-{
-  _id : 'asdsada',
-  PostUserName: 'qwdqwd',
-  ProfileImage :null,
-  Content: "갈비찜은 잘 안사먹는다. 하지만 여기 갈비찜은 다르다. 고기의 두께가 엄청나다",
-  Time: Date(),
-  Photo: null,
-  StoreName: '쾌걸침착맨',
-  StorePalce: '서울시 서대문구 연희동 10-7',
-  Filters: ['갈비찜', '찜'],
-  Up: ['a','b','q','e','a','z','c','s','g'],
-  Down: ['c','d','t','b','h','y','x','b'],
-}
-];
+import { useFocusEffect } from '@react-navigation/native';
 
 const Home = () => {
   const { state: user, getInformation } = useContext(UserContext);
-  const { state, getReview } = useContext(ReviewContext);
+  const { state, getReview, getFilterType } = useContext(ReviewContext);
 
   useEffect(() => {
     getInformation();
     getReview();
+    getFilterType();
   }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      getReview();
+    }, []),
+  );
 
   return (
     <View style={styles.container}>
-      <View style={styles.headerContainer}>
-        <Header headerStyle={styles.header} title={user.collegeName} titleStyle={styles.title} />
+      <View
+        style={{
+          height: 48 * SCALE_HEIGHT,
+          justifyContent: 'center',
+          borderBottomWidth: 1 * SCALE_HEIGHT,
+          borderBottomColor: '#E3E3E3',
+        }}
+      >
+        <Text style={styles.college}>{user.collegeName}</Text>
       </View>
       <FlatList
-        data={sortParams}
+        data={state.reviews}
         keyExtractor={(item) => item.Content}
-        renderItem={({ item, index }) => {
-          return <ReviewCard item={item} />;
+        renderItem={({ item }) => {
+          return (
+            <>
+              <ReviewCard item={item} container={styles.cardContainer} />
+              <Divider />
+            </>
+          );
         }}
       />
     </View>
@@ -66,6 +53,15 @@ const Home = () => {
 };
 
 const styles = StyleSheet.create({
+  college: {
+    fontSize: FS(20),
+    fontWeight: 'bold',
+    marginLeft: 14 * SCALE_WIDTH,
+  },
+  cardContainer: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
   container: {
     flex: 1,
     backgroundColor: 'white',
@@ -74,7 +70,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   widthspace: {
-    width: '80%'
+    width: '80%',
   },
   title: {
     fontSize: FS(20),
@@ -102,11 +98,11 @@ const styles = StyleSheet.create({
   },
   filterColor: {
     color: '#CE476B',
-    marginRight: 3 * SCALE_WIDTH
+    marginRight: 3 * SCALE_WIDTH,
   },
   name: {
-    marginLeft:6 * SCALE_WIDTH, 
-    fontSize:FS(12)
+    marginLeft: 6 * SCALE_WIDTH,
+    fontSize: FS(12),
   },
   marginbottomfoot: {
     marginBottom: 8 * SCALE_HEIGHT,

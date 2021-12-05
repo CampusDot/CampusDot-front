@@ -13,6 +13,8 @@ const reviewReducer = (state, action) => {
       return { ...state, filterType: action.payload };
     case 'getRecommendStore':
       return { ...state, recommend: action.payload[0] };
+    case 'initRecommendStore':
+      return { ...state, recommend: null };
     default:
       return state;
   }
@@ -58,8 +60,8 @@ const getReviewStore = (dispatch) => async () => {
 
 const getReview = (dispatch) => async () => {
   try {
-    const response = await server.get('/review/store');
-    dispatch({ type: 'getReviewStore', payload: response.data });
+    const response = await server.get('/review');
+    dispatch({ type: 'getReview', payload: response.data });
   } catch (err) {
     dispatch({ type: 'error', payload: 'Something went wrong with getReviewStore' });
   }
@@ -109,6 +111,14 @@ const getRecommendStore =
     }
   };
 
+const initRecommendStore = (dispatch) => async () => {
+  try {
+    dispatch({ type: 'initRecommendStore' });
+  } catch (err) {
+    dispatch({ type: 'error', payload: 'Something went wrong with getRecommendStore' });
+  }
+};
+
 export const { Provider, Context } = createDataContext(
   reviewReducer,
   {
@@ -120,6 +130,7 @@ export const { Provider, Context } = createDataContext(
     upReview,
     downReview,
     getRecommendStore,
+    initRecommendStore,
   },
   {
     reviews: null,
