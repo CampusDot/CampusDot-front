@@ -2,8 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import navigationRef from 'lib/utils/navigation';
 import { Context as AuthContext } from 'context/Auth';
-import StatusBar, { AuthStatusBar } from 'components/StatusBar';
+import AppStatusBar from 'components/StatusBar';
 import Splash from 'screens/Main/Splash';
+import { StatusBar } from 'react-native';
 import AuthStackScreen from './Auth';
 import MainStackScreen from './Main';
 
@@ -21,17 +22,9 @@ const MainNavigator = () => {
 
   return (
     <NavigationContainer ref={navigationRef}>
-      {state.token ? (
-        <>
-          <StatusBar />
-          <MainStackScreen />
-        </>
-      ) : (
-        <>
-          <AuthStatusBar />
-          <AuthStackScreen />
-        </>
-      )}
+      <StatusBar barStyle="light-content" />
+      <AppStatusBar />
+      {state.token ? <MainStackScreen /> : <AuthStackScreen />}
     </NavigationContainer>
   );
 };

@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/prefer-default-export
-export const MAIN_COLOR = '#FFDE6E';
+export const MAIN_COLOR = '#000000';
 export const SUB_COLOR = '#73B979';
 export const SUB_COLOR2 = '#5FAF66';
 export const COLOR_1 = '#191919';

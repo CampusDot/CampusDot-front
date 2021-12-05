@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     width: 336 * SCALE_WIDTH,
     height: 101 * SCALE_HEIGHT,
     justifyContent: 'space-between',
-    marginTop: 42 * SCALE_HEIGHT,
+    marginTop: 24 * SCALE_HEIGHT,
   },
   textinput: {
     width: 335 * SCALE_WIDTH,

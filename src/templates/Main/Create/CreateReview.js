@@ -5,7 +5,8 @@ import ReviewWriteButton from 'components/Header/Create/ReviewWriteButton';
 import style from 'constants/styles';
 import Photo from 'components/Create/ReviewInput/Photo';
 import ReviewText from 'components/Create/ReviewInput/ReviewText';
-import Rating from 'components/Create/ReviewInput/Rating';
+import Filter from 'components/Create/Filter';
+import { SCALE_WIDTH } from 'lib/utils/normalize';
 
 const CreateReview = ({ id, storeListId }) => {
   return (
@@ -17,9 +18,9 @@ const CreateReview = ({ id, storeListId }) => {
         actions={[<ReviewWriteButton id={id} storeListId={storeListId} />]}
       />
       <View style={styles.aligncenter}>
-        <Rating />
-        <ReviewText />
         <Photo />
+        <ReviewText />
+        <Filter />
       </View>
     </View>
   );
@@ -27,7 +28,7 @@ const CreateReview = ({ id, storeListId }) => {
 
 const styles = StyleSheet.create({
   aligncenter: {
-    alignItems: 'center',
+    paddingHorizontal: 20 * SCALE_WIDTH,
   },
 });
 export default CreateReview;

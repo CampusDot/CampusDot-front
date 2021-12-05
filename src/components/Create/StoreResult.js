@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
-import { View, StyleSheet, Text, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { Context as SearchContext } from 'context/Search';
 import style from 'constants/styles';
 import LoadingIndicator from 'components/LoadingIndicator';
 import FS, { SCALE_WIDTH, SCALE_HEIGHT } from 'lib/utils/normalize';
-import Icon from 'widgets/Icon';
-import StoreImage from 'widgets/StoreImage';
 import { MAIN_COLOR } from 'constants/colors';
 import { push } from 'lib/utils/navigation';
+import CardView from 'components/CardView';
+import Header from '../CardView/SearchStore/Header';
 
 const StoreResult = () => {
   const { state } = useContext(SearchContext);
@@ -33,21 +33,7 @@ const StoreResult = () => {
                 style={[style.flexRow, style.space_between, styles.box]}
                 onPress={() => onClickPostReview(id)}
               >
-                <View style={style.flexRow}>
-                  <StoreImage image={uri} imageStyle={styles.image} />
-                  <View style={styles.widthArea}>
-                    <Text style={styles.title}>{name}</Text>
-                    <View style={style.flexRow}>
-                      <Icon
-                        source={require('public/icons/location_gray.png')}
-                        style={styles.location}
-                      />
-                      <Text style={styles.locationText} numberOfLines={1}>
-                        {vicinity}
-                      </Text>
-                    </View>
-                  </View>
-                </View>
+                <CardView photo={[uri]} header={<Header name={name} vicinity={vicinity} />} />
               </TouchableOpacity>
             );
           }}
@@ -61,7 +47,7 @@ const StoreResult = () => {
 
 const styles = StyleSheet.create({
   contentContainer: {
-    paddingHorizontal: 20 * SCALE_WIDTH,
+    marginHorizontal: 14 * SCALE_WIDTH,
     paddingVertical: 16 * SCALE_HEIGHT,
   },
   box: {
